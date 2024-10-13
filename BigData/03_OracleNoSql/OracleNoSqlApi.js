@@ -131,7 +131,5 @@ async function createKeyValueTable() {
       client.close();
     }
   }
-(async () => {
-    await run();          // Ejecutar operaciones de tabla
-    await runKey_Value(); // Ejecutar operaciones clave-valor
-  })();
+run();          // Ejecutar operaciones de tabla
+runKey_Value(); // Ejecutar operaciones clave-valor
