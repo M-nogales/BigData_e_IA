@@ -71,4 +71,9 @@ max(c3) # mayor en ascii 'U'
 print(c3.lower())
 print(c3.title()) # primera de cada palabra en mayus
 print(c3.split(" "))
-
+texto_a_mostrar = "En un lugar de la mancha"
+print(texto_a_mostrar.count("n"))
+print(texto_a_mostrar.find("mancha")) #posición del primer caracter en la cadena
+# print(texto_a_mostrar.join(" de cuyo nombre no me quiero acordar")) # error prob .find([texto," de cuyo.."])
+print(texto_a_mostrar.replace("e","E"))
+print(texto_a_mostrar.split(" ")) # último de la lista separador " "
