@@ -1,3 +1,4 @@
+//! npm i oracle-nosqldb
 const NoSQLClient = require("oracle-nosqldb").NoSQLClient;
 
 // Configurar el cliente NoSQL para conectarse a la base de datos
@@ -131,5 +132,6 @@ async function createKeyValueTable() {
       client.close();
     }
   }
+
 run();          // Ejecutar operaciones de tabla
 runKey_Value(); // Ejecutar operaciones clave-valor
