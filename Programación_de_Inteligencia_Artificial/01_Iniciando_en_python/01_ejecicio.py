@@ -25,6 +25,14 @@ nums.sort()
 
 print(nums, len(nums))
 
+# Ejercicio: Diccionarios
+estudiante = dict({"nombre":"ana","edad":22,"curso":"Matematicas"})
+estudiante["edad"]= 23
+estudiante.update({"promedio":8.5})
+
+print('estudiante: ', estudiante)
+print('edad del estudiante: ', estudiante["edad"])
+
 # Ejercicio: Operaciones lógicas
 x = True
 y = False
@@ -64,6 +72,16 @@ frutas.discard("naranja")
 
 print(frutas)
 
+# Ejeccicio Diccionarios
+capitales = {"España":"Madrid","Francia":"Paris","Italia":"Roma"}
+capitales.update({"Alemania":"Berlín"})
+capitales["Francia"] = "Lyon"
+capitales.pop("Italia")
+
+print('capitales: ', capitales.keys())
+print('capitales: ', capitales.values())
+print('capitales: ', capitales)
+
 # Ejercicio: Métodos avanzados de Listas
 nums2 = [12, 45, 78, 23, 56, 89, 23, 56]
 nums2.count(23)
@@ -90,3 +108,10 @@ animales_domesticos ={"gato","perro","conejo"}
 print(animales.intersection(animales_domesticos))
 print(animales.difference(animales_domesticos))
 print(animales.union(animales_domesticos))
+
+# Ejercicio: Diccionarios anidados
+estudiante1={"nombre":"carlos","edad":19,"materias":["Matemáticas","Física"]}
+estudiante2={"nombre":"Marta","edad":20,"materias":["Química","Biología"]}
+clase = {"estudiante1":estudiante1,"estudiante2":estudiante2}
+
+print('clase: ', clase)

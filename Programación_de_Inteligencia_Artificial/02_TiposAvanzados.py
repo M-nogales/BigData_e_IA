@@ -87,3 +87,42 @@ print("Diferencia:", diferencia)  # {1, 2}
 # Diferencia simétrica: Devuelve los elementos que están en uno u otro conjunto, pero no en ambos
 diferencia_simetrica = conjunto_a.symmetric_difference(conjunto_b)
 print("Diferencia Simétrica:", diferencia_simetrica)  # {1, 2, 5, 6}
+
+
+# Diccionario
+persona1={"nombre":"pepe","edad":19,"sexo":"M","sexo":"j"}
+# persona1={"nombre":"pepe","edad":19,"sexo":"M","sexo":"j"} en caso de repetir se usa el último
+print (persona1)
+print(persona1["nombre"])
+print(len(persona1))
+print(persona1.get("edad"))
+print(persona1.keys())
+print(persona1.values())
+persona2 = dict(persona1)
+print(persona2)
+persona2["nombre"] = "Luis"
+persona2["edad"] = "20"
+print(persona2.items())
+print(persona2)
+if "edad" in persona1: print("he nacido,wee")
+persona2.update({"sexo":"XeY"})
+print(persona2)
+# persona2["caballo"] = "juan"
+persona2.update({"caballo":"juan"})
+# persona2.pop("edad")
+# persona2.popitem()
+print(persona2)
+# del persona2["caballo"]
+# persona2.clear()
+print(persona2)
+for x in persona2.items(): print(x)
+for x in persona2: print(x)
+for x in persona2.values(): print(x)
+persona3 = persona2.copy()
+datos_alumno= dict()
+datos_alumno.update({"alumno1":persona1})
+datos_alumno.update({"alumno2":dict({"nombre":"Alvaro","edad":28})})
+datos_alumno.update({"alumno3":persona2})
+
+print('datos_alumno: ', datos_alumno)
+print('datos_alumno: ', datos_alumno["alumno3"]["nombre"])
