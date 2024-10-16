@@ -117,3 +117,8 @@ Crea un diccionario llamado `capitales` que contenga las siguientes parejas clav
            "materias": ["Química", "Biología"]
        }
    }
+# Ejercicio extra: Diccionario
+1. debes crear un diccionario Aula que contenga un número N de elementos de tipo Alumno (min 10)
+
+```python
+alumno = {"nombre":"input","apellido":"input","edad":"input","correo":"input","provincia":"input"}
