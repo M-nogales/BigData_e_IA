@@ -13,6 +13,9 @@
 # print('aula: ', aula)
 
 #1
+from functools import reduce
+
+
 nums1 = [0,1,2,3,4]
 
 print('nums: ', nums1[2])
@@ -222,14 +225,97 @@ array.append(99)
 print('array.append(99): ', array)
 
 #38
+nums38 = [0,1,2,2,3,3,4,5,6]
+print('list(set(nums38)): ', list(set(nums38)))
+
 #39
-#41 
+nums39 = [0,1,2,3,4,5,6]
+result = nums39[::-1]
+
+print('result: ', result)
+
+#40
+nums40 = [0,1,2,3,4,5,6,7,8,9,10,11,12]
+
+slices = 4
+
+width_results = len(nums40) // slices
+
+# range(start,end,step)
+# para cada uno de los elementos (0) hasta el final del array(13),saltando en grupos de (3,25 = 3)
+# cogemos el valor del array en ese grupo (nums40[0:0 + 3]) = [0,1,2]
+# finalmente se almacena en una lista anidada
+results = [nums40[i:i + width_results] for i in range(0, len(nums40), width_results)]
+
+for value in results:
+    print(value)
+
+#41
+nums41 = [0,1,20,3,4,4,4,8,8,9]
+print('sum(nums41)/len(nums41): ', sum(nums41)/len(nums41))
+
 #42
+nums42 = [0, 10, 20, 30, 40, 100]
+
+#farenheint = ((9/5) * C) + 32 
+farenheint = [ ((9/5)*temp) + 32 for temp in nums42 ]
+
+print('farenheint: ', farenheint)
+
 #43
+nums43 = [0,1,2,3,4,5,6,7,8,9,10]
+result = [value for value in nums43 if value %2 == 0]
+
+print('result: ', result)
+
 #44
+string44 = ["cadenaInicial","cadena1","cadena2","cadenaFinal"]
+result = list(map(str.upper, string44))
+
+print('result: ', result)
+
 #45
+nums45 = []
+
+nums45.append(1)
+nums45.append(2)
+nums45.append(3)
+nums45.append(4)
+
+nums45.pop(0)
+
+print('nums45: ', nums45 )
+
 #46
+strings46 = ["Ana", "Luis", "Elena", "Oscar", "Ignacio", "Ursula", "Pedro", "Eva", "Manuel"]
+
+def starts_with_vocals(str):
+    vocals = "AEIOUaeiou"
+    return str[0] in vocals
+
+print('list(filter(starts_with_vocals,strings46)): ', list(filter(starts_with_vocals,strings46)))
+
 #47
+nums47 = [0,1,2,2,3,3,4,5]
+print('list(set(nums47)): ', list(set(nums47)))
+
 #48
+strings48 = ["A","An","Ana","Fernando","Luis"]
+print('sorted(strings48, key = len): ', sorted(strings48, key = len))
+
 #49
+strings49 = ['Ana', 'Juan', 'Oscar', 'Isa', 'Luis', 'Ana', 'Carlos', 'Rosa']
+
+grupo_1 = [value for i, value in enumerate(strings49) if i % 2 == 0]
+grupo_2 = [value for i, value in enumerate(strings49) if i % 2 != 0]
+
+print('grupo_1: ', grupo_1)
+print('grupo_2: ', grupo_2)
+
 #50
+nums50 = [1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+
+def mult (num1,num2):
+    return num1 * num2
+
+print('reduce(mult,nums50): ', reduce(mult,nums50))
