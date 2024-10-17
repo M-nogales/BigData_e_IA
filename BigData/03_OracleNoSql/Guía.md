@@ -15,6 +15,12 @@ PS C:\Users\Manuel Nogales> docker run --rm -ti --link kvlite:store oracle/nosql
 
 kv-> execute "CREATE TABLE myTable1 (id INTEGER, name STRING, age INTEGER, PRIMARY KEY(id))"
 Statement completed successfully
+
+kv-> put kv -key /SomeKey -value SomeValue
+Operation successful, record inserted.
+
+kv-> get kv -key /SomeKey
+SomeValue
 ```
 Los comandos están diseñados para configurar y gestionar una instancia de Oracle NoSQL utilizando imágenes de contenedores.
 
@@ -23,10 +29,10 @@ Los comandos están diseñados para configurar y gestionar una instancia de Orac
 docker pull ghcr.io/oracle/nosql:latest-ce
 ```
 **Explicación:**  
-Este comando descarga una imagen de Docker desde un registro remoto, en este caso desde el registro GitHub Container Registry (GHCR) con la imagen de Oracle NoSQL. Específicamente, está obteniendo la versión más reciente de la edición "Community Edition" (CE) de Oracle NoSQL (`latest-ce`).  
+Este comando descarga una imagen de Docker desde un paquete de github. Específicamente, está obteniendo la versión más reciente de la edición "Community Edition" (CE) de Oracle NoSQL (`latest-ce`).  
 **Conceptos clave:**
 - `docker pull`: Comando para descargar una imagen de Docker desde un registro.
-- `ghcr.io/oracle/nosql:latest-ce`: La ubicación en el registro y el nombre de la imagen, seguido de la etiqueta `latest-ce`, que indica que se está descargando la última versión de la edición comunitaria.
+- `ghcr.io/oracle/nosql:latest-ce`: La ubicación y el nombre de la imagen, seguido de la etiqueta `latest-ce`, que indica que se está descargando la última versión de la edición comunitaria.
 
 ---
 
@@ -106,3 +112,4 @@ Crea una tabla llamada `myTable1` con tres columnas:
 - `age`: Otro entero.
 
 El comando `Statement completed successfully` confirma que la tabla se creó correctamente.
+[Guía oficial](https://github.com/oracle/docker-images/tree/main/NoSQL)
