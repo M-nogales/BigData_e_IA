@@ -112,4 +112,5 @@ Crea una tabla llamada `myTable1` con tres columnas:
 - `age`: Otro entero.
 
 El comando `Statement completed successfully` confirma que la tabla se creó correctamente.
+
 [Guía oficial](https://github.com/oracle/docker-images/tree/main/NoSQL)
