@@ -56,7 +56,7 @@ Crear las pilas (X)AMP y (X)EMP para despliegue de proyectos web usando:
 
 Enlaces de utilidad:
 - [Infraestructura LAMP con Docker Compose](https://openwebinars.net/blog/infraestructura-lamp-con-docker-compose/)
-- Documentación de la imagen nginx en: [https://hub.docker.com/nginx/](https://hub.docker.com/nginx/)
+- Documentación de la imagen nginx en: [https://hub.docker.com/_/nginx](https://hub.docker.com/_/nginx)
 - Configuración del servidor nginx: [http://nginx.org/en/docs/beginners_guide.html#conf_structure](http://nginx.org/en/docs/beginners_guide.html#conf_structure)
 
 ### P3. (100 mins.)
