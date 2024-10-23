@@ -10,3 +10,4 @@ root@3d5a7eed0d53:/#
 
 P1
 # docker-compose -f ddbb_myadmin_compose.yml up --build
+link a docker up
