@@ -1,17 +1,3 @@
-E2
-C:\Users\alumno\Desktop\Tarde_BigData\BigData_e_IA\BigData\05_Practica_Docker>docker create --name test1 debian tail -f dev/null
-3d5a7eed0d53fe40a38dc706f028e4feb15570f8b6dba3d37364bd26d5a28fdc
-
-C:\Users\alumno\Desktop\Tarde_BigData\BigData_e_IA\BigData\05_Practica_Docker>docker start test1
-test1
-
-C:\Users\alumno\Desktop\Tarde_BigData\BigData_e_IA\BigData\05_Practica_Docker>docker exec -it test1 /bin/bash
-root@3d5a7eed0d53:/#
-
-P1
-# docker-compose -f ddbb_myadmin_compose.yml up --build
-link a docker hub
-
 # Práctica Docker 🐳
 
 ## EJ1
@@ -84,11 +70,12 @@ Tras esto en caso de que hayamos hecho algún cambio a nuestro contenedor guarda
 
 finalmente haremos push de nuestro contenedor a docker hub con el siguiente comando ``docker push usuario_dockerhub/nombre_del_repositorio:tag``
 
+[Enlace Docker Hub](https://hub.docker.com/repository/docker/manuelnogales/test1/general)
+
 ![docker push](docker_push_manuelnogales_test1.png "docker push")
 
 ![docker hub](docker_hub_test1.png "docker hub")
 
-[Enlace Docker Hub](https://hub.docker.com/repository/docker/manuelnogales/test1/general)
 
 ## P1 Crear un back-end de gestión de BBDD con phpMyAdmin y MySQL.
 `docker-compose -f ddbb_myadmin_compose.yml up`
