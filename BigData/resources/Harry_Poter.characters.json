@@ -1,0 +1,120 @@
+[{
+  "_id": {
+    "$oid": "671fb4e2c8502430f211c8ba"
+  },
+  "name": "Harry Potter",
+  "house": "Gryffindor",
+  "year_of_birth": 1980,
+  "blood_status": "Half-blood",
+  "spells_known": [
+    "Expelliarmus",
+    "Expecto Patronum",
+    "Stupefy"
+  ],
+  "wand": {
+    "wood": "Holly",
+    "core": "Phoenix feather",
+    "length": 11
+  },
+  "patronus": "Stag",
+  "friends": [
+    "Hermione Granger",
+    "Ron Weasley"
+  ]
+},
+{
+  "_id": {
+    "$oid": "671fb4e2c8502430f211c8bb"
+  },
+  "name": "Hermione Granger",
+  "house": "Gryffindor",
+  "year_of_birth": 1979,
+  "blood_status": "Muggle-born",
+  "spells_known": [
+    "Alohomora",
+    "Leviosa",
+    "Protego"
+  ],
+  "wand": {
+    "wood": "Vine",
+    "core": "Dragon heartstring",
+    "length": 10.75
+  },
+  "patronus": "Otter",
+  "friends": [
+    "Harry Potter",
+    "Ron Weasley"
+  ]
+},
+{
+  "_id": {
+    "$oid": "671fb4e2c8502430f211c8bc"
+  },
+  "name": "Ron Weasley",
+  "house": "Gryffindor",
+  "year_of_birth": 1980,
+  "blood_status": "Pure-blood",
+  "spells_known": [
+    "Lumos",
+    "Wingardium Leviosa",
+    "Expelliarmus"
+  ],
+  "wand": {
+    "wood": "Willow",
+    "core": "Unicorn tail hair",
+    "length": 14
+  },
+  "patronus": "Jack Russell Terrier",
+  "friends": [
+    "Harry Potter",
+    "Hermione Granger"
+  ]
+},
+{
+  "_id": {
+    "$oid": "671fb4e2c8502430f211c8bd"
+  },
+  "name": "Draco Malfoy",
+  "house": "Slytherin",
+  "year_of_birth": 1980,
+  "blood_status": "Pure-blood",
+  "spells_known": [
+    "Serpensortia",
+    "Crucio",
+    "Imperio"
+  ],
+  "wand": {
+    "wood": "Hawthorn",
+    "core": "Unicorn tail hair",
+    "length": 10
+  },
+  "patronus": null,
+  "friends": [
+    "Crabbe",
+    "Goyle"
+  ]
+},
+{
+  "_id": {
+    "$oid": "671fb4e2c8502430f211c8be"
+  },
+  "name": "Albus Dumbledore",
+  "house": "Gryffindor",
+  "year_of_birth": 1881,
+  "blood_status": "Half-blood",
+  "spells_known": [
+    "Fawkes' song",
+    "Transfiguration",
+    "Legilimency"
+  ],
+  "wand": {
+    "wood": "Elder",
+    "core": "Thestral tail hair",
+    "length": 15
+  },
+  "patronus": "Phoenix",
+  "friends": [
+    "Gellert Grindelwald",
+    "Newt Scamander"
+  ]
+}]
