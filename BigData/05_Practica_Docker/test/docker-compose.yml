@@ -1,0 +1,28 @@
+services:
+  maven:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ["tail", "-f", "/dev/null"]  # Mantener el contenedor en ejecución
+
+  app:
+    image: tomcat:9.0.65-jdk11-openjdk-slim
+    ports:
+      - "8080:8080"
+    depends_on:
+      - maven  # Espera que el servicio de Maven esté listo antes de iniciar
+    volumes:
+      - ./target/mi-app-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/mi-app-1.0-SNAPSHOT.war
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: mi_base_datos
+      MYSQL_USER: mi_usuario
+      MYSQL_PASSWORD: mi_contraseña
+    ports:
+      - "3306:3306"

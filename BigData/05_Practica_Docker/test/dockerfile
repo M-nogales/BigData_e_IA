@@ -1,0 +1,11 @@
+# Etapa de construcción con Maven
+FROM maven:3.8.4-jdk-11 AS builder
+
+WORKDIR /app
+COPY . .
+
+# Ejecutar Maven para construir el proyecto y crear el archivo .war
+RUN mvn clean package -P war
+
+# Mantener el contenedor en ejecución
+CMD ["tail", "-f", "/dev/null"]

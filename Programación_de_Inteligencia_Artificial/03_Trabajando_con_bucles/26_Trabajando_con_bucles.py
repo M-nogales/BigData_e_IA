@@ -23,14 +23,12 @@ if altura%2 != 0:
         else:
             print('x' * ((mitad + 1) - i), end='')
 
-
-        for j in range(1,i + 1):
-
-            if i > ((mitad + 1)):
-                print((i - j), end=' ')
-            else:
+        if  i > ((mitad + 1)):
+            for j in range(1,i + 1):
                 print(j, end=' ')
-
+        else:
+            for j in range(1,cantidad):
+                print(j, end=' ')
         print()
 
 # 1 xxxxx

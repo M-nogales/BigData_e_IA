@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <database>
+        <url>jdbc:mysql://db:3306/mi_base_datos</url>
+        <username>mi_usuario</username>
+        <password>mi_contraseña</password>
+    </database>
+</configuration>

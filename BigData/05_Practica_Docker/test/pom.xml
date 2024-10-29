@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ejemplo</groupId>      <!-- Reemplaza con tu grupo -->
+    <artifactId>mi-app</artifactId>     <!-- Nombre de tu aplicación -->
+    <version>1.0-SNAPSHOT</version>      <!-- Versión de tu aplicación -->
+    <packaging>war</packaging>           <!-- Especifica que el empaquetado será un WAR -->
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- Aquí van tus dependencias, por ejemplo, para la conexión a MySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.30</version> <!-- Verifica si hay una versión más reciente -->
+        </dependency>
+        <!-- Otras dependencias necesarias para tu proyecto -->
+    </dependencies>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.3.1</version>
+            <configuration>
+                <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                <webResources>
+                    <resource>
+                        <directory>${project.basedir}</directory>
+                        <includes>
+                            <include>config.xml</include>
+                        </includes>
+                    </resource>
+                </webResources>
+                <outputDirectory>${project.build.directory}</outputDirectory>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <configuration>
+                <source>${maven.compiler.source}</source>
+                <target>${maven.compiler.target}</target>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+
+    <profiles>
+        <profile>
+            <id>war</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+</project>
