@@ -1,0 +1,60 @@
+{
+  "superheroes_espanoles": [
+    {
+      "nombre_real": "Javier Martínez",
+      "alias": "El Cid",
+      "habilidades": ["esgrima experta", "estrategia táctica", "resistencia mejorada"],
+      "ciudad": "Burgos",
+      "equipo": "Los Defensores Ibéricos"
+    },
+    {
+      "nombre_real": "María Torres",
+      "alias": "La Dama de Plata",
+      "habilidades": ["manipulación de metales", "creación de escudos metálicos", "fuerza sobrehumana"],
+      "ciudad": "Toledo",
+      "equipo": "Los Defensores Ibéricos"
+    },
+    {
+      "nombre_real": "Luis González",
+      "alias": "El Gato Andaluz",
+      "habilidades": ["agilidad felina", "visión nocturna", "sigilo extremo"],
+      "ciudad": "Sevilla",
+      "equipo": "Vigilantes del Sur"
+    },
+    {
+      "nombre_real": "Carmen García",
+      "alias": "La Flamígera",
+      "habilidades": ["generación de fuego", "resistencia al calor", "vuelo limitado"],
+      "ciudad": "Granada",
+      "equipo": "Vigilantes del Sur"
+    },
+    {
+      "nombre_real": "Alberto Ibáñez",
+      "alias": "El Mago de Gaudí",
+      "habilidades": ["manipulación de estructuras", "telequinesis", "escudos psíquicos"],
+      "ciudad": "Barcelona",
+      "equipo": "Protectores del Mediterráneo"
+    },
+    {
+      "nombre_real": "Ana Ríos",
+      "alias": "La Sirena del Norte",
+      "habilidades": ["respiración bajo el agua", "control del agua", "comunicación con criaturas marinas"],
+      "ciudad": "Santander",
+      "equipo": "Protectores del Atlántico"
+    },
+    {
+      "nombre_real": "Pedro Díaz",
+      "alias": "El Caminante",
+      "habilidades": ["supervelocidad", "control del viento", "fuerza mejorada"],
+      "ciudad": "Madrid",
+      "equipo": "Liga Central"
+    },
+    {
+      "nombre_real": "Isabel Muñoz",
+      "alias": "Ventisca",
+      "habilidades": ["control del hielo", "invocación de tormentas de nieve", "reducción de temperatura"],
+      "ciudad": "Pamplona",
+      "equipo": "Liga Central"
+    }
+  ]
+}

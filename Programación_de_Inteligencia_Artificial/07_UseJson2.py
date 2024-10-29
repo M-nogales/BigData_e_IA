@@ -4,7 +4,12 @@ persona = {
     "nombre": "Elena",
     "apellido": "Cerezo",
     "edad": 20,
-    "ciudad":"Barcelona"
+    "ciudad":"Barcelona",
+    "coches":[
+        {"modelo": "BMW","consumo":3},
+        {"modelo": "Dacia","consumo":6}
+    ],
+    "casada": True
 }
 
 json_datos = json.dumps(persona, indent=4)

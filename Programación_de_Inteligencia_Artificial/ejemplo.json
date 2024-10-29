@@ -1,0 +1,17 @@
+{
+    "nombre": "Elena",
+    "apellido": "Cerezo",
+    "edad": 20,
+    "ciudad": "Barcelona",
+    "coches": [
+        {
+            "modelo": "BMW",
+            "consumo": 3
+        },
+        {
+            "modelo": "Dacia",
+            "consumo": 6
+        }
+    ],
+    "casada": true
+}

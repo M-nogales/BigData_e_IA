@@ -5,11 +5,11 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>app</servlet-name>
+        <servlet-name>App</servlet-name>
         <servlet-class>com.ejemplo.App</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>app</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <servlet-name>App</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>
