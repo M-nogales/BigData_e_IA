@@ -14,4 +14,4 @@ for char in string:
     elif char.isdigit():
         num_counter += 1
 
-print(f"En la cadena ingresada hay {char_counter} letra(s) y {num_counter} dígito(s).")
+print(f"En la cadena que me has dado hay {char_counter} letra(s) y {num_counter} dígito(s).")

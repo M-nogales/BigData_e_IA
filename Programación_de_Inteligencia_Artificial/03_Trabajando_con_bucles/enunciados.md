@@ -76,16 +76,16 @@
 25. **Cifrar una cadena con for**  
     Escribe un programa que cifre una cadena desplazando cada letra una posición en el alfabeto utilizando un bucle for.
 
-# 26. **Imprimir pirámide de números con for**  
+26. **Imprimir pirámide de números con for**  
     Escribe un programa que imprima una pirámide de números utilizando bucles for.
 
 27. **Simular lanzamiento de monedas con while**  
     Escribe un programa que simule el lanzamiento de una moneda hasta que salga cara tres veces consecutivas utilizando un bucle while.
 
-# 28. **Dibujar un cuadrado con for**  
+28. **Dibujar un cuadrado con for**  
     Escribe un programa que dibuje un cuadrado de asteriscos de tamaño N utilizando bucles for.
 
-# 29. **Comparar cadenas con while**  
+29. **Comparar cadenas con while**  
     Escribe un programa que compare dos cadenas carácter por carácter utilizando un bucle while.
 
 30. **Contador de intentos con else en while**  
