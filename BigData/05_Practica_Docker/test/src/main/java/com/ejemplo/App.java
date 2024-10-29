@@ -33,8 +33,40 @@ public class App extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-            // Read users from database
+            // Verificar si la tabla 'usuarios' existe, si no existe crearla
             stmt = conn.createStatement();
+            String createTableSQL = "CREATE TABLE IF NOT EXISTS usuarios ("
+                + "id INT AUTO_INCREMENT PRIMARY KEY, "
+                + "nombre VARCHAR(50) NOT NULL, "
+                + "email VARCHAR(100) NOT NULL UNIQUE, "
+                + "contrasena VARCHAR(255) NOT NULL, "
+                + "fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP);";
+            stmt.execute(createTableSQL);
+
+            // Verificar si la tabla está vacía y si es así, insertar datos predeterminados
+            String countSQL = "SELECT COUNT(*) FROM usuarios;";
+            ResultSet rsCount = stmt.executeQuery(countSQL);
+            if (rsCount.next() && rsCount.getInt(1) == 0) {
+                String insertSQL = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (?, ?, ?)";
+                try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+                    // Datos predeterminados
+                    String[][] usuarios = {
+                        {"Juan Pérez", "juan.perez@example.com", "contrasena123"},
+                        {"María García", "maria.garcia@example.com", "secreta456"},
+                        {"Luis Rodríguez", "luis.rodriguez@example.com", "miClave789"},
+                        {"Ana López", "ana.lopez@example.com", "password321"},
+                        {"Carlos Torres", "carlos.torres@example.com", "12345678"}
+                    };
+                    for (String[] usuario : usuarios) {
+                        pstmt.setString(1, usuario[0]);
+                        pstmt.setString(2, usuario[1]);
+                        pstmt.setString(3, usuario[2]);
+                        pstmt.executeUpdate();
+                    }
+                }
+            }
+
+            // Leer usuarios de la base de datos
             String sql = "SELECT * FROM usuarios";
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -48,7 +80,7 @@ public class App extends HttpServlet {
             out.println("<h1>Lista de Usuarios</h1>");
             out.println("<table><tr><th>ID</th><th>Nombre</th><th>Email</th><th>Fecha de Registro</th></tr>");
 
-            // Display users in table
+            // Mostrar usuarios en la tabla
             while (rs.next()) {
                 out.println("<tr>");
                 out.println("<td>" + rs.getInt("id") + "</td>");
@@ -59,7 +91,7 @@ public class App extends HttpServlet {
             }
             out.println("</table>");
 
-            // Form to add new user
+            // Formulario para añadir nuevo usuario
             out.println("<h2>Añadir Nuevo Usuario</h2>");
             out.println("<form method='POST' action='addUser'>");
             out.println("Nombre: <input type='text' name='nombre' required><br>");
@@ -107,7 +139,7 @@ public class App extends HttpServlet {
             pstmt.setString(3, contrasena);
             pstmt.executeUpdate();
 
-            response.sendRedirect(request.getContextPath() + "/"); // Redirect to doGet after insertion
+            response.sendRedirect(request.getContextPath() + "/"); // Redirigir a doGet después de la inserción
 
         } catch (Exception e) {
             e.printStackTrace();
