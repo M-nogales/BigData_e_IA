@@ -13,15 +13,30 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
-    <dependencies>
-        <!-- Aquí van tus dependencias, por ejemplo, para la conexión a MySQL -->
+    <!-- <dependencies>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.30</version> <!-- Verifica si hay una versión más reciente -->
+            <version>8.0.30</version> 
         </dependency>
-        <!-- Otras dependencias necesarias para tu proyecto -->
-    </dependencies>
+    </dependencies> -->
+    <dependencies>
+    <!-- MySQL Connector -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.30</version> <!-- Verifica si hay una versión más reciente -->
+    </dependency>
+    
+    <!-- Servlet API -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version> <!-- Puedes usar la versión que necesites -->
+        <scope>provided</scope> <!-- Tomcat proporciona esta librería -->
+    </dependency>
+</dependencies>
+
 
 <build>
     <plugins>
