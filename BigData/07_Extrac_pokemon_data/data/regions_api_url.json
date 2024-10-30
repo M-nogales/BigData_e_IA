@@ -1,0 +1,45 @@
+{
+    "cantidad": 10,
+    "regiones": [
+        {
+            "nombre": "kanto",
+            "url": "https://pokeapi.co/api/v2/region/1/"
+        },
+        {
+            "nombre": "johto",
+            "url": "https://pokeapi.co/api/v2/region/2/"
+        },
+        {
+            "nombre": "hoenn",
+            "url": "https://pokeapi.co/api/v2/region/3/"
+        },
+        {
+            "nombre": "sinnoh",
+            "url": "https://pokeapi.co/api/v2/region/4/"
+        },
+        {
+            "nombre": "unova",
+            "url": "https://pokeapi.co/api/v2/region/5/"
+        },
+        {
+            "nombre": "kalos",
+            "url": "https://pokeapi.co/api/v2/region/6/"
+        },
+        {
+            "nombre": "alola",
+            "url": "https://pokeapi.co/api/v2/region/7/"
+        },
+        {
+            "nombre": "galar",
+            "url": "https://pokeapi.co/api/v2/region/8/"
+        },
+        {
+            "nombre": "hisui",
+            "url": "https://pokeapi.co/api/v2/region/9/"
+        },
+        {
+            "nombre": "paldea",
+            "url": "https://pokeapi.co/api/v2/region/10/"
+        }
+    ]
+}
