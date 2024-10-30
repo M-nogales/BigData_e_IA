@@ -1,0 +1,55 @@
+{
+    "cantidad": 10,
+    "profesores": [
+        {
+            "nombre": "Profesor Oak",
+            "region": "Kanto",
+            "especialidad": "Estudio pokémon"
+        },
+        {
+            "nombre": "Profesor Elm",
+            "region": "Johto",
+            "especialidad": "Pokémon Cría"
+        },
+        {
+            "nombre": "Profesor Birch",
+            "region": "Hoenn",
+            "especialidad": "Biología Pokémon"
+        },
+        {
+            "nombre": "Profesor Rowan",
+            "region": "Sinnoh",
+            "especialidad": "Pokémon Antiguos"
+        },
+        {
+            "nombre": "Profesor Juniper",
+            "region": "Unova",
+            "especialidad": "Pokémon Nuevos"
+        },
+        {
+            "nombre": "Profesor Sycamore",
+            "region": "Kalos",
+            "especialidad": "Pokémon Mega"
+        },
+        {
+            "nombre": "Profesor Kukui",
+            "region": "Alola",
+            "especialidad": "Pokémon Lucha"
+        },
+        {
+            "nombre": "Profesor Magnolia",
+            "region": "Galar",
+            "especialidad": "Energía de Dynamax"
+        },
+        {
+            "nombre": "Profesor Turo",
+            "region": "Paldea",
+            "especialidad": "Pokémon Regional"
+        },
+        {
+            "nombre": "Profesor Aurora",
+            "region": "Paldea",
+            "especialidad": "Pokémon Regional"
+        }
+    ]
+}

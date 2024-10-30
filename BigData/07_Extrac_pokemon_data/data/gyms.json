@@ -1,0 +1,245 @@
+{
+    "cantidad": 40,
+    "gimnasios": [
+        {
+            "nombre": "Pueblo Paleta",
+            "lider": "Brock",
+            "generacion": "I",
+            "tipo": "Roca"
+        },
+        {
+            "nombre": "Ciudad Celeste",
+            "lider": "Misty",
+            "generacion": "I",
+            "tipo": "Agua"
+        },
+        {
+            "nombre": "Ciudad Vermilion",
+            "lider": "Lt. Surge",
+            "generacion": "I",
+            "tipo": "Eléctrico"
+        },
+        {
+            "nombre": "Ciudad Fucsia",
+            "lider": "Koga",
+            "generacion": "I",
+            "tipo": "Veneno"
+        },
+        {
+            "nombre": "Ciudad Azulona",
+            "lider": "Erika",
+            "generacion": "I",
+            "tipo": "Planta"
+        },
+        {
+            "nombre": "Ciudad Índigo",
+            "lider": "Lorelei",
+            "generacion": "I",
+            "tipo": "Hielo"
+        },
+        {
+            "nombre": "Ciudad Plateada",
+            "lider": "Giovanni",
+            "generacion": "I",
+            "tipo": "Tierra"
+        },
+        {
+            "nombre": "Ciudad Azafrán",
+            "lider": "Sabrina",
+            "generacion": "I",
+            "tipo": "Psíquico"
+        },
+        {
+            "nombre": "Ciudad Cinnabar",
+            "lider": "Blane",
+            "generacion": "I",
+            "tipo": "Fuego"
+        },
+        {
+            "nombre": "Ciudad de los Sueños",
+            "lider": "Dahlia",
+            "generacion": "II",
+            "tipo": "Normal"
+        },
+        {
+            "nombre": "Ciudad Olivo",
+            "lider": "Chuck",
+            "generacion": "II",
+            "tipo": "Lucha"
+        },
+        {
+            "nombre": "Ciudad Tejan",
+            "lider": "Jasmine",
+            "generacion": "II",
+            "tipo": "Acero"
+        },
+        {
+            "nombre": "Ciudad Oro",
+            "lider": "Morty",
+            "generacion": "II",
+            "tipo": "Fantasma"
+        },
+        {
+            "nombre": "Ciudad Fucsia",
+            "lider": "Koga",
+            "generacion": "II",
+            "tipo": "Veneno"
+        },
+        {
+            "nombre": "Ciudad de Lavaridge",
+            "lider": "Flannery",
+            "generacion": "III",
+            "tipo": "Fuego"
+        },
+        {
+            "nombre": "Ciudad de Fortree",
+            "lider": "Winona",
+            "generacion": "III",
+            "tipo": "Volador"
+        },
+        {
+            "nombre": "Ciudad de Mossdeep",
+            "lider": "Tate y Liza",
+            "generacion": "III",
+            "tipo": "Psíquico"
+        },
+        {
+            "nombre": "Ciudad de Sootopolis",
+            "lider": "Wallace",
+            "generacion": "III",
+            "tipo": "Agua"
+        },
+        {
+            "nombre": "Ciudad de la Ciudadela",
+            "lider": "Roxie",
+            "generacion": "V",
+            "tipo": "Veneno"
+        },
+        {
+            "nombre": "Ciudad de las Flores",
+            "lider": "Gardenia",
+            "generacion": "IV",
+            "tipo": "Planta"
+        },
+        {
+            "nombre": "Ciudad de Canal",
+            "lider": "Fantina",
+            "generacion": "IV",
+            "tipo": "Fantasma"
+        },
+        {
+            "nombre": "Ciudad de los Gélidos",
+            "lider": "Bryce",
+            "generacion": "IV",
+            "tipo": "Hielo"
+        },
+        {
+            "nombre": "Ciudad Nimbasa",
+            "lider": "Elesa",
+            "generacion": "V",
+            "tipo": "Eléctrico"
+        },
+        {
+            "nombre": "Ciudad de los Vientos",
+            "lider": "Skyla",
+            "generacion": "V",
+            "tipo": "Volador"
+        },
+        {
+            "nombre": "Ciudad Puntera",
+            "lider": "Drayden",
+            "generacion": "V",
+            "tipo": "Dragón"
+        },
+        {
+            "nombre": "Ciudad de Santalune",
+            "lider": "Viola",
+            "generacion": "VI",
+            "tipo": "Bicho"
+        },
+        {
+            "nombre": "Ciudad de Lumiose",
+            "lider": "Clemont",
+            "generacion": "VI",
+            "tipo": "Eléctrico"
+        },
+        {
+            "nombre": "Ciudad de Coumarine",
+            "lider": "Ramos",
+            "generacion": "VI",
+            "tipo": "Planta"
+        },
+        {
+            "nombre": "Ciudad de Shalour",
+            "lider": "Korrina",
+            "generacion": "VI",
+            "tipo": "Lucha"
+        },
+        {
+            "nombre": "Ciudad de Anistar",
+            "lider": "Olympia",
+            "generacion": "VI",
+            "tipo": "Psíquico"
+        },
+        {
+            "nombre": "Ciudad de Dendemille",
+            "lider": "Clemont",
+            "generacion": "VI",
+            "tipo": "Eléctrico"
+        },
+        {
+            "nombre": "Ciudad de Snowbelle",
+            "lider": "Wulfric",
+            "generacion": "VI",
+            "tipo": "Hielo"
+        },
+        {
+            "nombre": "Ciudad de Arceus",
+            "lider": "Hala",
+            "generacion": "VII",
+            "tipo": "Lucha"
+        },
+        {
+            "nombre": "Pueblo Poni",
+            "lider": "Mina",
+            "generacion": "VII",
+            "tipo": "Hada"
+        },
+        {
+            "nombre": "Ciudad de la Isla",
+            "lider": "Nanu",
+            "generacion": "VII",
+            "tipo": "Siniestro"
+        },
+        {
+            "nombre": "Cabo Sétima",
+            "lider": "Lana",
+            "generacion": "VIII",
+            "tipo": "Normal"
+        },
+        {
+            "nombre": "Ciudad del Arte",
+            "lider": "Alistair",
+            "generacion": "VIII",
+            "tipo": "Fantasma"
+        },
+        {
+            "nombre": "Ciudad del Río",
+            "lider": "Milo",
+            "generacion": "VIII",
+            "tipo": "Planta"
+        },
+        {
+            "nombre": "Pueblo Floria",
+            "lider": "Penny",
+            "generacion": "VIII",
+            "tipo": "Siniestro"
+        },
+        {
+            "nombre": "Ciudad de los Caballeros",
+            "lider": "Raihan",
+            "generacion": "VIII",
+            "tipo": "Dragón"
+        }
+    ]
+}

@@ -1,0 +1,77 @@
+{
+    "cantidad": 18,
+    "tipos": [
+        {
+            "nombre": "Normal",
+            "debilidades": ["Lucha"]
+        },
+        {
+            "nombre": "Fuego",
+            "debilidades": ["Agua", "Tierra", "Roca"]
+        },
+        {
+            "nombre": "Agua",
+            "debilidades": ["Eléctrico", "Planta"]
+        },
+        {
+            "nombre": "Planta",
+            "debilidades": ["Fuego", "Volador", "Hielo", "Bicho", "Veneno"]
+        },
+        {
+            "nombre": "Eléctrico",
+            "debilidades": ["Tierra"]
+        },
+        {
+            "nombre": "Hielo",
+            "debilidades": ["Fuego", "Lucha", "Roca", "Acero"]
+        },
+        {
+            "nombre": "Lucha",
+            "debilidades": ["Volador", "Psíquico", "Hada"]
+        },
+        {
+            "nombre": "Veneno",
+            "debilidades": ["Tierra", "Psíquico"]
+        },
+        {
+            "nombre": "Tierra",
+            "debilidades": ["Agua", "Hielo", "Planta"]
+        },
+        {
+            "nombre": "Volador",
+            "debilidades": ["Eléctrico", "Hielo", "Roca"]
+        },
+        {
+            "nombre": "Psíquico",
+            "debilidades": ["Bicho", "Fantasma", "Siniestro"]
+        },
+        {
+            "nombre": "Bicho",
+            "debilidades": ["Fuego", "Volador", "Roca", "Hielo", "Veneno"]
+        },
+        {
+            "nombre": "Roca",
+            "debilidades": ["Agua", "Planta", "Lucha", "Tierra", "Acero"]
+        },
+        {
+            "nombre": "Fantasma",
+            "debilidades": ["Fantasma", "Siniestro"]
+        },
+        {
+            "nombre": "Siniestro",
+            "debilidades": ["Lucha", "Bicho", "Hada"]
+        },
+        {
+            "nombre": "Acero",
+            "debilidades": ["Fuego", "Lucha", "Tierra"]
+        },
+        {
+            "nombre": "Hada",
+            "debilidades": ["Veneno", "Acero"]
+        },
+        {
+            "nombre": "Dragón",
+            "debilidades": ["Hielo", "Dragón", "Hada"]
+        }
+    ]
+}
