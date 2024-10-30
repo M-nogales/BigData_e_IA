@@ -214,52 +214,41 @@ esto es lo que conseguido por mi cuenta, obviamente podría haber copiado el rep
 
 ```yml
 services:
-  tomcat:
-    image: tomcat:9.0
-    container_name: tomcat
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    volumes:
-      - ./webapps:/usr/local/tomcat/webapps
-    environment:
-      - MYSQL_HOST=mysql
-      - MYSQL_PORT=3306
-      - MYSQL_DATABASE=testdb
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=secret
     depends_on:
-      - mysql
-    networks:
-      - app-network
+      db:
+        condition: service_healthy
 
-  mysql:
+  db:
     image: mysql:8.0
-    container_name: mysql
-    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: testdb
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: mi_base_datos
+      MYSQL_USER: mi_usuario
+      MYSQL_PASSWORD: mi_contraseña
     ports:
       - "3306:3306"
-    networks:
-      - app-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: secret
     ports:
       - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: mi_usuario
+      PMA_PASSWORD: mi_contraseña
     depends_on:
-      - mysql
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
+      - db
 ```
  ![tomcat funcionando](P3/tomcat.png "tomcat funcionando")
  ![phpmyadmin con mysql](P3/tomcat_phpmyadmin_mysqlDB.png "phpmyadmin con mysql")
