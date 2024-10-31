@@ -11,4 +11,4 @@ if len(caracter) == 1:
     else:
         print(f"{caracter} no es una vocal.")
 else:
-    print("Por favor, ingresa solo un carácter.")
+    print("Por favor, dame solo un carácter.")

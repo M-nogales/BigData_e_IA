@@ -1,7 +1,7 @@
 #5. Palíndromo con while  
 #   Escribe un programa que verifique si una palabra es un palíndromo utilizando un bucle while.
 
-palabra = input("Dame una palabra ").lower()
+palabra = input("Dame una palabra").lower()
 
 inicio = 1
 fin = len(palabra) - 1
