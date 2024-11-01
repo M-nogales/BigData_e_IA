@@ -1,6 +1,6 @@
 {
     "cantidad": 1302,
-    "pokemones": [
+    "pokemons": [
         {
             "nombre": "bulbasaur",
             "url": "https://pokeapi.co/api/v2/pokemon/1/"

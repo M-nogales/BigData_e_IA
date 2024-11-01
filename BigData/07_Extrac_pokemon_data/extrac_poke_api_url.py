@@ -1,7 +1,6 @@
 import requests
 import json
 
-url = 'https://api.ejemplo.com/data'
 poke_url="https://pokeapi.co/api/v2/pokemon?limit=100000"
 
 response_poke = requests.get(poke_url)

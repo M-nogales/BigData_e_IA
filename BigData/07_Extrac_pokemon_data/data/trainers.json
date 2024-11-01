@@ -1,4 +1,5 @@
 {
+    "cantidad": 138,
     "entrenadores": [
         {
             "nombre": "Ash Ketchum",
@@ -1037,7 +1038,7 @@
                 "VIII"
             ],
             "gymnasio": null,
-            "alto_mando": "Campe\u00f3n",
+            "alto_mando": "Campeón",
             "villano": false
         },
         {
@@ -1136,7 +1137,7 @@
                 "IX"
             ],
             "gymnasio": null,
-            "alto_mando": "Campe\u00f3n",
+            "alto_mando": "Campeón",
             "villano": false
         },
         {

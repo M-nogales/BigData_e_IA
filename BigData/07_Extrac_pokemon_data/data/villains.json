@@ -1,0 +1,267 @@
+{
+    "cantidad": 29,
+    "villanos": [
+        {
+            "nombre": "Giovanni",
+            "generation": [
+                "I",
+                "II"
+            ],
+            "gymnasio": "Viridian City",
+            "alto_mando": null,
+            "villano": "Team Rocket"
+        },
+        {
+            "nombre": "Jessie",
+            "generation": [
+                "II"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Rocket"
+        },
+        {
+            "nombre": "James",
+            "generation": [
+                "II"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Rocket"
+        },
+        {
+            "nombre": "Maxie",
+            "generation": [
+                "III"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Magma"
+        },
+        {
+            "nombre": "Archie",
+            "generation": [
+                "III"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Aqua"
+        },
+        {
+            "nombre": "Jessie",
+            "generation": [
+                "III"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Aqua"
+        },
+        {
+            "nombre": "Cyrus",
+            "generation": [
+                "IV"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Galactic"
+        },
+        {
+            "nombre": "Júpiter",
+            "generation": [
+                "IV"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Galactic"
+        },
+        {
+            "nombre": "Marte",
+            "generation": [
+                "IV"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Galactic"
+        },
+        {
+            "nombre": "N",
+            "generation": [
+                "V"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Plasma"
+        },
+        {
+            "nombre": "Ghetsis",
+            "generation": [
+                "V"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Plasma"
+        },
+        {
+            "nombre": "Júpiter",
+            "generation": [
+                "V"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Plasma"
+        },
+        {
+            "nombre": "Marte",
+            "generation": [
+                "V"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Plasma"
+        },
+        {
+            "nombre": "Lysandre",
+            "generation": [
+                "VI"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Flare"
+        },
+        {
+            "nombre": "Xerosic",
+            "generation": [
+                "VI"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Flare"
+        },
+        {
+            "nombre": "Guzma",
+            "generation": [
+                "VII"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Skull"
+        },
+        {
+            "nombre": "Plumeria",
+            "generation": [
+                "VII"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Skull"
+        },
+        {
+            "nombre": "Grunt",
+            "generation": [
+                "VII"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Skull"
+        },
+        {
+            "nombre": "Lusamine",
+            "generation": [
+                "VII"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Aether"
+        },
+        {
+            "nombre": "Faba",
+            "generation": [
+                "VII"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Aether"
+        },
+        {
+            "nombre": "Rose",
+            "generation": [
+                "VIII"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Yell"
+        },
+        {
+            "nombre": "Grunt",
+            "generation": [
+                "VIII"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Yell"
+        },
+        {
+            "nombre": "Marnie",
+            "generation": [
+                "VIII"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Yell"
+        },
+        {
+            "nombre": "Cassiopeia",
+            "generation": [
+                "IX"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Star"
+        },
+        {
+            "nombre": "Mela",
+            "generation": [
+                "IX"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Star"
+        },
+        {
+            "nombre": "Giacomo",
+            "generation": [
+                "IX"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Star"
+        },
+        {
+            "nombre": "Doll",
+            "generation": [
+                "IX"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Star"
+        },
+        {
+            "nombre": "Ortega",
+            "generation": [
+                "IX"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Star"
+        },
+        {
+            "nombre": "Eri",
+            "generation": [
+                "IX"
+            ],
+            "gymnasio": null,
+            "alto_mando": null,
+            "villano": "Team Star"
+        }
+    ]
+}
