@@ -13,7 +13,7 @@ with open(input_file_path, 'r') as file:
 pokemon_details = []
 
 # Recorrer cada Pokémon y hacer la consulta a la API
-for pokemon in pokemons_data['pokemones']:
+for pokemon in pokemons_data['pokemons']:
     nombre = pokemon['nombre']
     url = pokemon['url']
     
@@ -29,8 +29,13 @@ for pokemon in pokemons_data['pokemones']:
     except requests.exceptions.RequestException as e:
         print(f"Error al obtener datos de {nombre}: {e}")
 
+# Estructura del JSON en el formato solicitado
+output_data = {
+    "pokemons": pokemon_details
+}
+
 # Guardar la información completa en un nuevo archivo JSON
 with open(output_file_path, 'w') as file:
-    json.dump(pokemon_details, file, indent=4)
+    json.dump(output_data, file, indent=4)
 
 print(f"Datos de los Pokémon guardados en {output_file_path}")

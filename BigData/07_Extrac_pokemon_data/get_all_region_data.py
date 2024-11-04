@@ -29,7 +29,6 @@ for region in regions:
         
         # Añadir los datos de la región a la lista
         regions_detailed_data.append({
-            "nombre": region_name,
             "datos": region_info
         })
         print(f"Datos de {region_name} obtenidos correctamente.")

@@ -29,7 +29,6 @@ for move in movimientos:
         
         # Añadir los datos del movimiento a la lista
         moves_detailed_data.append({
-            "nombre": move_name,
             "datos": move_info
         })
         print(f"Datos de {move_name} obtenidos correctamente.")

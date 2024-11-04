@@ -43,7 +43,7 @@ def insert_data_to_mongodb(collection_name, file_path, json_array_name, database
 insert_data_to_mongodb(database_name="test_pokemon", collection_name='profesores', file_path='data/professors.json', json_array_name='profesores')
 insert_data_to_mongodb(database_name="test_pokemon", collection_name='entrenadores', file_path='data/trainers.json', json_array_name='entrenadores')
 insert_data_to_mongodb(database_name="test_pokemon", collection_name='villanos', file_path='data/villains.json', json_array_name='villanos')
-insert_data_to_mongodb(database_name="test_pokemon", collection_name='regiones', file_path='data/regions.json', json_array_name='regiones')
+insert_data_to_mongodb(database_name="test_pokemon", collection_name='regiones', file_path='data/regions_data.json', json_array_name='regiones')
 insert_data_to_mongodb(database_name="test_pokemon", collection_name='gimnasios', file_path='data/gyms.json', json_array_name='gimnasios')
 insert_data_to_mongodb(database_name="test_pokemon", collection_name='pokemons', file_path='data/pokemons_data.json', json_array_name='pokemons')
 insert_data_to_mongodb(database_name="test_pokemon", collection_name='tipos', file_path='data/types.json', json_array_name='tipos')
