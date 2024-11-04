@@ -1,44 +1,44 @@
 {
-    "cantidad": 10,
-    "regiones": [
+    "quantity": 10,
+    "regions": [
         {
-            "nombre": "kanto",
+            "name": "kanto",
             "url": "https://pokeapi.co/api/v2/region/1/"
         },
         {
-            "nombre": "johto",
+            "name": "johto",
             "url": "https://pokeapi.co/api/v2/region/2/"
         },
         {
-            "nombre": "hoenn",
+            "name": "hoenn",
             "url": "https://pokeapi.co/api/v2/region/3/"
         },
         {
-            "nombre": "sinnoh",
+            "name": "sinnoh",
             "url": "https://pokeapi.co/api/v2/region/4/"
         },
         {
-            "nombre": "unova",
+            "name": "unova",
             "url": "https://pokeapi.co/api/v2/region/5/"
         },
         {
-            "nombre": "kalos",
+            "name": "kalos",
             "url": "https://pokeapi.co/api/v2/region/6/"
         },
         {
-            "nombre": "alola",
+            "name": "alola",
             "url": "https://pokeapi.co/api/v2/region/7/"
         },
         {
-            "nombre": "galar",
+            "name": "galar",
             "url": "https://pokeapi.co/api/v2/region/8/"
         },
         {
-            "nombre": "hisui",
+            "name": "hisui",
             "url": "https://pokeapi.co/api/v2/region/9/"
         },
         {
-            "nombre": "paldea",
+            "name": "paldea",
             "url": "https://pokeapi.co/api/v2/region/10/"
         }
     ]

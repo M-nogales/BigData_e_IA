@@ -14,8 +14,8 @@ if response_regions.status_code == 200:
     regiones = data.get("results")  # Obtener la lista de Pokémon
 
     resultado = {
-        "cantidad": cantidad_resultados,
-        "regiones": [{"nombre": region["name"], "url": region["url"]} for region in regiones]
+        "quantity": cantidad_resultados,
+        "regions": [{"name": region["name"], "url": region["url"]} for region in regiones]
     }
 
     output_file_path = "data/regions_api_url.json"

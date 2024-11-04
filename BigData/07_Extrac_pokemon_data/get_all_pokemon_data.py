@@ -14,7 +14,7 @@ pokemon_details = []
 
 # Recorrer cada Pokémon y hacer la consulta a la API
 for pokemon in pokemons_data['pokemons']:
-    nombre = pokemon['nombre']
+    name = pokemon['name']
     url = pokemon['url']
     
     # Realizar la solicitud a la API
@@ -27,7 +27,7 @@ for pokemon in pokemons_data['pokemons']:
         pokemon_details.append(pokemon_info)
         
     except requests.exceptions.RequestException as e:
-        print(f"Error al obtener datos de {nombre}: {e}")
+        print(f"Error al obtener datos de {name}: {e}")
 
 # Estructura del JSON en el formato solicitado
 output_data = {

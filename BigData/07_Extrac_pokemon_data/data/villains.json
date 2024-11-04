@@ -1,267 +1,267 @@
 {
-    "cantidad": 29,
-    "villanos": [
+    "quantity": 29,
+    "villains": [
         {
-            "nombre": "Giovanni",
+            "name": "Giovanni",
             "generation": [
                 "I",
                 "II"
             ],
-            "gymnasio": "Viridian City",
-            "alto_mando": null,
-            "villano": "Team Rocket"
+            "gym": "Viridian City",
+            "elite_four": null,
+            "villain": "Team Rocket"
         },
         {
-            "nombre": "Jessie",
+            "name": "Jessie",
             "generation": [
                 "II"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Rocket"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Rocket"
         },
         {
-            "nombre": "James",
+            "name": "James",
             "generation": [
                 "II"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Rocket"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Rocket"
         },
         {
-            "nombre": "Maxie",
+            "name": "Maxie",
             "generation": [
                 "III"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Magma"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Magma"
         },
         {
-            "nombre": "Archie",
+            "name": "Archie",
             "generation": [
                 "III"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Aqua"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Aqua"
         },
         {
-            "nombre": "Jessie",
+            "name": "Jessie",
             "generation": [
                 "III"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Aqua"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Aqua"
         },
         {
-            "nombre": "Cyrus",
+            "name": "Cyrus",
             "generation": [
                 "IV"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Galactic"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Galactic"
         },
         {
-            "nombre": "Júpiter",
+            "name": "Júpiter",
             "generation": [
                 "IV"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Galactic"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Galactic"
         },
         {
-            "nombre": "Marte",
+            "name": "Marte",
             "generation": [
                 "IV"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Galactic"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Galactic"
         },
         {
-            "nombre": "N",
+            "name": "N",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Plasma"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Plasma"
         },
         {
-            "nombre": "Ghetsis",
+            "name": "Ghetsis",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Plasma"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Plasma"
         },
         {
-            "nombre": "Júpiter",
+            "name": "Júpiter",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Plasma"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Plasma"
         },
         {
-            "nombre": "Marte",
+            "name": "Marte",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Plasma"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Plasma"
         },
         {
-            "nombre": "Lysandre",
+            "name": "Lysandre",
             "generation": [
                 "VI"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Flare"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Flare"
         },
         {
-            "nombre": "Xerosic",
+            "name": "Xerosic",
             "generation": [
                 "VI"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Flare"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Flare"
         },
         {
-            "nombre": "Guzma",
+            "name": "Guzma",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Skull"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Skull"
         },
         {
-            "nombre": "Plumeria",
+            "name": "Plumeria",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Skull"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Skull"
         },
         {
-            "nombre": "Grunt",
+            "name": "Grunt",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Skull"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Skull"
         },
         {
-            "nombre": "Lusamine",
+            "name": "Lusamine",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Aether"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Aether"
         },
         {
-            "nombre": "Faba",
+            "name": "Faba",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Aether"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Aether"
         },
         {
-            "nombre": "Rose",
+            "name": "Rose",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Yell"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Yell"
         },
         {
-            "nombre": "Grunt",
+            "name": "Grunt",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Yell"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Yell"
         },
         {
-            "nombre": "Marnie",
+            "name": "Marnie",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Yell"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Yell"
         },
         {
-            "nombre": "Cassiopeia",
+            "name": "Cassiopeia",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Star"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Star"
         },
         {
-            "nombre": "Mela",
+            "name": "Mela",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Star"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Star"
         },
         {
-            "nombre": "Giacomo",
+            "name": "Giacomo",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Star"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Star"
         },
         {
-            "nombre": "Doll",
+            "name": "Doll",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Star"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Star"
         },
         {
-            "nombre": "Ortega",
+            "name": "Ortega",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Star"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Star"
         },
         {
-            "nombre": "Eri",
+            "name": "Eri",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Star"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Star"
         }
     ]
 }

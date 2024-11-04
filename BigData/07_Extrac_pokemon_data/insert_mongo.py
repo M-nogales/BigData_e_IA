@@ -36,15 +36,29 @@ def insert_data_to_mongodb(collection_name, file_path, json_array_name, database
             print(f"{json_array_name} no es una lista.")
     else:
         print(f"{json_array_name} no se encontró en el JSON.")
-
     # Cerrar la conexión
     client.close()
 
-insert_data_to_mongodb(database_name="test_pokemon", collection_name='profesores', file_path='data/professors.json', json_array_name='profesores')
-insert_data_to_mongodb(database_name="test_pokemon", collection_name='entrenadores', file_path='data/trainers.json', json_array_name='entrenadores')
-insert_data_to_mongodb(database_name="test_pokemon", collection_name='villanos', file_path='data/villains.json', json_array_name='villanos')
-insert_data_to_mongodb(database_name="test_pokemon", collection_name='regiones', file_path='data/regions_data.json', json_array_name='regiones')
-insert_data_to_mongodb(database_name="test_pokemon", collection_name='gimnasios', file_path='data/gyms.json', json_array_name='gimnasios')
-insert_data_to_mongodb(database_name="test_pokemon", collection_name='pokemons', file_path='data/pokemons_data.json', json_array_name='pokemons')
-insert_data_to_mongodb(database_name="test_pokemon", collection_name='tipos', file_path='data/types.json', json_array_name='tipos')
-insert_data_to_mongodb(database_name="test_pokemon", collection_name='movimientos', file_path='data/moves_data.json', json_array_name='movimientos')
+def delete_mongodb_db(database_name='test'):
+    # Configura la conexión a MongoDB
+    mongo_user = "root"
+    mongo_password = "example"
+    mongo_host = "localhost"
+    mongo_port = 27017
+
+    # Conectar a la base de datos de MongoDB
+    client = MongoClient(f"mongodb://{mongo_user}:{mongo_password}@{mongo_host}:{mongo_port}/")
+
+    # Eliminar la base de datos proporcionada o 'test' por defecto
+    client.drop_database(database_name)
+    client.close()
+
+# insert_data_to_mongodb(database_name="pokemon", collection_name='professors', file_path='data/professors.json', json_array_name='professors')
+# insert_data_to_mongodb(database_name="pokemon", collection_name='trainers', file_path='data/trainers.json', json_array_name='trainers')
+# insert_data_to_mongodb(database_name="pokemon", collection_name='villains', file_path='data/villains.json', json_array_name='villains')
+# insert_data_to_mongodb(database_name="pokemon", collection_name='regions', file_path='data/regions_data.json', json_array_name='regions')
+insert_data_to_mongodb(database_name="pokemon", collection_name='gyms', file_path='data/gyms.json', json_array_name='gyms')
+# insert_data_to_mongodb(database_name="pokemon", collection_name='pokemons', file_path='data/pokemons_data.json', json_array_name='pokemons')
+# insert_data_to_mongodb(database_name="pokemon", collection_name='types', file_path='data/types.json', json_array_name='types')
+# insert_data_to_mongodb(database_name="pokemon", collection_name='moves', file_path='data/moves_data.json', json_array_name='moves')
+

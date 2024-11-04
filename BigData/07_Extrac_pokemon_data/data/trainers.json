@@ -1,8 +1,8 @@
 {
-    "cantidad": 138,
-    "entrenadores": [
+    "quantity": 138,
+    "trainers": [
         {
-            "nombre": "Ash Ketchum",
+            "name": "Ash Ketchum",
             "generation": [
                 "I",
                 "II",
@@ -14,1248 +14,1248 @@
                 "VIII",
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Brock",
+            "name": "Brock",
             "generation": [
                 "I"
             ],
-            "gymnasio": "Pewter City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Pewter City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Misty",
+            "name": "Misty",
             "generation": [
                 "I"
             ],
-            "gymnasio": "Cerulean City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Cerulean City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Erika",
+            "name": "Erika",
             "generation": [
                 "I"
             ],
-            "gymnasio": "Celadon City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Celadon City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Koga",
+            "name": "Koga",
             "generation": [
                 "I",
                 "II"
             ],
-            "gymnasio": "Fuchsia City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Fuchsia City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Sabrina",
+            "name": "Sabrina",
             "generation": [
                 "I"
             ],
-            "gymnasio": "Saffron City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Saffron City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Blaine",
+            "name": "Blaine",
             "generation": [
                 "I"
             ],
-            "gymnasio": "Cinnabar Island",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Cinnabar Island",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Blue",
+            "name": "Blue",
             "generation": [
                 "I"
             ],
-            "gymnasio": "Viridian City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Viridian City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Lorelei",
+            "name": "Lorelei",
             "generation": [
                 "I"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Bruno",
+            "name": "Bruno",
             "generation": [
                 "I"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Agatha",
+            "name": "Agatha",
             "generation": [
                 "I"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Lance",
+            "name": "Lance",
             "generation": [
                 "I",
                 "II"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Gold",
+            "name": "Gold",
             "generation": [
                 "II"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Falkner",
+            "name": "Falkner",
             "generation": [
                 "II"
             ],
-            "gymnasio": "Violet City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Violet City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Bugsy",
+            "name": "Bugsy",
             "generation": [
                 "II"
             ],
-            "gymnasio": "Azalea Town",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Azalea Town",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Whitney",
+            "name": "Whitney",
             "generation": [
                 "II"
             ],
-            "gymnasio": "Goldenrod City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Goldenrod City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Morty",
+            "name": "Morty",
             "generation": [
                 "II"
             ],
-            "gymnasio": "Ecruteak City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Ecruteak City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Chuck",
+            "name": "Chuck",
             "generation": [
                 "II"
             ],
-            "gymnasio": "Cianwood City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Cianwood City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Jasmine",
+            "name": "Jasmine",
             "generation": [
                 "II"
             ],
-            "gymnasio": "Olivine City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Olivine City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Claire",
+            "name": "Claire",
             "generation": [
                 "II"
             ],
-            "gymnasio": "Blackthorn City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Blackthorn City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Will",
+            "name": "Will",
             "generation": [
                 "II"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Karen",
+            "name": "Karen",
             "generation": [
                 "II"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Giovanni",
+            "name": "Giovanni",
             "generation": [
                 "I",
                 "II"
             ],
-            "gymnasio": "Viridian City",
-            "alto_mando": null,
-            "villano": "Team Rocket"
+            "gym": "Viridian City",
+            "elite_four": null,
+            "villain": "Team Rocket"
         },
         {
-            "nombre": "Jessie",
+            "name": "Jessie",
             "generation": [
                 "II"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Rocket"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Rocket"
         },
         {
-            "nombre": "James",
+            "name": "James",
             "generation": [
                 "II"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Rocket"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Rocket"
         },
         {
-            "nombre": "May",
+            "name": "May",
             "generation": [
                 "III"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Norman",
+            "name": "Norman",
             "generation": [
                 "III"
             ],
-            "gymnasio": "Rustboro City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Rustboro City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Flannery",
+            "name": "Flannery",
             "generation": [
                 "III"
             ],
-            "gymnasio": "Lavaridge Town",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Lavaridge Town",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Watson",
+            "name": "Watson",
             "generation": [
                 "III"
             ],
-            "gymnasio": "Mauville City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Mauville City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Roxanne",
+            "name": "Roxanne",
             "generation": [
                 "III"
             ],
-            "gymnasio": "Rustboro City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Rustboro City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Tate y Liza",
+            "name": "Tate y Liza",
             "generation": [
                 "III"
             ],
-            "gymnasio": "Mossdeep City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Mossdeep City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Juan",
+            "name": "Juan",
             "generation": [
                 "III"
             ],
-            "gymnasio": "Sootopolis City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Sootopolis City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Drake",
+            "name": "Drake",
             "generation": [
                 "III"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Sidney",
+            "name": "Sidney",
             "generation": [
                 "III"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Phoebe",
+            "name": "Phoebe",
             "generation": [
                 "III"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Glacia",
+            "name": "Glacia",
             "generation": [
                 "III"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Maxie",
+            "name": "Maxie",
             "generation": [
                 "III"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Magma"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Magma"
         },
         {
-            "nombre": "Archie",
+            "name": "Archie",
             "generation": [
                 "III"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Aqua"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Aqua"
         },
         {
-            "nombre": "Jessie",
+            "name": "Jessie",
             "generation": [
                 "III"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Aqua"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Aqua"
         },
         {
-            "nombre": "Lucas",
+            "name": "Lucas",
             "generation": [
                 "IV"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Dawn",
+            "name": "Dawn",
             "generation": [
                 "IV"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Roark",
+            "name": "Roark",
             "generation": [
                 "IV"
             ],
-            "gymnasio": "Oreburgh City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Oreburgh City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Gardenia",
+            "name": "Gardenia",
             "generation": [
                 "IV"
             ],
-            "gymnasio": "Eterna City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Eterna City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Maylene",
+            "name": "Maylene",
             "generation": [
                 "IV"
             ],
-            "gymnasio": "Veilstone City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Veilstone City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Crasher Wake",
+            "name": "Crasher Wake",
             "generation": [
                 "IV"
             ],
-            "gymnasio": "Pastoria City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Pastoria City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Fantina",
+            "name": "Fantina",
             "generation": [
                 "IV"
             ],
-            "gymnasio": "Hearthome City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Hearthome City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Byron",
+            "name": "Byron",
             "generation": [
                 "IV"
             ],
-            "gymnasio": "Canalave City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Canalave City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Candice",
+            "name": "Candice",
             "generation": [
                 "IV"
             ],
-            "gymnasio": "Snowpoint City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Snowpoint City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Volkner",
+            "name": "Volkner",
             "generation": [
                 "IV"
             ],
-            "gymnasio": "Sunyshore City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Sunyshore City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Cynthia",
+            "name": "Cynthia",
             "generation": [
                 "IV",
                 "VII",
                 "VIII"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Aaron",
+            "name": "Aaron",
             "generation": [
                 "IV"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Bertha",
+            "name": "Bertha",
             "generation": [
                 "IV"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Flint",
+            "name": "Flint",
             "generation": [
                 "IV"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Lucian",
+            "name": "Lucian",
             "generation": [
                 "IV"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Cyrus",
+            "name": "Cyrus",
             "generation": [
                 "IV"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Galactic"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Galactic"
         },
         {
-            "nombre": "Júpiter",
+            "name": "Júpiter",
             "generation": [
                 "IV"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Galactic"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Galactic"
         },
         {
-            "nombre": "Marte",
+            "name": "Marte",
             "generation": [
                 "IV"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Galactic"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Galactic"
         },
         {
-            "nombre": "Hilbert",
+            "name": "Hilbert",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Cheren",
+            "name": "Cheren",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Bianca",
+            "name": "Bianca",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Cilan",
+            "name": "Cilan",
             "generation": [
                 "V"
             ],
-            "gymnasio": "Striaton City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Striaton City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Chili",
+            "name": "Chili",
             "generation": [
                 "V"
             ],
-            "gymnasio": "Striaton City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Striaton City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Cress",
+            "name": "Cress",
             "generation": [
                 "V"
             ],
-            "gymnasio": "Striaton City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Striaton City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Lenora",
+            "name": "Lenora",
             "generation": [
                 "V"
             ],
-            "gymnasio": "Nacrene City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Nacrene City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Burgh",
+            "name": "Burgh",
             "generation": [
                 "V"
             ],
-            "gymnasio": "Castelia City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Castelia City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Elesa",
+            "name": "Elesa",
             "generation": [
                 "V"
             ],
-            "gymnasio": "Nimbasa City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Nimbasa City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Clay",
+            "name": "Clay",
             "generation": [
                 "V"
             ],
-            "gymnasio": "Driftveil City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Driftveil City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Skyla",
+            "name": "Skyla",
             "generation": [
                 "V"
             ],
-            "gymnasio": "Mistralton City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Mistralton City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Drayden",
+            "name": "Drayden",
             "generation": [
                 "V"
             ],
-            "gymnasio": "Opelucid City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Opelucid City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Shauntal",
+            "name": "Shauntal",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Grimsley",
+            "name": "Grimsley",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Caitlin",
+            "name": "Caitlin",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Marshal",
+            "name": "Marshal",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "N",
+            "name": "N",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Plasma"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Plasma"
         },
         {
-            "nombre": "Ghetsis",
+            "name": "Ghetsis",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Plasma"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Plasma"
         },
         {
-            "nombre": "Júpiter",
+            "name": "Júpiter",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Plasma"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Plasma"
         },
         {
-            "nombre": "Marte",
+            "name": "Marte",
             "generation": [
                 "V"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Plasma"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Plasma"
         },
         {
-            "nombre": "Calem",
+            "name": "Calem",
             "generation": [
                 "VI"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Serena",
+            "name": "Serena",
             "generation": [
                 "VI"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Viola",
+            "name": "Viola",
             "generation": [
                 "VI"
             ],
-            "gymnasio": "Santalune City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Santalune City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Grant",
+            "name": "Grant",
             "generation": [
                 "VI"
             ],
-            "gymnasio": "Cyllage City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Cyllage City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Korrina",
+            "name": "Korrina",
             "generation": [
                 "VI"
             ],
-            "gymnasio": "Shalour City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Shalour City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Ramos",
+            "name": "Ramos",
             "generation": [
                 "VI"
             ],
-            "gymnasio": "Laverre City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Laverre City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Clemont",
+            "name": "Clemont",
             "generation": [
                 "VI"
             ],
-            "gymnasio": "Lumiose City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Lumiose City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Sarina",
+            "name": "Sarina",
             "generation": [
                 "VI"
             ],
-            "gymnasio": "Anistar City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Anistar City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Drasna",
+            "name": "Drasna",
             "generation": [
                 "VI"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Malva",
+            "name": "Malva",
             "generation": [
                 "VI"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Siegfried",
+            "name": "Siegfried",
             "generation": [
                 "VI"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Wikstrom",
+            "name": "Wikstrom",
             "generation": [
                 "VI"
             ],
-            "gymnasio": null,
-            "alto_mando": "Alto Mando",
-            "villano": false
+            "gym": null,
+            "elite_four": "Alto Mando",
+            "villain": false
         },
         {
-            "nombre": "Lysandre",
+            "name": "Lysandre",
             "generation": [
                 "VI"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Flare"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Flare"
         },
         {
-            "nombre": "Xerosic",
+            "name": "Xerosic",
             "generation": [
                 "VI"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Flare"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Flare"
         },
         {
-            "nombre": "Elio",
+            "name": "Elio",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Selene",
+            "name": "Selene",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Kukui",
+            "name": "Kukui",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Hala",
+            "name": "Hala",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Kiawe",
+            "name": "Kiawe",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Lana",
+            "name": "Lana",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Mallow",
+            "name": "Mallow",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Sophocles",
+            "name": "Sophocles",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Nanu",
+            "name": "Nanu",
             "generation": [
                 "VII"
             ],
-            "gymnasio": "Hau'oli City",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Hau'oli City",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Iris",
+            "name": "Iris",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Guzma",
+            "name": "Guzma",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Skull"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Skull"
         },
         {
-            "nombre": "Plumeria",
+            "name": "Plumeria",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Skull"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Skull"
         },
         {
-            "nombre": "Grunt",
+            "name": "Grunt",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Skull"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Skull"
         },
         {
-            "nombre": "Lusamine",
+            "name": "Lusamine",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Aether"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Aether"
         },
         {
-            "nombre": "Faba",
+            "name": "Faba",
             "generation": [
                 "VII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Aether"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Aether"
         },
         {
-            "nombre": "Milo",
+            "name": "Milo",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": "Turf Field",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Turf Field",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Nessa",
+            "name": "Nessa",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": "Hulbury",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Hulbury",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Kabu",
+            "name": "Kabu",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": "Motostoke",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Motostoke",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Allister",
+            "name": "Allister",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": "Ballonlea",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Ballonlea",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Gordie",
+            "name": "Gordie",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": "Stow-on-Side",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Stow-on-Side",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Melony",
+            "name": "Melony",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": "Circhester",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Circhester",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Raihan",
+            "name": "Raihan",
             "generation": [
                 "VIII",
                 "VIII"
             ],
-            "gymnasio": "Hammerlocke",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Hammerlocke",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Leon",
+            "name": "Leon",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": null,
-            "alto_mando": "Campeón",
-            "villano": false
+            "gym": null,
+            "elite_four": "Campeón",
+            "villain": false
         },
         {
-            "nombre": "Hop",
+            "name": "Hop",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Piers",
+            "name": "Piers",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": "Spikemuth",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Spikemuth",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Rose",
+            "name": "Rose",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Yell"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Yell"
         },
         {
-            "nombre": "Grunt",
+            "name": "Grunt",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Yell"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Yell"
         },
         {
-            "nombre": "Marnie",
+            "name": "Marnie",
             "generation": [
                 "VIII"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Yell"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Yell"
         },
         {
-            "nombre": "Nimona",
+            "name": "Nimona",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Penny",
+            "name": "Penny",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Arven",
+            "name": "Arven",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Koraidon",
+            "name": "Koraidon",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Miraidon",
+            "name": "Miraidon",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Geeta",
+            "name": "Geeta",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": "Campeón",
-            "villano": false
+            "gym": null,
+            "elite_four": "Campeón",
+            "villain": false
         },
         {
-            "nombre": "Larry",
+            "name": "Larry",
             "generation": [
                 "IX"
             ],
-            "gymnasio": "Medali",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Medali",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Ryme",
+            "name": "Ryme",
             "generation": [
                 "IX"
             ],
-            "gymnasio": "Montenevera",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Montenevera",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Tulip",
+            "name": "Tulip",
             "generation": [
                 "IX"
             ],
-            "gymnasio": "Alfornada",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Alfornada",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Brassius",
+            "name": "Brassius",
             "generation": [
                 "IX"
             ],
-            "gymnasio": "Artazon",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Artazon",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Kofu",
+            "name": "Kofu",
             "generation": [
                 "IX"
             ],
-            "gymnasio": "Cascarrafa",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Cascarrafa",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Gita",
+            "name": "Gita",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": false
+            "gym": null,
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Saguaro",
+            "name": "Saguaro",
             "generation": [
                 "IX"
             ],
-            "gymnasio": "Los Alamos",
-            "alto_mando": null,
-            "villano": false
+            "gym": "Los Alamos",
+            "elite_four": null,
+            "villain": false
         },
         {
-            "nombre": "Cassiopeia",
+            "name": "Cassiopeia",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Star"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Star"
         },
         {
-            "nombre": "Mela",
+            "name": "Mela",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Star"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Star"
         },
         {
-            "nombre": "Giacomo",
+            "name": "Giacomo",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Star"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Star"
         },
         {
-            "nombre": "Doll",
+            "name": "Doll",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Star"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Star"
         },
         {
-            "nombre": "Ortega",
+            "name": "Ortega",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Star"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Star"
         },
         {
-            "nombre": "Eri",
+            "name": "Eri",
             "generation": [
                 "IX"
             ],
-            "gymnasio": null,
-            "alto_mando": null,
-            "villano": "Team Star"
+            "gym": null,
+            "elite_four": null,
+            "villain": "Team Star"
         }
     ]
 }

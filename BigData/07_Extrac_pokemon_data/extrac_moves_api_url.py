@@ -13,8 +13,8 @@ if response_moves.status_code == 200:
     moves = data.get("results")
 
     resultado = {
-        "cantidad": cantidad_resultados,
-        "movimientos": [{"nombre": move["name"], "url": move["url"]} for move in moves]
+        "quantity": cantidad_resultados,
+        "moves": [{"name": move["name"], "url": move["url"]} for move in moves]
     }
 
     output_file_path = "data/moves_api_url.json"

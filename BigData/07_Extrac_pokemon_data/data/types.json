@@ -1,77 +1,77 @@
 {
-    "cantidad": 18,
-    "tipos": [
+    "quantity": 18,
+    "types": [
         {
-            "nombre": "Normal",
-            "debilidades": ["Lucha"]
+            "name": "normal",
+            "weaknesses": ["fighting"]
         },
         {
-            "nombre": "Fuego",
-            "debilidades": ["Agua", "Tierra", "Roca"]
+            "name": "fire",
+            "weaknesses": ["water", "ground", "rock"]
         },
         {
-            "nombre": "Agua",
-            "debilidades": ["Eléctrico", "Planta"]
+            "name": "water",
+            "weaknesses": ["electric", "grass"]
         },
         {
-            "nombre": "Planta",
-            "debilidades": ["Fuego", "Volador", "Hielo", "Bicho", "Veneno"]
+            "name": "grass",
+            "weaknesses": ["fire", "flying", "ice", "bug", "poison"]
         },
         {
-            "nombre": "Eléctrico",
-            "debilidades": ["Tierra"]
+            "name": "electric",
+            "weaknesses": ["ground"]
         },
         {
-            "nombre": "Hielo",
-            "debilidades": ["Fuego", "Lucha", "Roca", "Acero"]
+            "name": "ice",
+            "weaknesses": ["fire", "fighting", "rock", "steel"]
         },
         {
-            "nombre": "Lucha",
-            "debilidades": ["Volador", "Psíquico", "Hada"]
+            "name": "fighting",
+            "weaknesses": ["flying", "psychic", "fairy"]
         },
         {
-            "nombre": "Veneno",
-            "debilidades": ["Tierra", "Psíquico"]
+            "name": "poison",
+            "weaknesses": ["ground", "psychic"]
         },
         {
-            "nombre": "Tierra",
-            "debilidades": ["Agua", "Hielo", "Planta"]
+            "name": "ground",
+            "weaknesses": ["water", "ice", "grass"]
         },
         {
-            "nombre": "Volador",
-            "debilidades": ["Eléctrico", "Hielo", "Roca"]
+            "name": "flying",
+            "weaknesses": ["electric", "ice", "rock"]
         },
         {
-            "nombre": "Psíquico",
-            "debilidades": ["Bicho", "Fantasma", "Siniestro"]
+            "name": "psychic",
+            "weaknesses": ["bug", "ghost", "dark"]
         },
         {
-            "nombre": "Bicho",
-            "debilidades": ["Fuego", "Volador", "Roca", "Hielo", "Veneno"]
+            "name": "bug",
+            "weaknesses": ["fire", "flying", "rock", "ice", "poison"]
         },
         {
-            "nombre": "Roca",
-            "debilidades": ["Agua", "Planta", "Lucha", "Tierra", "Acero"]
+            "name": "rock",
+            "weaknesses": ["water", "grass", "fighting", "ground", "steel"]
         },
         {
-            "nombre": "Fantasma",
-            "debilidades": ["Fantasma", "Siniestro"]
+            "name": "ghost",
+            "weaknesses": ["ghost", "dark"]
         },
         {
-            "nombre": "Siniestro",
-            "debilidades": ["Lucha", "Bicho", "Hada"]
+            "name": "dark",
+            "weaknesses": ["fighting", "bug", "fairy"]
         },
         {
-            "nombre": "Acero",
-            "debilidades": ["Fuego", "Lucha", "Tierra"]
+            "name": "steel",
+            "weaknesses": ["fire", "fighting", "ground"]
         },
         {
-            "nombre": "Hada",
-            "debilidades": ["Veneno", "Acero"]
+            "name": "fairy",
+            "weaknesses": ["poison", "steel"]
         },
         {
-            "nombre": "Dragón",
-            "debilidades": ["Hielo", "Dragón", "Hada"]
+            "name": "dragon",
+            "weaknesses": ["ice", "dragon", "fairy"]
         }
     ]
 }

@@ -10,15 +10,15 @@ with open(regions_path, 'r', encoding='utf-8') as file:
     regions_data = json.load(file)
 
 # Obtener la lista de regiones
-regions = regions_data['regiones']
-cantidad_regiones = regions_data['cantidad']
+regions = regions_data['regions']
+cantidad_regiones = regions_data['quantity']
 
 # Crear una lista para almacenar los datos de cada región
 regions_detailed_data = []
 
 # Realizar solicitudes a cada URL para obtener los datos de cada región
 for region in regions:
-    region_name = region['nombre']
+    region_name = region['name']
     region_url = region['url']
     
     try:
@@ -28,9 +28,7 @@ for region in regions:
         region_info = response.json()  # Convertir la respuesta en JSON
         
         # Añadir los datos de la región a la lista
-        regions_detailed_data.append({
-            "datos": region_info
-        })
+        regions_detailed_data.append(region_info)
         print(f"Datos de {region_name} obtenidos correctamente.")
         
     except requests.exceptions.RequestException as e:
@@ -38,8 +36,8 @@ for region in regions:
 
 # Crear el diccionario final para el archivo regions_data.json
 regions_data_output = {
-    "cantidad": cantidad_regiones,
-    "regiones": regions_detailed_data
+    "quantity": cantidad_regiones,
+    "regions": regions_detailed_data
 }
 
 # Guardar los datos en regions_data.json

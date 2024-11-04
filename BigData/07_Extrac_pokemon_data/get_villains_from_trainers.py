@@ -9,12 +9,12 @@ with open(trainers_path, 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 # Filtrar los entrenadores que son villanos
-villains = [trainer for trainer in data['entrenadores'] if trainer.get('villano')]
+villains = [trainer for trainer in data['trainers'] if trainer.get('villains')]
 
 # Crear la estructura para el archivo villains.json
 villains_data = {
-    "cantidad": len(villains),
-    "villanos": villains
+    "quantity": len(villains),
+    "villains": villains
 }
 
 # Guardar los villanos en villains.json

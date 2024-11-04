@@ -1,55 +1,55 @@
 {
-    "cantidad": 10,
-    "profesores": [
+    "quantity": 10,
+    "professors": [
         {
-            "nombre": "Profesor Oak",
+            "name": "Professor Oak",
             "region": "Kanto",
-            "especialidad": "Estudio pokémon"
+            "specialty": "Pokemon study"
         },
         {
-            "nombre": "Profesor Elm",
+            "name": "Professor Elm",
             "region": "Johto",
-            "especialidad": "Pokémon Cría"
+            "specialty": "Pokemon Breeding"
         },
         {
-            "nombre": "Profesor Birch",
+            "name": "Professor Birch",
             "region": "Hoenn",
-            "especialidad": "Biología Pokémon"
+            "specialty": "Pokemon Biology"
         },
         {
-            "nombre": "Profesor Rowan",
+            "name": "Professor Rowan",
             "region": "Sinnoh",
-            "especialidad": "Pokémon Antiguos"
+            "specialty": "Ancient Pokemon"
         },
         {
-            "nombre": "Profesor Juniper",
+            "name": "Professor Juniper",
             "region": "Unova",
-            "especialidad": "Pokémon Nuevos"
+            "specialty": "New Pokemon"
         },
         {
-            "nombre": "Profesor Sycamore",
+            "name": "Professor Sycamore",
             "region": "Kalos",
-            "especialidad": "Pokémon Mega"
+            "specialty": "Mega Pokemon"
         },
         {
-            "nombre": "Profesor Kukui",
+            "name": "Professor Kukui",
             "region": "Alola",
-            "especialidad": "Pokémon Lucha"
+            "specialty": "Pokemon Battles"
         },
         {
-            "nombre": "Profesor Magnolia",
+            "name": "Professor Magnolia",
             "region": "Galar",
-            "especialidad": "Energía de Dynamax"
+            "specialty": "Dynamax Energy"
         },
         {
-            "nombre": "Profesor Turo",
+            "name": "Professor Turo",
             "region": "Paldea",
-            "especialidad": "Pokémon Regional"
+            "specialty": "Regional Pokemon"
         },
         {
-            "nombre": "Profesor Aurora",
+            "name": "Professor Aurora",
             "region": "Paldea",
-            "especialidad": "Pokémon Regional"
+            "specialty": "Regional Pokemon"
         }
     ]
 }

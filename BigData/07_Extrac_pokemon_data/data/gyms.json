@@ -1,245 +1,245 @@
 {
-    "cantidad": 40,
-    "gimnasios": [
+    "quantity": 40,
+    "gyms": [
         {
-            "nombre": "Pueblo Paleta",
-            "lider": "Brock",
-            "generacion": "I",
-            "tipo": "Roca"
+            "name": "Pewter City",
+            "leader": "Brock",
+            "generation": "I",
+            "type": "Rock"
         },
         {
-            "nombre": "Ciudad Celeste",
-            "lider": "Misty",
-            "generacion": "I",
-            "tipo": "Agua"
+            "name": "Cerulean City",
+            "leader": "Misty",
+            "generation": "I",
+            "type": "Water"
         },
         {
-            "nombre": "Ciudad Vermilion",
-            "lider": "Lt. Surge",
-            "generacion": "I",
-            "tipo": "Eléctrico"
+            "name": "Vermilion City",
+            "leader": "Lt. Surge",
+            "generation": "I",
+            "type": "Electric"
         },
         {
-            "nombre": "Ciudad Fucsia",
-            "lider": "Koga",
-            "generacion": "I",
-            "tipo": "Veneno"
+            "name": "Fuchsia City",
+            "leader": "Koga",
+            "generation": "I",
+            "type": "Poison"
         },
         {
-            "nombre": "Ciudad Azulona",
-            "lider": "Erika",
-            "generacion": "I",
-            "tipo": "Planta"
+            "name": "Celadon City",
+            "leader": "Erika",
+            "generation": "I",
+            "type": "Grass"
         },
         {
-            "nombre": "Ciudad Índigo",
-            "lider": "Lorelei",
-            "generacion": "I",
-            "tipo": "Hielo"
+            "name": "Indigo City",
+            "leader": "Lorelei",
+            "generation": "I",
+            "type": "Ice"
         },
         {
-            "nombre": "Ciudad Plateada",
-            "lider": "Giovanni",
-            "generacion": "I",
-            "tipo": "Tierra"
+            "name": "Pewter City",
+            "leader": "Giovanni",
+            "generation": "I",
+            "type": "Ground"
         },
         {
-            "nombre": "Ciudad Azafrán",
-            "lider": "Sabrina",
-            "generacion": "I",
-            "tipo": "Psíquico"
+            "name": "Saffron City",
+            "leader": "Sabrina",
+            "generation": "I",
+            "type": "Psychic"
         },
         {
-            "nombre": "Ciudad Cinnabar",
-            "lider": "Blane",
-            "generacion": "I",
-            "tipo": "Fuego"
+            "name": "Cinnabar Island",
+            "leader": "Blaine",
+            "generation": "I",
+            "type": "Fire"
         },
         {
-            "nombre": "Ciudad de los Sueños",
-            "lider": "Dahlia",
-            "generacion": "II",
-            "tipo": "Normal"
+            "name": "Dream City",
+            "leader": "Dahlia",
+            "generation": "II",
+            "type": "Normal"
         },
         {
-            "nombre": "Ciudad Olivo",
-            "lider": "Chuck",
-            "generacion": "II",
-            "tipo": "Lucha"
+            "name": "Olivine City",
+            "leader": "Chuck",
+            "generation": "II",
+            "type": "Fighting"
         },
         {
-            "nombre": "Ciudad Tejan",
-            "lider": "Jasmine",
-            "generacion": "II",
-            "tipo": "Acero"
+            "name": "Steel City",
+            "leader": "Jasmine",
+            "generation": "II",
+            "type": "Steel"
         },
         {
-            "nombre": "Ciudad Oro",
-            "lider": "Morty",
-            "generacion": "II",
-            "tipo": "Fantasma"
+            "name": "Gold City",
+            "leader": "Morty",
+            "generation": "II",
+            "type": "Ghost"
         },
         {
-            "nombre": "Ciudad Fucsia",
-            "lider": "Koga",
-            "generacion": "II",
-            "tipo": "Veneno"
+            "name": "Fuchsia City",
+            "leader": "Koga",
+            "generation": "II",
+            "type": "Poison"
         },
         {
-            "nombre": "Ciudad de Lavaridge",
-            "lider": "Flannery",
-            "generacion": "III",
-            "tipo": "Fuego"
+            "name": "Lavaridge Town",
+            "leader": "Flannery",
+            "generation": "III",
+            "type": "Fire"
         },
         {
-            "nombre": "Ciudad de Fortree",
-            "lider": "Winona",
-            "generacion": "III",
-            "tipo": "Volador"
+            "name": "Fortree City",
+            "leader": "Winona",
+            "generation": "III",
+            "type": "Flying"
         },
         {
-            "nombre": "Ciudad de Mossdeep",
-            "lider": "Tate y Liza",
-            "generacion": "III",
-            "tipo": "Psíquico"
+            "name": "Mossdeep City",
+            "leader": "Tate and Liza",
+            "generation": "III",
+            "type": "Psychic"
         },
         {
-            "nombre": "Ciudad de Sootopolis",
-            "lider": "Wallace",
-            "generacion": "III",
-            "tipo": "Agua"
+            "name": "Sootopolis City",
+            "leader": "Wallace",
+            "generation": "III",
+            "type": "Water"
         },
         {
-            "nombre": "Ciudad de la Ciudadela",
-            "lider": "Roxie",
-            "generacion": "V",
-            "tipo": "Veneno"
+            "name": "Citadel City",
+            "leader": "Roxie",
+            "generation": "V",
+            "type": "Poison"
         },
         {
-            "nombre": "Ciudad de las Flores",
-            "lider": "Gardenia",
-            "generacion": "IV",
-            "tipo": "Planta"
+            "name": "Flower City",
+            "leader": "Gardenia",
+            "generation": "IV",
+            "type": "Grass"
         },
         {
-            "nombre": "Ciudad de Canal",
-            "lider": "Fantina",
-            "generacion": "IV",
-            "tipo": "Fantasma"
+            "name": "Canal City",
+            "leader": "Fantina",
+            "generation": "IV",
+            "type": "Ghost"
         },
         {
-            "nombre": "Ciudad de los Gélidos",
-            "lider": "Bryce",
-            "generacion": "IV",
-            "tipo": "Hielo"
+            "name": "Frosty City",
+            "leader": "Bryce",
+            "generation": "IV",
+            "type": "Ice"
         },
         {
-            "nombre": "Ciudad Nimbasa",
-            "lider": "Elesa",
-            "generacion": "V",
-            "tipo": "Eléctrico"
+            "name": "Nimbasa City",
+            "leader": "Elesa",
+            "generation": "V",
+            "type": "Electric"
         },
         {
-            "nombre": "Ciudad de los Vientos",
-            "lider": "Skyla",
-            "generacion": "V",
-            "tipo": "Volador"
+            "name": "Windy City",
+            "leader": "Skyla",
+            "generation": "V",
+            "type": "Flying"
         },
         {
-            "nombre": "Ciudad Puntera",
-            "lider": "Drayden",
-            "generacion": "V",
-            "tipo": "Dragón"
+            "name": "Top City",
+            "leader": "Drayden",
+            "generation": "V",
+            "type": "Dragon"
         },
         {
-            "nombre": "Ciudad de Santalune",
-            "lider": "Viola",
-            "generacion": "VI",
-            "tipo": "Bicho"
+            "name": "Santalune City",
+            "leader": "Viola",
+            "generation": "VI",
+            "type": "Bug"
         },
         {
-            "nombre": "Ciudad de Lumiose",
-            "lider": "Clemont",
-            "generacion": "VI",
-            "tipo": "Eléctrico"
+            "name": "Lumiose City",
+            "leader": "Clemont",
+            "generation": "VI",
+            "type": "Electric"
         },
         {
-            "nombre": "Ciudad de Coumarine",
-            "lider": "Ramos",
-            "generacion": "VI",
-            "tipo": "Planta"
+            "name": "Coumarine City",
+            "leader": "Ramos",
+            "generation": "VI",
+            "type": "Grass"
         },
         {
-            "nombre": "Ciudad de Shalour",
-            "lider": "Korrina",
-            "generacion": "VI",
-            "tipo": "Lucha"
+            "name": "Shalour City",
+            "leader": "Korrina",
+            "generation": "VI",
+            "type": "Fighting"
         },
         {
-            "nombre": "Ciudad de Anistar",
-            "lider": "Olympia",
-            "generacion": "VI",
-            "tipo": "Psíquico"
+            "name": "Anistar City",
+            "leader": "Olympia",
+            "generation": "VI",
+            "type": "Psychic"
         },
         {
-            "nombre": "Ciudad de Dendemille",
-            "lider": "Clemont",
-            "generacion": "VI",
-            "tipo": "Eléctrico"
+            "name": "Dendemille Town",
+            "leader": "Clemont",
+            "generation": "VI",
+            "type": "Electric"
         },
         {
-            "nombre": "Ciudad de Snowbelle",
-            "lider": "Wulfric",
-            "generacion": "VI",
-            "tipo": "Hielo"
+            "name": "Snowbelle City",
+            "leader": "Wulfric",
+            "generation": "VI",
+            "type": "Ice"
         },
         {
-            "nombre": "Ciudad de Arceus",
-            "lider": "Hala",
-            "generacion": "VII",
-            "tipo": "Lucha"
+            "name": "Arceus City",
+            "leader": "Hala",
+            "generation": "VII",
+            "type": "Fighting"
         },
         {
-            "nombre": "Pueblo Poni",
-            "lider": "Mina",
-            "generacion": "VII",
-            "tipo": "Hada"
+            "name": "Poni Village",
+            "leader": "Mina",
+            "generation": "VII",
+            "type": "Fairy"
         },
         {
-            "nombre": "Ciudad de la Isla",
-            "lider": "Nanu",
-            "generacion": "VII",
-            "tipo": "Siniestro"
+            "name": "Island City",
+            "leader": "Nanu",
+            "generation": "VII",
+            "type": "Dark"
         },
         {
-            "nombre": "Cabo Sétima",
-            "lider": "Lana",
-            "generacion": "VIII",
-            "tipo": "Normal"
+            "name": "Cape Seventh",
+            "leader": "Lana",
+            "generation": "VIII",
+            "type": "Normal"
         },
         {
-            "nombre": "Ciudad del Arte",
-            "lider": "Alistair",
-            "generacion": "VIII",
-            "tipo": "Fantasma"
+            "name": "Art City",
+            "leader": "Alistair",
+            "generation": "VIII",
+            "type": "Ghost"
         },
         {
-            "nombre": "Ciudad del Río",
-            "lider": "Milo",
-            "generacion": "VIII",
-            "tipo": "Planta"
+            "name": "River City",
+            "leader": "Milo",
+            "generation": "VIII",
+            "type": "Grass"
         },
         {
-            "nombre": "Pueblo Floria",
-            "lider": "Penny",
-            "generacion": "VIII",
-            "tipo": "Siniestro"
+            "name": "Floria Village",
+            "leader": "Penny",
+            "generation": "VIII",
+            "type": "Dark"
         },
         {
-            "nombre": "Ciudad de los Caballeros",
-            "lider": "Raihan",
-            "generacion": "VIII",
-            "tipo": "Dragón"
+            "name": "Knight City",
+            "leader": "Raihan",
+            "generation": "VIII",
+            "type": "Dragon"
         }
     ]
 }

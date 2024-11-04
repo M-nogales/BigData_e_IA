@@ -10,15 +10,15 @@ with open(moves_api_path, 'r', encoding='utf-8') as file:
     moves_data = json.load(file)
 
 # Obtener la lista de movimientos y la cantidad de movimientos
-movimientos = moves_data['movimientos']
-cantidad_movimientos = moves_data['cantidad']
+movimientos = moves_data['moves']
+cantidad_movimientos = moves_data['quantity']
 
 # Crear una lista para almacenar los datos detallados de cada movimiento
 moves_detailed_data = []
 
 # Realizar solicitudes a cada URL para obtener los datos de cada movimiento
 for move in movimientos:
-    move_name = move['nombre']
+    move_name = move['name']
     move_url = move['url']
     
     try:
@@ -28,9 +28,7 @@ for move in movimientos:
         move_info = response.json()  # Convertir la respuesta en JSON
         
         # Añadir los datos del movimiento a la lista
-        moves_detailed_data.append({
-            "datos": move_info
-        })
+        moves_detailed_data.append(move_info)
         print(f"Datos de {move_name} obtenidos correctamente.")
         
     except requests.exceptions.RequestException as e:
@@ -38,8 +36,8 @@ for move in movimientos:
 
 # Crear el diccionario final para el archivo moves_data.json
 moves_data_output = {
-    "cantidad": cantidad_movimientos,
-    "movimientos": moves_detailed_data
+    "quantity": cantidad_movimientos,
+    "moves": moves_detailed_data
 }
 
 # Guardar los datos en moves_data.json

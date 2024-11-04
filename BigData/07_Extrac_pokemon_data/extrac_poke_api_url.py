@@ -12,8 +12,8 @@ if response_poke.status_code == 200:
     pokemones = data.get("results")
 
     resultado = {
-        "cantidad": cantidad_resultados,
-        "pokemones": [{"nombre": pokemon["name"], "url": pokemon["url"]} for pokemon in pokemones]
+        "quantity": cantidad_resultados,
+        "pokemons": [{"name": pokemon["name"], "url": pokemon["url"]} for pokemon in pokemones]
     }
 
     output_file_path = "data/pokemons_api_url.json"
