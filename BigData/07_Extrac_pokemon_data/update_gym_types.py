@@ -17,21 +17,21 @@ def update_gym_types(gym_collection, types_collection, database_name='test'):
     for gym in gyms_col.find():
         updated = False
         new_types = []
-        # gym_type = gym.get('type'):
-        # type = types_col.find_one({'name': type_name})
-        # if type:
-        #     # Reemplazar el 'type' con el documento de 'tipos'
-        #     new_type_entry = {
-        #             '_id': type['_id'],
-        #             'name': type['name']
-        #     }
-        #     new_types.append(new_type_entry)
-        #     updated = True
+        gym_type = gym.get('type').lower()
+        type = types_col.find_one({'name': gym_type})
+        if type:
+            # Reemplazar el 'type' con el documento de 'tipos'
+            new_type_entry = {
+                    '_id': type['_id'],
+                    'name': type['name']
+            }
+            new_types.append(new_type_entry)
+            updated = True
         
-        #     # new_types.append(type_entry)
-        # if updated:
-        #     # Actualizar el documento en MongoDB
-        #     gyms_col.update_one({'_id': gym['_id']}, {'$set': {'types': new_types}})
+            # new_types.append(type_entry)
+        if updated:
+            # Actualizar el documento en MongoDB
+            gyms_col.update_one({'_id': gym['_id']}, {'$set': {'type': new_types}})
 
     # Cerrar la conexión
     client.close()
