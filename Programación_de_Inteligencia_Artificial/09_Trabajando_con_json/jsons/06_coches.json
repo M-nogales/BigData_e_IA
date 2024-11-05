@@ -1,0 +1,22 @@
+{
+  "coches": [
+    {
+      "marca": "Toyota",
+      "modelo": "Corolla",
+      "precio": 20000,
+      "a\u00f1o": 2023
+    },
+    {
+      "marca": "Ford",
+      "modelo": "Focus",
+      "precio": 17500,
+      "a\u00f1o": 2022
+    },
+    {
+      "marca": "Tesla",
+      "modelo": "Model 3",
+      "precio": 35000,
+      "a\u00f1o": 2023
+    }
+  ]
+}

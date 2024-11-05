@@ -1,0 +1,22 @@
+{
+  "eventos": [
+    {
+      "titulo": "Conferencia Python",
+      "fecha": "2024-11-15",
+      "ubicacion": "Madrid",
+      "organizador": "PyCon Espa\u00f1a"
+    },
+    {
+      "titulo": "Taller de IA",
+      "fecha": "2024-12-01",
+      "ubicacion": "Barcelona",
+      "organizador": "TechFest"
+    },
+    {
+      "titulo": "Marat\u00f3n de Programaci\u00f3n",
+      "fecha": "2024-11-30",
+      "ubicacion": "Madrid",
+      "organizador": "CodeFest"
+    }
+  ]
+}

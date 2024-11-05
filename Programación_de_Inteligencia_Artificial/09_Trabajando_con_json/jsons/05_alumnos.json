@@ -1,0 +1,22 @@
+{
+  "alumnos": [
+    {
+      "nombre": "Carlos",
+      "edad": 20,
+      "calificacion": 85,
+      "ciudad": "Madrid"
+    },
+    {
+      "nombre": "Luc\u00eda",
+      "edad": 22,
+      "calificacion": 90,
+      "ciudad": "Barcelona"
+    },
+    {
+      "nombre": "Elena",
+      "edad": 20,
+      "calificacion": 82,
+      "ciudad": "C\u00e1diz"
+    }
+  ]
+}

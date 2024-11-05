@@ -1,0 +1,19 @@
+{
+  "tareas": [
+    {
+      "descripcion": "Estudiar Python",
+      "vencimiento": "2024-11-01",
+      "estado": "completada"
+    },
+    {
+      "descripcion": "Revisar proyecto",
+      "vencimiento": "2024-10-29",
+      "estado": "completada"
+    },
+    {
+      "descripcion": "Preparar presentaci\u00f3n",
+      "vencimiento": "2024-11-12",
+      "estado": "pendiente"
+    }
+  ]
+}

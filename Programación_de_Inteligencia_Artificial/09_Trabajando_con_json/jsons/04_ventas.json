@@ -1,0 +1,22 @@
+{
+  "ventas": [
+    {
+      "producto": "Laptop",
+      "cantidad": 2,
+      "precio": 1000,
+      "fecha": "2024-10-28"
+    },
+    {
+      "producto": "Teclado",
+      "cantidad": 5,
+      "precio": 50,
+      "fecha": "2024-10-27"
+    },
+    {
+      "producto": "Tablet",
+      "cantidad": 3,
+      "precio": 300,
+      "fecha": "2024-10-30"
+    }
+  ]
+}

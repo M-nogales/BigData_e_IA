@@ -1,0 +1,22 @@
+{
+  "contactos": [
+    {
+      "nombre": "Juan",
+      "apellidos": "P\u00e9rez",
+      "telefono": "612345679",
+      "correo": "juan@example.com"
+    },
+    {
+      "nombre": "Laura",
+      "apellidos": "G\u00f3mez",
+      "telefono": "623456789",
+      "correo": "laura@example.com"
+    },
+    {
+      "nombre": "Mar\u00eda",
+      "apellidos": "Garc\u00eda",
+      "telefono": "634567890",
+      "correo": "maria@yopmail.com"
+    }
+  ]
+}
