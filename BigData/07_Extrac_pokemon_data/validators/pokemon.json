@@ -1,0 +1,62 @@
+{
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["types", "name", "moves"],
+      "title": "pokemon validator",
+      "properties": {
+        "name": {
+          "bsonType": "string",
+          "description": "name must be string and exist"
+        },
+        "base_experience": {
+          "bsonType": "number",
+          "description": "base_experience must be a number"
+        },
+        "types": {
+          "bsonType": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "bsonType": "object",
+            "required": ["_id", "name"],
+            "properties": {
+              "_id": {
+                "bsonType": "objectId",
+                "description": "Unique identifier for each type"
+              },
+              "name": {
+                "bsonType": "string",
+                "description": "Name of the type"
+              }
+            },
+            "description": "Each type object must have '_id' as ObjectId and 'name' as string"
+          },
+          "description": "types array containing 1 to 2 objects, each with '_id' and 'name' fields"
+        },
+        "moves": {
+          "bsonType": "array",
+          "minItems": 1,
+          "items": {
+            "bsonType": "object",
+            "required": ["_id", "name", "power"],
+            "properties": {
+              "_id": {
+                "bsonType": "objectId",
+                "description": "Unique identifier for each move"
+              },
+              "name": {
+                "bsonType": "string",
+                "description": "Name of the move"
+              },
+              "power": {
+                "bsonType": ["number","null"],
+                "description": "Power level of the move"
+              }
+            },
+            "description": "Each move object must contain '_id', 'name', and 'power'"
+          },
+          "description": "array of moves with at least 1 item, each having '_id', 'name', and 'power'"
+        }
+      }
+    }
+  }

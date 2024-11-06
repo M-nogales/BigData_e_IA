@@ -57,8 +57,8 @@ def delete_mongodb_db(database_name='test'):
 # insert_data_to_mongodb(database_name="pokemon", collection_name='trainers', file_path='data/trainers.json', json_array_name='trainers')
 # insert_data_to_mongodb(database_name="pokemon", collection_name='villains', file_path='data/villains.json', json_array_name='villains')
 # insert_data_to_mongodb(database_name="pokemon", collection_name='regions', file_path='data/regions_data.json', json_array_name='regions')
-insert_data_to_mongodb(database_name="pokemon", collection_name='gyms', file_path='data/gyms.json', json_array_name='gyms')
-# insert_data_to_mongodb(database_name="pokemon", collection_name='pokemons', file_path='data/pokemons_data.json', json_array_name='pokemons')
+# insert_data_to_mongodb(database_name="pokemon", collection_name='gyms', file_path='data/gyms.json', json_array_name='gyms')
+insert_data_to_mongodb(database_name="pokemon", collection_name='pokemons', file_path='data/pokemons_data.json', json_array_name='pokemons')
 # insert_data_to_mongodb(database_name="pokemon", collection_name='types', file_path='data/types.json', json_array_name='types')
 # insert_data_to_mongodb(database_name="pokemon", collection_name='moves', file_path='data/moves_data.json', json_array_name='moves')
 
