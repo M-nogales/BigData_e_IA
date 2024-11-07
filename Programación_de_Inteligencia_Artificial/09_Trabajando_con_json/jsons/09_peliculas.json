@@ -1,0 +1,22 @@
+{
+  "peliculas": [
+    {
+      "titulo": "El Laberinto del Fauno",
+      "director": "Guillermo del Toro",
+      "a\u00f1o": 2006,
+      "genero": "Fantas\u00eda"
+    },
+    {
+      "titulo": "Mar Adentro",
+      "director": "Alejandro Amen\u00e1bar",
+      "a\u00f1o": 2004,
+      "genero": "Drama"
+    },
+    {
+      "titulo": "El Padrino",
+      "director": "Francis Ford Coppola",
+      "a\u00f1o": 1972,
+      "genero": "Crimen"
+    }
+  ]
+}

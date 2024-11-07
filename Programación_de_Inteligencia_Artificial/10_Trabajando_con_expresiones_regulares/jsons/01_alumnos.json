@@ -1,0 +1,23 @@
+[
+    {
+        "nombre": "Juan Pérez",
+        "email": "juan.perez@email.com",
+        "telefono": "612345678",
+        "codigo_postal": "28001",
+        "curso": "DAW2"
+    },
+    {
+        "nombre": "Ana López",
+        "email": "ana.lopez@email.com",
+        "telefono": "623456789",
+        "codigo_postal": "08002",
+        "curso": "DAW1"
+    },
+    {
+        "nombre": "Carlos García",
+        "email": "carlos.garcia@email.com",
+        "telefono": "639876543",
+        "codigo_postal": "41003",
+        "curso": "DAM2"
+    }
+]

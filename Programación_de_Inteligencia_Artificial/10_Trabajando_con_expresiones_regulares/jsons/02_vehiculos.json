@@ -1,0 +1,23 @@
+[
+    {
+        "matricula": "1234ABC",
+        "marca": "Toyota",
+        "modelo": "Corolla",
+        "año": 2020,
+        "propietario_email": "juan.perez@email.com"
+    },
+    {
+        "matricula": "5678XYZ",
+        "marca": "Ford",
+        "modelo": "Focus",
+        "año": 2018,
+        "propietario_email": "ana.lopez@email.com"
+    },
+    {
+        "matricula": "4321DEF",
+        "marca": "BMW",
+        "modelo": "Serie 3",
+        "año": 2021,
+        "propietario_email": "carlos.garcia@email.com"
+    }
+]

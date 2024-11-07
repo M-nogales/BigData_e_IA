@@ -1,0 +1,30 @@
+{
+  "superheroes": [
+    {
+      "alias": "El Cid",
+      "habilidades": [
+        "esgrima",
+        "estrategia"
+      ],
+      "ciudad": "Burgos",
+      "equipo": "Los Defensores"
+    },
+    {
+      "alias": "La Dama de Plata",
+      "habilidades": [
+        "manipulaci\u00f3n de metales"
+      ],
+      "ciudad": "Toledo",
+      "equipo": "Los Defensores"
+    },
+    {
+      "alias": "Blas de Lezo",
+      "habilidades": [
+        "estrategia",
+        "valent\u00eda"
+      ],
+      "ciudad": "Pasajes",
+      "equipo": "La Armada"
+    }
+  ]
+}

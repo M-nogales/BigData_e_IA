@@ -29,17 +29,20 @@ def agregar_pelicula(titulo, director, año, genero):
     return "Película añadida"
 
 def filtrar_por_genero(genero):
-    peliculas_filtradas = [pelicula for pelicula in catalogo_peliculas["peliculas"] if pelicula["genero"].lower() == genero.lower()]
+    for pelicula in catalogo_peliculas["peliculas"]:
+        if pelicula["genero"].lower() == genero.lower():
+            peliculas_filtradas = pelicula
     return peliculas_filtradas
 
 # Función para listar directores únicos
 def listar_directores_unicos():
-    directores_unicos = set(pelicula["director"] for pelicula in catalogo_peliculas["peliculas"])
+    for pelicula in catalogo_peliculas["peliculas"]:
+        directores_unicos = set(pelicula["director"])
     return list(directores_unicos)
 
 # Función para guardar el catálogo en un archivo JSON
 def guardar_catalogo():
-    with open("jsons/peliculas.json", "w") as archivo:
+    with open("jsons/09_peliculas.json", "w") as archivo:
         json.dump(catalogo_peliculas, archivo, indent=2)
 
 # Ejemplos de uso
