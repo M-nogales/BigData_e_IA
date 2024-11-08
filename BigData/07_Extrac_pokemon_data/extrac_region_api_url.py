@@ -15,7 +15,7 @@ if response_regions.status_code == 200:
 
     resultado = {
         "quantity": cantidad_resultados,
-        "regions": [{"name": region["name"], "url": region["url"]} for region in regiones]
+        "regions": [{"name": region["name"].lower(), "url": region["url"]} for region in regiones]
     }
 
     output_file_path = "data/regions_api_url.json"

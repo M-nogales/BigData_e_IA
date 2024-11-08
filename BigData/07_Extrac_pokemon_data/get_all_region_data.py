@@ -18,7 +18,7 @@ regions_detailed_data = []
 
 # Realizar solicitudes a cada URL para obtener los datos de cada región
 for region in regions:
-    region_name = region['name']
+    region_name = region['name'].lower()
     region_url = region['url']
     
     try:
