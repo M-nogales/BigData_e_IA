@@ -22,25 +22,46 @@ def save_pokemon_sprites_to_gridfs(pokemon_collection, database_name='pokemon'):
     for pokemon in pokemon_col.find():
         name = pokemon.get('name', 'Unknown')  # Usa 'Unknown' si no tiene nombre
         sprites = pokemon.get('sprites', {})   # Extrae los sprites o un diccionario vacío
+
+        # Crear un diccionario para almacenar los sprites actualizados
+        updated_sprites = {}
+
+        # Iterar sobre todas las claves de sprites en el nivel principal
+        for sprite_key, sprite_url in sprites.items():
+            if isinstance(sprite_url, str) and sprite_url:  # Proceder si es una URL
+                filename = f"{name}_{sprite_key}"
+                file_id = guardar_sprite_en_gridfs(sprite_url, filename, fs)  # Guardar el sprite y obtener el _id
+                if file_id:
+                    updated_sprites[sprite_key] = {
+                        "file_name": filename,
+                        "_id": file_id
+                    }
         
-        # Procesar cada sprite URL dentro del diccionario
-        guardar_sprites_recursivo(name, sprites, fs)
-    
+        # Acceder y procesar el subdiccionario "showdown" dentro de "other", si existe
+        showdown_sprites = sprites.get("other", {}).get("showdown", {})
+        for showdown_key, showdown_url in showdown_sprites.items():
+            if isinstance(showdown_url, str) and showdown_url:  # Proceder si es una URL
+                filename = f"{name}_showdown_{showdown_key}"
+                file_id = guardar_sprite_en_gridfs(showdown_url, filename, fs)  # Guardar el sprite y obtener el _id
+                if file_id:
+                    if "showdown" not in updated_sprites:
+                        updated_sprites["showdown"] = {}
+                    updated_sprites["showdown"][showdown_key] = {
+                        "file_name": filename,
+                        "_id": file_id
+                    }
+        
+        # Si se han actualizado los sprites, guardarlos en el documento de Pokémon
+        if updated_sprites:
+            pokemon_col.update_one(
+                {"_id": pokemon["_id"]},
+                {"$set": {"sprites": updated_sprites}}
+            )
+            print(f"Sprites para el Pokémon '{name}' actualizados en la colección.")
+
     # Cerrar la conexión
     client.close()
-    print("Sprites de Pokémon guardados en GridFS.")
-
-def guardar_sprites_recursivo(pokemon_name, sprite_dict, fs, prefix=""):
-    for key, value in sprite_dict.items():
-        # Si el valor es un diccionario, llamamos a la función recursivamente
-        if isinstance(value, dict):
-            new_prefix = f"{prefix}_{key}" if prefix else key
-            guardar_sprites_recursivo(pokemon_name, value, fs, new_prefix)
-        
-        # Si el valor es una URL, la guardamos
-        elif isinstance(value, str) and value:
-            filename = f"{pokemon_name}_{prefix}_{key}".strip('_')
-            guardar_sprite_en_gridfs(value, filename, fs)
+    print("Todos los sprites han sido procesados y los documentos de Pokémon han sido actualizados.")
 
 def guardar_sprite_en_gridfs(url, filename, fs):
     # Descargar el archivo
@@ -56,8 +77,10 @@ def guardar_sprite_en_gridfs(url, filename, fs):
             file.write(response.content)
         
         print(f"El archivo '{filename}' (tipo {tipo_mime}) se ha guardado exitosamente en GridFS.")
+        return file._id  # Retornar el _id del archivo guardado
     else:
         print(f"Error al descargar el archivo desde la URL: {url}")
+        return None
 
-# Llamada a la función para guardar los sprites en GridFS
+# Llamada a la función para guardar los sprites en GridFS y actualizar la colección de Pokémon
 save_pokemon_sprites_to_gridfs(pokemon_collection='pokemons')

@@ -5,13 +5,10 @@ cadena = input("Dame números separados por comas: ")
 
 nums = [int(num) for num in cadena.split(',')]
 
-# Inicializar la variable para el número mayor
-mayor = nums[0]  # Suponemos que el primer número es el mayor inicialmente
+mayor = nums[0]
 
-# Bucle para encontrar el número mayor
 for n in nums:
     if n > mayor:
-        mayor = n  # Actualizar el mayor si se encuentra uno más grande
+        mayor = n
 
-# Mostrar el número mayor encontrado
 print(f"El número mayor en la lista es: {mayor}")
