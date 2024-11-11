@@ -34,7 +34,6 @@ Utiliza Python, MongoDB y Docker para procesar y almacenar gran cantidad de dato
   - `relationships/`
     - `update__{collection}_{collection}.py`: Creación de las relaciones entre dos colecciones dadas.
   - `images/`
-
     - `read_imgs_pokemon.py`: Buscamos los sprites de cada pokemon de la colección sprites y los descargamos localmente con gridfs.
     - `read_imgs_sprites.py`: Descargamos localmente los sprites de gridfs.
     - `extrac_and_update_pokemon_sprites.py`: Buscamos los links de descarga de los sprites que se encuentran en cada pokemon de la colección pokemon(urls), los descargamos y los guardamos con gridfs en mongo db, despues de esto creamos una relación entre los pokemons y los sprites que acabamos de guardar en MongoDB

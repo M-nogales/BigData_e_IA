@@ -1,18 +1,15 @@
 import json
-import requests  # Asegúrate de tener esta librería instalada
+import requests
 
-# Aquí debes colocar la URL de tu API
 url_regions = 'https://pokeapi.co/api/v2/region'
 
-# Realizar la solicitud a la API
 response_regions = requests.get(url_regions)
 
-# Verificar si la solicitud fue exitosa
 if response_regions.status_code == 200:
-    data = response_regions.json()  # Convertir respuesta a JSON
-    cantidad_resultados = data.get("count")  # Obtener el total de Pokémon
-    regiones = data.get("results")  # Obtener la lista de Pokémon
-
+    data = response_regions.json()
+    cantidad_resultados = data.get("count")
+    regiones = data.get("results")
+    
     resultado = {
         "quantity": cantidad_resultados,
         "regions": [{"name": region["name"].lower(), "url": region["url"]} for region in regiones]
