@@ -1,3 +1,11 @@
+'''
+patron_matricula verifica que la matrícula siga el formato español de 4 números y 3
+letras.
+patron_ano acepta años entre 1900 y el actual.
+patron_email valida el email del propietario.
+'''
+
+
 import json
 import re
 from datetime import datetime

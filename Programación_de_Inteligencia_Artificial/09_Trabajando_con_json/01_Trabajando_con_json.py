@@ -13,7 +13,6 @@
 '''
 
 import json
-import os
 
 directorio = {
     "contactos": [

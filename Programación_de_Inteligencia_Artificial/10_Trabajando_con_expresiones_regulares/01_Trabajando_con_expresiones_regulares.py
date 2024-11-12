@@ -1,3 +1,8 @@
+'''
+patron_email valida que el email sea correcto.
+patron_telefono comprueba que el teléfono comienza por 9, 6 o 7 y tiene 9 cifras.
+patron_codigo_postal verifica que el código postal tenga exactamente 5 dígitos.
+'''
 import json
 import re
 
