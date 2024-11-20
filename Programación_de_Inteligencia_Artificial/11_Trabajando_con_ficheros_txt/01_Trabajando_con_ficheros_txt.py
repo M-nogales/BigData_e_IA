@@ -35,7 +35,7 @@ def contar_palabra(file, word: str):
         matches = re.findall(pattern, content)
         return f'se han encontrado {len(matches)} {word}'
 
-print(contar_palabra("el_quijote.txt", "CAPÍTULO")) # 54
+print(contar_palabra("el_quijote.txt", "CAPÍTULO"))
 
 # 3. Crear un fichero .txt por capítulo indicado en el documento. (Capitulo_XX.txt)
 
@@ -92,7 +92,7 @@ def crear_ficheros_por_capitulo(file):
 
     return f'Se han creado {chapter_num - 1} ficheros'
 
-# print(crear_ficheros_por_capitulo("el_quijote.txt")) 30, 49
+print(crear_ficheros_por_capitulo("el_quijote.txt"))
 
 # 4. Contabilizar cuántas veces aparece la palabra Dulcinea, Quijote y Sancho.
 

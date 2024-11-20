@@ -16,6 +16,7 @@ empleados para indicar que el empleado fue despedido.
 
 '''
 
+import struct
 from typing import final
 
 
@@ -24,6 +25,8 @@ class Empresa:
         self.nombre = nombre
         self.tamaño = tamaño
         self.empleados = [None] * tamaño
+        self.archivo = 'MisEmpleados.dat'
+        self.cargar_empleados()
 
     def get_nombre(self):
         return self.nombre
@@ -35,14 +38,47 @@ class Empresa:
         return self.empleados[i]
 
     def despide_empleado(self, i):
-        self.empleados[i] = None
-    
+        if 0 <= i < self.tamaño and self.empleados[i] is not None:
+            print(f'{self.empleados[i].get_nombre()} a la calle crack')
+            self.empleados[i] = None
+            self.guardar_empleados()
+
     def nuevo_empleado(self, nombre, sueldo):
         empleado = Empleado(self, nombre, sueldo)
         for i in range(self.tamaño):
             if self.empleados[i] is None:
                 self.empleados[i] = empleado
+                self.guardar_empleados()
                 break
+        else:
+            print("No hay espacio para nuevos empleados.")
+
+    def guardar_empleados(self):
+        # Guarda los empleados en un archivo binario usando struct.
+        with open(self.archivo, 'wb') as file:
+            for empleado in self.empleados:
+                if empleado is not None:
+                    nombre_bin = empleado.get_nombre().encode('utf-8').ljust(30, b'\x00')  # 30 bytes
+                    sueldo = empleado.get_sueldo()  # 4 bytes (float)
+                    num_empleado = empleado.get_num_empleado()  # 4 bytes (int)
+                    # Aseguramos que el tamaño total es 40 bytes
+                    file.write(struct.pack('30s f I', nombre_bin, sueldo, num_empleado))
+
+    def cargar_empleados(self):
+        # Carga los empleados desde un archivo binario usando struct.
+        try:
+            with open(self.archivo, 'rb') as file:
+                while chunk := file.read(40):  # 40 bytes por empleado
+                    if len(chunk) < 40:
+                        print("Advertencia: Datos incompletos detectados. Saltando.")
+                        continue
+                    nombre_bin, sueldo, num_empleado = struct.unpack('30s f I', chunk)
+                    nombre = nombre_bin.decode('utf-8').strip()
+                    empleado = Empleado(self, nombre, sueldo, num_empleado=num_empleado)
+                    if 0 <= num_empleado < self.tamaño:
+                        self.empleados[num_empleado] = empleado
+        except FileNotFoundError:
+            print(f"Archivo '{self.archivo}' no encontrado. Se creará al guardar empleados.")
 
 '''
 Desarrollar una clase Empleado cuyos datos miembros sean nombre, sueldo y número de
@@ -63,15 +99,18 @@ porcentaje. Este método no puede ser sobrescrito por clases
  derivadas (decorador @final en Python 3.8+).
 6. Método despedir: elimina al empleado de la empresa y actualiza el archivo de empleados.
 '''
-
+#! _num_empleado = 0 y los if en la declaración del constructor son para que el número de empleado sea único y se genere automáticamente.
 class Empleado:
     _num_empleado = 0
 
-    def __init__(self, empresa, nombre, sueldo):
+    def __init__(self, empresa, nombre, sueldo, num_empleado=None):
         self._nombre = nombre
         self._sueldo = sueldo
-        self._num_empleado = Empleado._num_empleado
-        Empleado._num_empleado += 1
+        if num_empleado is None:
+            self._num_empleado = Empleado._num_empleado
+            Empleado._num_empleado += 1
+        else:
+            self._num_empleado = num_empleado
         self.empresa = empresa
 
     def get_nombre(self):
@@ -115,4 +154,37 @@ si es la primera ejecución.
 empleado.
 El archivo 'MisEmpleados.dat' debe almacenar los datos de los empleados, es decir, solo los
 datos definidos en la clase Empleado.
-'''    
+'''
+
+# Gestión directa de la empresa y sus empleados
+empresa = Empresa("MiEmpresa", 10)
+
+# # Verificar si hay empleados iniciales cargados
+print("\nEmpleados iniciales cargados:")
+for i in range(empresa.get_tamaño()):
+    empleado = empresa.get_empleado(i)
+    if empleado:
+        print(empleado)
+
+# # Dar de alta dos empleados
+print("\nDando de alta a nuevos empleados:")
+empresa.nuevo_empleado("Alí", 40000.0)
+empresa.nuevo_empleado("Babá", 45000.0)
+
+# # Mostrar empleados
+print("\nEmpleados después del alta:")
+for i in range(empresa.get_tamaño()):
+    empleado = empresa.get_empleado(i)
+    if empleado:
+        print(empleado)
+
+# # Dar de baja
+print("\nDando de baja a un empleado:")
+empresa.despide_empleado(0)
+
+# # Mostrar empleados
+print("\nEmpleados después de la baja:")
+for i in range(empresa.get_tamaño()):
+    empleado = empresa.get_empleado(i)
+    if empleado:
+        print(empleado)
