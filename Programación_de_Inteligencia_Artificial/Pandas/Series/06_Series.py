@@ -7,6 +7,7 @@ Reemplaza cualquier calificación de 1 con "Insatisfecho".
  '''
 
 import pandas as pd
+import matplotlib.pyplot as plt
 
 while True:
     try:
@@ -20,3 +21,6 @@ satisfaction = pd.Series(satisfaction, dtype='object')
 print('Frecuencia de cada calificación:\n', satisfaction.value_counts(),
       'Porcentaje de clientes satisfechos: ', satisfaction[satisfaction >= 4].count() / satisfaction.count() * 100)
 satisfaction[satisfaction == 1] = 'Insatisfecho'
+#grafico de barras
+satisfaction.value_counts().plot(kind='bar')
+plt.show()

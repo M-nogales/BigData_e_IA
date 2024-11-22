@@ -7,6 +7,8 @@ Rellena posibles valores faltantes (NaN) con la temperatura promedio.
  '''
 
 import pandas as pd
+import matplotlib.pyplot as plt
+
 while True:
     try:
         temps = []
@@ -22,3 +24,6 @@ print('Temperatura máxima: ', temps.max())
 print('Temperatura mínima: ', temps.min())
 print('Días con temperaturas por encima de 25°C: ', temps[temps > 25])
 print('Temperaturas con valores faltantes rellenados con la media: ', temps.fillna(temps.mean()))
+#grafica temperaturas
+temps.plot()
+plt.show()

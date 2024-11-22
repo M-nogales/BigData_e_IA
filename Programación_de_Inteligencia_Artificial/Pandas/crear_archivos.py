@@ -1,77 +1,28 @@
 # Lista de títulos y descripciones para cada ejercicio
 titulos = [
-    "Análisis de Ventas de una Semana",
-    "Calificaciones de Estudiantes",
-    "Análisis de Temperaturas Semanales",
-    "Registro de Horas de Trabajo",
-    "Inventario de Productos",
-    "Evaluación de Encuesta de Satisfacción",
-    "Análisis de Precio de un Producto en Tiendas",
-    "Análisis de Datos Meteorológicos",
-    "Registro de Visitas a una Página Web",
-    "Análisis de Puntuaciones de Juegos"
+    "Filtra a los alumnos que tienen 20 años o más y muestra sus notas finales.",
+    "Añade una nueva columna llamada 'Aprobado' que indique si el alumno ha aprobado o no (si su promedio general es mayor o igual a 5).",
+    "Calcula la nota máxima de cada módulo y muestra los resultados.",
+    "Filtra a los alumnos que tienen una nota final superior a 9 en la asignatura de 'Lenguajes'.",
+    "Cuenta cuántos alumnos tienen una nota final menor a 5 en la asignatura de 'Sistemas'.",
+    "Obtén al alumno con la nota más alta en la asignatura de 'Programación'.",
+    "Agrupa a los alumnos según si han aprobado o no y cuenta cuántos alumnos hay en cada grupo.",
+    "Exporta a un archivo CSV los alumnos que han reprobado al menos un módulo.",
+    "Crea un gráfico de dispersión que muestre la relación entre las notas finales de 'Programación' y 'Base de Datos'.",
+    "Calcula la desviación estándar del promedio general de las notas.",
+    "Carga un archivo Excel con datos de alumnos en un DataFrame y muestra los primeros 5 registros.",
+    "Guarda una copia del archivo Excel en un archivo CSV.",
+    "Filtra los alumnos que tienen una edad mayor a 22 años y guarda este subconjunto en un nuevo archivo Excel.",
+    "Modifica las notas de los alumnos en el DataFrame y guarda los cambios en una nueva versión del archivo CSV.",
+    "Lee un archivo CSV con datos de alumnos y calcula el promedio de las notas de un módulo específico.",
+    "Agrupa a los alumnos por edad y guarda el promedio de cada grupo en un nuevo archivo Excel.",
+    "Añade una nueva columna al archivo CSV para indicar si el alumno está en el grupo de honor (promedio general superior a 9).",
+    "Carga un archivo Excel, calcula la nota mínima de cada módulo y guarda el resultado en un archivo CSV.",
+    "Fusiona los datos de dos archivos Excel con datos de alumnos y guarda el resultado combinado en un nuevo archivo.",
+    "Exporta un DataFrame a Excel y asegúrate de formatear los valores de las notas con dos decimales."
 ]
 
-descripciones = [
-    """Solicita al usuario que ingrese las ventas diarias de una semana (7 días).
-Crea una Serie con los datos proporcionados.
-Realiza el análisis: muestra el total de ventas, el promedio, y el día con las mayores ventas.
-Visualiza los días que tienen ventas por encima del promedio.""",
-
-    """Pide al usuario que ingrese las calificaciones de 10 estudiantes.
-Crea una Serie con las calificaciones y asigna nombres de estudiantes como índice.
-Calcula el promedio, la mediana y la desviación estándar de las calificaciones.
-Reemplaza las calificaciones que están por debajo de 50 con "Reprobado".
-Muestra los estudiantes con calificaciones aprobatorias.""",
-
-    """Solicita al usuario las temperaturas registradas en una semana (7 días).
-Crea una Serie con los datos y calcula la temperatura máxima y mínima.
-Identifica los días que tienen temperaturas por encima de 25°C.
-Rellena posibles valores faltantes (NaN) con la temperatura promedio.
-Grafica las temperaturas de la semana.""",
-
-    """Solicita al usuario que ingrese las horas trabajadas por un empleado durante 5 días laborales.
-Crea una Serie con los datos.
-Calcula el total de horas trabajadas, y muestra los días en los que el empleado trabajó más de 8 horas.
-Reemplaza las horas menores a 6 con "Medio tiempo".
-Muestra una lista de días y su clasificación de horas (Normal, Medio tiempo, Extra).""",
-
-    """Pide al usuario que ingrese la cantidad de 8 productos diferentes en stock.
-Crea una Serie y asigna nombres de productos como índice.
-Muestra los productos con menos de 10 unidades.
-Rellena cualquier valor faltante (NaN) con 0.
-Muestra los productos ordenados por la cantidad en stock.""",
-
-    """Solicita al usuario que ingrese las calificaciones de satisfacción (de 1 a 5) de 12 clientes.
-Crea una Serie con las calificaciones.
-Calcula la frecuencia de cada calificación y el porcentaje de clientes satisfechos (calificación ≥ 4).
-Reemplaza cualquier calificación de 1 con "Insatisfecho".
-Muestra un resumen de las calificaciones en forma de gráfico de barras.""",
-
-    """Pide al usuario que ingrese los precios de un producto en 5 tiendas diferentes.
-Crea una Serie y nombra cada tienda como índice.
-Muestra el precio más bajo y más alto.
-Identifica las tiendas con precios por encima de la mediana.
-Rellena los precios faltantes (NaN) con el precio promedio y grafica los precios.""",
-
-    """Solicita al usuario las precipitaciones registradas durante los últimos 7 días.
-Crea una Serie con los datos.
-Identifica los días sin lluvia (0 mm) y reemplázalos con "Sin precipitación".
-Calcula el total y el promedio de precipitaciones.
-Muestra los días con precipitación por encima del promedio.""",
-
-    """Pide al usuario que ingrese el número de visitas diarias a una página web durante 10 días.
-Crea una Serie con los datos.
-Calcula el total y el promedio de visitas diarias.
-Muestra los días con más visitas que el promedio y reemplaza los valores de visitas < 50 con "Baja visita".
-Grafica el número de visitas diarias.""",
-
-    """Solicita al usuario las puntuaciones de un jugador en 8 rondas de un juego.
-Crea una Serie con las puntuaciones y asigna números de ronda como índice.
-Calcula la puntuación máxima, mínima y la diferencia entre la más alta y la más baja.
-Muestra las rondas en las que la puntuación es superior a 80.
-Ordena las puntuaciones de menor a mayor y muestra el ranking."""
-]
+descripciones = titulos  # En este caso, las descripciones coinciden con los títulos.
 
 # Crear archivos con el formato requerido
 for i in range(len(titulos)):
@@ -80,13 +31,52 @@ for i in range(len(titulos)):
     descripcion = descripciones[i]
     
     # Formato del contenido del archivo
-    contenido = f"# {numero}. **{titulo}**\n''' {descripcion}\n '''"
+    contenido = f"# {numero}. **{titulo}**\n''' {descripcion}'''"
     
     # Nombre del archivo
-    nombre_archivo = f"{numero}_Series.py"
+    nombre_archivo = f"Dataframes/{numero}_Ejercicio.py"
     
     # Crear el archivo y escribir el contenido
     with open(nombre_archivo, 'w', encoding='utf-8') as f:
         f.write(contenido)
 
 print("Archivos creados con éxito.")
+
+'''
+# Generar datos para trabajar con DataFrames y exportar a Excel
+nombres = ["Alejandro", "María", "Carlos", "Lucía", "José", "Ana", "Javier", "Laura",
+"Pablo", "Marta",
+"Sergio", "Elena", "Fernando", "Cristina", "David", "Isabel", "Rubén",
+"Patricia", "Manuel", "Raquel"]
+apellidos = ["García", "Martínez", "López", "Sánchez", "Pérez", "Gómez", "Fernández",
+"Díaz", "Ruiz", "Moreno",
+"Jiménez", "Álvarez", "Romero", "Vargas", "Silva", "Castro", "Ortega",
+"Núñez", "Ramos", "Molina"]
+# Generar datos para los alumnos
+data = []
+for i in range(20):
+nombre = random.choice(nombres)
+apellido = random.choice(apellidos)
+correo = f"{nombre.lower()}.{apellido.lower()}@ejemplo.com"
+edad = random.randint(18, 25)
+programacion = [random.randint(0, 10) for _ in range(3)] # Notas de 3 trimestres
+base_datos = [random.randint(0, 10) for _ in range(3)]
+lenguajes = [random.randint(0, 10) for _ in range(3)]
+sistemas = [random.randint(0, 10) for _ in range(3)]
+entornos = [random.randint(0, 10) for _ in range(3)]
+data.append([nombre, apellido, correo, edad] + programacion + base_datos + lenguajes
++ sistemas + entornos)
+# Crear el DataFrame
+columnas = [
+"Nombre", "Apellidos", "Correo", "Edad",
+"Programación T1", "Programación T2", "Programación T3",
+"Base de Datos T1", "Base de Datos T2", "Base de Datos T3",
+"Lenguajes T1", "Lenguajes T2", "Lenguajes T3",
+"Sistemas T1", "Sistemas T2", "Sistemas T3",
+"Entornos T1", "Entornos T2", "Entornos T3"
+]
+df_alumnos = pd.DataFrame(data, columns=columnas)
+# Guardar el DataFrame en un archivo Excel
+ruta_archivo = "datos_alumnos.xlsx"
+df_alumnos.to_excel(ruta_archivo, index=False)
+'''
