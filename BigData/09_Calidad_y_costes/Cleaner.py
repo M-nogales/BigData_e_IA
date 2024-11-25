@@ -1,0 +1,6 @@
+# copy = copy.dropna(subset=["Nombre"])
+# copy = copy.dropna(subset=["Correo Electrónico"])
+# copy = copy.dropna(subset=["Dirección"])
+# copy = copy.dropna(subset=["Teléfono"])
+# print(copy.info())
+# print(copy.head(20))

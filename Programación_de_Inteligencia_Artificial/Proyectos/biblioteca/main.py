@@ -1,15 +1,12 @@
 
 # Manejo de usuarios
-from Users import hola as hola_users
-# Manejo de libros
-from Books import hola as hola_books
-# Manejo de prestamos
-from Loans import hola as hola_loans
+from Submenus import listar_prestamos, opciones_libros, opciones_usuarios,registrar_devolucion, registrar_prestamo
+
 
 def mostrar_menu():
     print("Menú principal:")
-    print("1. Gestión Libros")
-    print("2. Gestión Usuarios")
+    print("1. Gestión de libros")
+    print("2. Gestión de usuarios")
     print("3. Registrar préstamo")
     print("4. Registrar devolución")
     print("5. Listados de préstamos")
@@ -21,18 +18,20 @@ def main():
         opcion = input("Introduce una opción: ")
         match opcion:
             case "1":
-                print("Gestión Libros")
-                hola_books()
+                print("Gestión de libros seleccionado:")
+                opciones_libros()
             case "2":
-                print("Gestión Usuarios")
-                hola_users()
+                print("Gestión de usuarios seleccionado:")
+                opciones_usuarios()
             case "3":
-                print("Registrar Préstamo")
-                hola_loans()
+                print("Registrar de préstamo seleccionado:")
+                registrar_prestamo()
             case "4":
-                print("Registrar Devolución")
+                print("Registrar de devolución seleccionado:")
+                registrar_devolucion()
             case "5":
-                print("Listados de Préstamos")
+                print("Listados de préstamos seleccionado:")
+                listar_prestamos()
             case "6":
                 print("Salir")
                 break
