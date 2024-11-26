@@ -1,6 +1,6 @@
 
 # Manejo de usuarios
-from Submenus import listar_prestamos, opciones_libros, opciones_usuarios,registrar_devolucion, registrar_prestamo
+from submenus import listar_prestamos, opciones_libros, opciones_usuarios,registrar_devolucion, registrar_prestamo
 
 
 def mostrar_menu():

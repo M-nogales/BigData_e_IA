@@ -1,69 +1,81 @@
+import csv
 class User:
-    def __init__(self, nombre, edad, dni, correo_e, tlfno, dirección):
+    def __init__(self, nombre, edad, dni, correo_e, tlfno, direccion):
         self.nombre = nombre
         self.edad = edad
         self.dni = dni
         self.correo_e = correo_e
         self.tlfno = tlfno
-        self.dirección = dirección
+        self.direccion = direccion
 
-    
+    @classmethod
     def crear_id_usuario(self):
         try:
-            with open('db/biblioUsuarios.csv', 'r') as f:
-                lines = f.readlines()
+            with open('db/biblioUsuarios.csv', 'r', encoding="utf-8") as f:
+                lines = csv.reader(f)
                 last_id = 0
                 for line in lines:
-                    row = line.strip().split(',')
-                    last_id = int(row[0])
+                    last_id = int(line[0])
                 return last_id + 1
         except FileNotFoundError:
             # Si no existe el archivo, el ID será 1
             return 1
         
     #añadir usuario,se crea id y se añade a biblioUsuarios.csv
-    def añadir_usuario(self, nombre, edad, dni, correo_e, tlfno, dirección):
-        id_usuario = self.crear_id_usuario()
-        with open('db/biblioUsuarios.csv', 'a') as f:
-            f.write(f'{id_usuario},{nombre},{edad},{dni},{correo_e},{tlfno},{dirección}\n')
-        return id_usuario
-    
+    @classmethod
+    def añadir_usuario(cls, nombre, edad, dni, correo_e, tlfno, direccion):
+        id_usuario = cls.crear_id_usuario()
+        with open('db/biblioUsuarios.csv', 'a', newline='') as f:
+            line = [id_usuario, nombre, edad, dni, correo_e, tlfno, direccion]
+            writer = csv.writer(f)
+            writer.writerow(line)
+        
     #borrar usuario, se busca por id y se borra de biblioUsuarios.csv
-    def borrar_usuario(self, id_usuario):
-        with open('db/biblioUsuarios.csv', 'r') as f:
-            lines = f.readlines()
-        with open('db/biblioUsuarios.csv', 'w') as f:
-            for line in lines:
-                if line.split(',')[0] != id_usuario:
-                    f.write(line)
+    @classmethod
+    def borrar_usuario(cls, id_usuario):
+        with open('db/biblioUsuarios.csv', 'r', newline='') as f:
+            reader = csv.reader(f)
+            rows = [row for row in reader if row and row[0] != id_usuario]
+        
+        with open('db/biblioUsuarios.csv', 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerows(rows)
+        
         return id_usuario
     
     #modificar usuario, se busca por id y se modifica en biblioUsuarios.csv
-    def modificar_usuario(self, id_usuario, nombre, edad, dni, correo_e, tlfno, dirección):
-        with open('db/biblioUsuarios.csv', 'r') as f:
-            lines = f.readlines()
-        with open('db/biblioUsuarios.csv', 'w') as f:
-            for line in lines:
-                if line.split(',')[0] == id_usuario:
-                    f.write(f'{id_usuario},{nombre},{edad},{dni},{correo_e},{tlfno},{dirección}\n')
+    @classmethod
+    def modificar_usuario(cls, id_usuario, nombre, edad, dni, correo_e, tlfno, direccion):
+        with open('db/biblioUsuarios.csv', 'r', newline='') as f:
+            reader = csv.reader(f)
+            rows = []
+            for row in reader:
+                if row[0] == id_usuario:
+                    rows.append([id_usuario, nombre, edad, dni, correo_e, tlfno, direccion])
                 else:
-                    f.write(line)
-
-        return id_usuario,nombre
+                    rows.append(row)
+        
+        with open('db/biblioUsuarios.csv', 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerows(rows)
+        
+        return id_usuario, nombre
 
     #buscar usuario, se busca por id y se muestra por pantalla
-    def buscar_usuario(self, id_usuario):
-        with open('db/biblioUsuarios.csv', 'r') as f:
-            lines = f.readlines()
-        for line in lines:
-            if line.split(',')[0] == id_usuario:
-                print(line)
-                return True
+    @classmethod
+    def buscar_usuario(cls, id_usuario):
+        with open('db/biblioUsuarios.csv', 'r', newline='') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if row[0] == id_usuario:
+                    print(row)
+                    return True
+        return False
 
     #listar usuarios, se muestra por pantalla todos los usuarios
-    def listar_usuarios(self):
-        with open('db/biblioUsuarios.csv', 'r') as f:
-            lines = f.readlines()
-        for line in lines:
-            print(line)
-    
+    @classmethod
+    def listar_usuarios(cls):
+        with open('db/biblioUsuarios.csv', 'r', newline='') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                print(row)
