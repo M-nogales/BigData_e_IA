@@ -3,7 +3,7 @@
 ## Índice
 - [Estructura de los datos a estudiar](#estructura-de-los-datos-a-estudiar)
 - [Definición tipos de errores](#Definición-de-tipos-de-errores)
-- [Busqueda de errores](#Busqueda-de-errores)
+- [Búsqueda de errores](#Búsqueda-de-errores)
 - [Resultados](#Resultados)
 - [Gráficas con matplotlib](#Gráficas-con-matplotlib)
 
@@ -12,27 +12,27 @@
 | ID Cliente | Nombre | Dirección | Correo Electrónico | Teléfono | Última Actualización (días) | Pedido Válido | Tiempo Acceso (seg) |
 |------------|--------|-----------|---------------------|----------|----------------------------|---------------|---------------------|
 
-tambien podemos usar los metodos de pandas .info() para conocer las columnas y los datos NaN y Null o .head()
+también podemos usar los metodos de pandas .info() para conocer las columnas y los datos NaN y Null o .head()
 
 ## Definición de tipos de errores
 
 ### Exactitud
-La exactitud puede medirse comparando los datos observados con los datos verdaderos o correctos si estos están disponibles.
+La exactitud mide qué tan correctamente los datos representan la realidad o la verdad que intentan reflejar.
 ### Completitud
-La completitud se mide como la proporción de datos presentes en comparación con el total esperado. Calculamos el porcentaje de registros  que tienen todos los campos obligatorios completados.
+La completitud evalúa si los datos están completos y no faltan valores necesarios para un análisis adecuado. La ausencia de datos críticos puede llevar a resultados sesgados o a la imposibilidad de tomar decisiones.
 ### Consistencia
-Para la consistencia o consistencia, se puede utilizar una métrica que compare la cantidad de valores consistentes frente al total de valores.
+La consistencia analiza si los datos son uniformes y coherentes entre diferentes fuentes o sistemas.
 ### Validez
-La conformidad comprueba la validez de los datos, es decir, el formato de estos, se puede medir como la proporción de datos que cumplen con un conjunto de reglas definidas.
+La conformidad comprueba la validez de los datos, es decir, el formato de estos, si se encuentran dentro de un rango específico, se puede medir como la proporción de datos que cumplen con un conjunto de reglas definidas.
 ### Integridad
 La integridad se asegura de que todos los datos estén vinculados a de forma válida. La integridad puede ser medida por la proporción de registros que cumplen con todas las reglas de integridad referencial, foreign keys, documentos embebidos, etc.
 ### Actualización
-La actualización se mide por el tiempo de actualiación de los datos,1 dia,15 dias...
+La actualización garantiza que los datos estén al día y reflejen el estado actual de la realidad que representan.
 ### Accesibilidad
-La accesibilidad se mide por el tiempo promedio de respuesta para acceder a los datos.
+La accesibilidad mide la facilidad con la que los datos pueden ser consultados y utilizados
 
-## Busqueda de errores
-Para iniciar la busqueda de errores lo primero que haremos será crear copias de seguridad de nuestro dataframe original, de forma que podamos usarlos sin preocuparnos de modificarlos
+## Búsqueda de errores
+Para iniciar la búsqueda de errores lo primero que haremos será crear copias de seguridad de nuestro dataframe original, de forma que podamos usarlos sin preocuparnos de modificarlos
 ```
 accuracy = df.copy()
 completeness = df.copy()
@@ -118,9 +118,9 @@ obtenemos los siguientes costes:
 | Errores de actualización            | 479                     | 574,800€          |
 | Errores de accesibilidad            | 819                     | 819,000€          |
 
-## Graficas con matplotlib
+## Gráficas con matplotlib
 
-### Grafica de errores
+### Gráfica de errores
 
 ```
 errors = [
@@ -148,7 +148,7 @@ plt.show()
 ![Gráfica de errores](imgs/quality_errors.png)
 
 
-### Grafica de costes
+### Gráfica de costes
 
 ```
 costs = [
