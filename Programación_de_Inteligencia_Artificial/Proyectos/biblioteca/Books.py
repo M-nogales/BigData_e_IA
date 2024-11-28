@@ -80,13 +80,13 @@ class Book:
                 for row in reader:
                     if row[0] == id_libro:
                         print(row)
-                        print("Libro encontrado correctamente\n")
+                        print("Libro encontrado!\n")
                         return True
-                    else:
-                        print("Libro con id",id_libro," no encontrado\n")
+                    
+            print("Libro con id",id_libro," no encontrado\n")
             return False
-        except:
-            print("Error al buscar un libro")
+        except Exception as e:
+            print("Error al buscar un libro",{e})
     
     @classmethod
     def listar_libros(cls):
@@ -98,8 +98,8 @@ class Book:
                     if row:
                         print(row)
             print("Todos los libros listados correctamente\n")
-        except:
-            print("Error al listar todos los libros")
+        except Exception as e:
+            print("Error al listar todos los libros",{e})
     
 #todo integrar errores borrar
     @classmethod

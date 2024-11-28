@@ -1,6 +1,6 @@
 import csv
-from books import Book
-from users import User
+from Books import Book
+from Users import User
 
 class Loans:
     def __init__(self, id_user, id_book, fecha_inicio, fecha_fin, fecha_devolucion):
@@ -37,6 +37,7 @@ class Loans:
                     return False
                 else:
                     Book.aumentar_disminuir_cantidad(id_book,1,"disminuir")
+                    print("Prestamo añadido correctamente\n")
                 return id_prestamo
             else:
                 return False
@@ -88,7 +89,8 @@ class Loans:
                 reader = csv.reader(f)
                 prestamos = list(reader)
                 for prestamo in prestamos:
-                    print(prestamo)
+                    if prestamo:
+                        print(prestamo)
             print("Todos los prestamos listados correctamente\n")
         except:
             print("Error al listar todos los prestamos")

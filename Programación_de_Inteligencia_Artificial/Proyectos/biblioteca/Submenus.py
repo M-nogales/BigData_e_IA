@@ -1,19 +1,19 @@
 from validations import *
-from users import User
-from books import Book
-from loans import Loans
+from Users import User
+from Books import Book
+from Loans import Loans
 
 def opciones_usuarios():
     
     while True:
-        print("Menú de Usuarios:")
+        print("\nMenú de Usuarios:")
         print("1 Añadir Usuario")
         print("2 Borrar Usuario")
         print("3 Modificar Usuario")
         print("4 Buscar Usuario")
         print("5 Listar Usuarios")
-        print("6 Salir")
-        opcion = input("Introduce una opción: ")
+        print("6 Salir\n")
+        opcion = input("Introduce una opción: \n")
 
         if opcion == "1":
             while True:
@@ -95,7 +95,7 @@ def opciones_usuarios():
         elif opcion == "4":
 
             while True:
-                id_usuario = input("ID del usuario a modificar: ")
+                id_usuario = input("ID del usuario a buscar: ")
                 if id_usuario.isdigit() and int(id_usuario) > 0:
                     break
 

@@ -26,36 +26,36 @@ class User:
     def añadir_usuario(cls, nombre, edad, dni, correo_e, tlfno, direccion):
         try:
             id_usuario = cls.crear_id_usuario()
-            with open('db/biblioUsuarios.csv', 'a', newline='') as f:
+            with open('db/biblioUsuarios.csv', 'a', newline='',encoding='utf-8') as f:
                 line = [id_usuario, nombre, edad, dni, correo_e, tlfno, direccion]
                 writer = csv.writer(f)
                 writer.writerow(line)
             print("Usuario añadido exitosamente\n")
-        except:
-            print("Error al añadir un usuario")
+        except Exception as e:
+            print("Error al añadir un usuario",{e})
 
     #borrar usuario, se busca por id y se borra de biblioUsuarios.csv
     @classmethod
     def borrar_usuario(cls, id_usuario):
         try:
-            with open('db/biblioUsuarios.csv', 'r', newline='') as f:
+            with open('db/biblioUsuarios.csv', 'r', newline='',encoding='utf-8') as f:
                 reader = csv.reader(f)
                 rows = [row for row in reader if row and row[0] != id_usuario]
             
-            with open('db/biblioUsuarios.csv', 'w', newline='') as f:
+            with open('db/biblioUsuarios.csv', 'w', newline='',encoding='utf-8') as f:
                 writer = csv.writer(f)
                 writer.writerows(rows)
             
             print("Usuario",id_usuario,"eliminado correctamente\n")
             return id_usuario
-        except:
-            print("Error al eliminar un usuario")
+        except Exception as e:
+            print("Error al eliminar un usuario",{e})
     
     #modificar usuario, se busca por id y se modifica en biblioUsuarios.csv
     @classmethod
     def modificar_usuario(cls, id_usuario, nombre, edad, dni, correo_e, tlfno, direccion):
         try:
-            with open('db/biblioUsuarios.csv', 'r', newline='') as f:
+            with open('db/biblioUsuarios.csv', 'r', newline='',encoding='utf-8') as f:
                 reader = csv.reader(f)
                 rows = []
                 for row in reader:
@@ -64,38 +64,38 @@ class User:
                     else:
                         rows.append(row)
 
-            with open('db/biblioUsuarios.csv', 'w', newline='') as f:
+            with open('db/biblioUsuarios.csv', 'w', newline='',encoding='utf-8') as f:
                 writer = csv.writer(f)
                 writer.writerows(rows)
             print("Usuario modificado correctamente\n")
             return id_usuario, nombre
-        except:
-            print("Error al actualizar un usuario")
+        except Exception as e:
+            print("Error al actualizar un usuario",{e})
 
     #buscar usuario, se busca por id y se muestra por pantalla
     @classmethod
     def buscar_usuario(cls, id_usuario):
         try:
-            with open('db/biblioUsuarios.csv', 'r', newline='') as f:
+            with open('db/biblioUsuarios.csv', 'r', newline='',encoding='utf-8') as f:
                 reader = csv.reader(f)
                 for row in reader:
                     if row[0] == id_usuario:
                         print(row)
+                        print("Usuario encontrado!\n")
                         return True
-                    else:
-                        print("Usuario",id_usuario,"no encontrado\n")
+            print("Usuario",id_usuario,"no encontrado\n")
             return False
-        except:
-            print("Error al buscar un usuario")
+        except Exception as e:
+            print("Error al buscar un usuario",{e})
 
     #listar usuarios, se muestra por pantalla todos los usuarios
     @classmethod
     def listar_usuarios(cls):
         try:
-            with open('db/biblioUsuarios.csv', 'r', newline='') as f:
+            with open('db/biblioUsuarios.csv', 'r', newline='',encoding='utf-8') as f:
                 reader = csv.reader(f)
                 for row in reader:
                     print(row)
             print("Todos los usuarios listados!\n")
-        except:
-            print("Error al listar todos los usuarios")
+        except Exception as e:
+            print("Error al listar todos los usuarios",{e})
