@@ -303,23 +303,164 @@ db.comments.find({ post: ObjectId("674996f5eb04addc01260af4") });
 
 //!8
 //1
+db.games.aggregate([
+  {
+    $unwind: "$genre"
+  },
+  {
+    $group: {
+      _id: "$genre",
+      averageRating: { $avg: "$rating" },
+      totalGames: { $sum: 1 }
+    }
+  }
+])
 //2
+db.games.aggregate([
+  {
+    $unwind: "$genre"
+  },
+  {
+    $group: {
+      _id: "$genre",
+      mostRecentGame: { $max: "$releaseYear" }
+    }
+  }
+])
 //3
-//4
+db.games.aggregate([
+  {
+    $unwind: "$genre"
+  },
+  {
+    $group: {
+      _id: "$genre",
+      avgRating: { $avg: "$rating" }
+    }
+  },
+  {
+    $match:{
+      avgRating: {$gt:9.0}
+    }
+  }
+])
+//4 Supón que cada videojuego se vende 1,000 veces. Calcula el ingreso total por plataforma.
+//añadir precios a los juegos add_price.py
+db.games.aggregate([
+  {
+    $addFields: {
+      revenue: { $multiply: [1000, "$price"] }
+    }
+  },
+  {
+    $group: {
+      _id: "$platform",
+      totalRevenue: { $sum: "$revenue" }
+    }
+  }
+])
+/*
+db.games.aggregate([
+  {
+    $unwind: "$platform"
+  },
+  {
+    $addFields: {
+      revenue: { $multiply: [1000, "$price"] }
+    }
+  },
+  {
+    $group: {
+      _id: "$platform",
+      totalRevenue: { $sum: "$revenue" }
+    }
+  }
+])
+*/
+
 //5
-//6
+db.games.aggregate([
+  // Step 1: Unwind platforms array
+  { $unwind: "$platform" },
+
+  // Step 2: Calculate revenue for each platform
+  {
+    $group: {
+      _id: "$platform", // Group by platform
+      totalRevenue: { $sum: { $multiply: ["$price", 1000] } } // Sum up revenues for each platform
+    }
+  },
+
+  // Step 3: Determine the maximum revenue
+  {
+    $group: {
+      _id: null,
+      maxRevenue: { $max: "$totalRevenue" },
+      platforms: {
+        $push: {
+          platform: "$_id",
+          revenue: "$totalRevenue"
+        }
+      }
+    }
+  },
+
+  // Step 4: Filter platforms with maximum revenue
+  {
+    $project: {
+      platformsWithMaxRevenue: {
+        $filter: {
+          input: "$platforms",
+          as: "platform",
+          cond: { $eq: ["$$platform.revenue", "$maxRevenue"] }
+        }
+      }
+    }
+  }
+]);
+
+//6//?
+
 //7
 //8
 //9
 
 //!9
 //1
+// hay que eliminar el indice de texto anterior para añadir este
+db.games.createIndex({ title: "text", releaseYear: -1 })
 //2
-//3
-//4
-//5
-//6
+db.games.find({ $text: { $search: "Legend" } }).sort({ releaseYear: -1 }).explain("executionStats")
+//db.games.explain().find({ $text: { $search: "Legend" } }).sort({ releaseYear: -1 })
+//3,4,5,6
+//*Si ves un IXSCAN en lugar de un COLLSCAN, significa que el índice está siendo utilizado
+//*totalKeysExamined, totalDocsExamined, y executionTimeMillis indican cuántas claves y documentos se examinaron y cuánto tiempo tomó la consulta.
+db.games.dropIndex( "title_text_releaseYear_-1")
+
+db.videojuegos.find({ $text: { $search: "Overwatch" } }).sort({ releaseYear: -1 }).explain("executionStats")
+
+/**
+    executionTimeMillis: o,
+    totalKeysExamined: 0,
+    totalDocsExamined: 11,
+    nReturned: 1,
+    executionTimeMillisEstimate: 0,
+ */
+
+db.games.createIndex({ title: "text", releaseYear: -1 });
+
+db.games.find({ $text: { $search: "Overwatch" } }).sort({ releaseYear: -1 }).explain("executionStats")
+
+/**
+    executionTimeMillis: 0,
+    totalKeysExamined: 1,
+    totalDocsExamined: 1,
+    nReturned: 1,
+    executionTimeMillisEstimate: 0,
+ */
+
 //7
+db.games.find({ rating: { $gt: 9.0 } }).explain("executionStats")
 //8
 //9
 
@@ -349,3 +490,5 @@ db.comments.find({ post: ObjectId("674996f5eb04addc01260af4") });
 //4
 //5
 //6
+
+//! cambiar games por series
