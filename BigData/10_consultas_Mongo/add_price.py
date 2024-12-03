@@ -15,10 +15,20 @@ collection = db.games
 def get_random_price():
     return random.randint(10, 100)
 
-# Actualizar todos los documentos para añadir el campo precio
-result = collection.update_many({}, { '$set': { 'price': get_random_price() } })
+# Función para actualizar cada juego con un precio único
+def update_game_price():
+    # Buscar todos los juegos
+    games = collection.find()
 
-print(f'{result.modified_count} documentos actualizados')
+    for game in games:
+        price = get_random_price()
+        # Actualizar el documento de cada juego con un precio diferente
+        collection.update_one({'_id': game['_id']}, {'$set': {'price': price}})
+
+# Llamar a la función para actualizar los precios
+update_game_price()
+
+print("Precios actualizados para todos los juegos.")
 
 # Cerrar la conexión
 client.close()

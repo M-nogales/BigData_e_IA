@@ -277,11 +277,7 @@ Inserta los siguientes documentos en la colección comments:
 
 }
 
-
-
 Donde post_obj_id es el ObjectId del documento de publicación “Solves a coding challenge ".
-
-
 
 {
 
@@ -295,8 +291,6 @@ Donde post_obj_id es el ObjectId del documento de publicación “Solves a codin
 
 Donde post_obj_id es el ObjectId del documento de publicación “Discovers a software vulnerability ".
 
-
-
 {
 
  username: "SuperCoder123",
@@ -309,10 +303,6 @@ Donde post_obj_id es el ObjectId del documento de publicación “Discovers a so
 
 Donde post_obj_id es el ObjectId del documento de publicación “Shares coding tutorials".
 
-
-
-
-
 {
 
  username: "TechGuru99",
@@ -324,8 +314,6 @@ Donde post_obj_id es el ObjectId del documento de publicación “Shares coding 
 }
 
 Donde post_obj_id es el ObjectId del documento de publicación “Solves a coding challenge ".
-
-
 
 {
 

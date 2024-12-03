@@ -118,6 +118,18 @@ db.games.find({"rating":{$gte:9}}).sort({"releaseYear":-1})
 db.games.find({$and:[{"rating":{$gt:8.7}}, {"genre":"Adventure"}]})
 //5 Encuentra el videojuego con el título más largo en la colección.
 //todo
+db.games.aggregate([
+  {
+    $project: {
+      title: 1,
+      titleLength: { $strLenCP: "$title" }
+    }
+  },
+  {
+    $sort: { titleLength: -1 }
+  }
+])
+
 //6
 db.games.find({"releaseYear":{$gte:2017}})
 //7
@@ -127,7 +139,19 @@ db.games.find({$and:[{"rating":{$gte:8.5}}, {"releaseYear":{$gt:2015}} ]})
 //9
 db.games.find({$and:[{"genre":"FPS"}, {"platform":"PC"}]})
 //10
-//todo
+db.games.aggregate([
+    {
+      $group:{
+        _id:"$title",
+        minPlatforms:{$min:{$size:"$platform"}}
+      },
+    },
+    {
+      $sort:{"minPlatforms":1}
+    }
+  
+])
+
 //11
 db.games.find({$and:[{"genre":"MOBA"}, {"rating":{$gte:8.5}}]})
 //12
@@ -138,9 +162,9 @@ db.games.updateOne({"title":"The Witcher 3: Wild Hunt"},{$set:{"genre":["Action"
 db.games.find({$and:[{"platform":{$not:{$size:1}}}, {"rating":{$gte:9}}]})
 //14
 db.games.find({"title":/New/})
-//15Encuentra el videojuego con el rating más bajo y actualiza su calificación añadiendo 0.5 puntos.
-//todo
-
+//15
+//db.games.find().sort({ rating: 1 })
+db.games.updateOne({ rating: {$lte:8.2} }, { $inc: { rating: 0.5 } })
 //! Problema 3
 //1
 db.games.updateOne({"title":"Minecraft"},{$push:{"platform":"Nintendo Switch"}})
@@ -215,18 +239,6 @@ db.users.insertMany([{
   }
 }])
 //
-db.users.insertMany([{
-  username: "SuperCoder123",
-  first_name: "Super",
-  last_name: "Coder"
-},
-{
-  username: "TechGuru99",
-  full_name: {
-    first: "Tech",
-    last: "Guru"
-  }
-}])
 db.posts.insertMany([{
   username: "SuperCoder123",
   title: "Solves a coding challenge",
@@ -254,27 +266,27 @@ db.comments.insertMany([
   {
     username: "SuperCoder123",
     comment: "Hope you got a good deal!",
-    post: ObjectId("674996f5eb04addc01260af3")
+    post: ObjectId("674f2946e965c82c1f64d870")
   },
   {
     username: "SuperCoder123",
     comment: "What's mine is yours!",
-    post: ObjectId("674996f5eb04addc01260af5")
+    post: ObjectId("674f2946e965c82c1f64d872")
   },
   {
     username: "SuperCoder123",
     comment: "Don't violate the licensing agreement!",
-    post: ObjectId("674996f5eb04addc01260af4")
+    post: ObjectId("674f2946e965c82c1f64d871")
   },
   {
     username: "TechGuru99",
     comment: "It still isn't clean",
-    post: ObjectId("674996f5eb04addc01260af3")
+    post: ObjectId("674f2946e965c82c1f64d870")
   },
   {
     username: "TechGuru99",
     comment: "Denied your PR because I found a hack",
-    post: ObjectId("674996f5eb04addc01260af4")
+    post: ObjectId("674f2946e965c82c1f64d871")
   }
 ]);
 //1
@@ -293,15 +305,70 @@ db.comments.find({ username: "SuperCoder123" })
 db.comments.find({ username: "TechGuru99" })
 //8
 db.users.find({ title: "Shares coding tutorials" }, { _id: 1 });
-db.comments.find({ post: ObjectId("674996f5eb04addc01260af4") });
+db.comments.find({ post: ObjectId("674f2946e965c82c1f64d871") });
 
 //! 7
 //1
+db.games.find({
+  $or: [
+    { title: /Legend/ },
+    { title: /e$/ }
+  ]
+})
+.sort({ releaseYear: -1 })
 //2
+// https://www.mongodb.com/docs/manual/reference/operator/query/expr/
+db.games.aggregate([
+  { 
+    $match: { 
+      $expr: { 
+        $gt: [{ $size: "$platform" }, 3]  // Más de tres plataformas
+      }
+    }
+  },
+  { 
+    $project: { 
+      title: 1, 
+      numGenres: { $size: "$genre" }  // Contamos cuántos géneros tiene el videojuego
+    }
+  },
+  { 
+    $sort: { numGenres: -1 }  // Ordenamos por el número de géneros en orden descendente
+  }
+])
+
 //3
+//https://www.mongodb.com/docs/manual/reference/operator/query/all/
+db.games.find({
+  platform: { $size: 2, $all: ['PlayStation', 'PC'] }
+})
+.sort({ rating: -1 })
+// no da resultado, solo existe con las plataformas ['Nintendo Switch', 'Wii U']
 //4
+db.games.aggregate([
+  {
+    $match: { 
+      releaseYear: { $gt: 2015 },  // Videojuegos lanzados después de 2015
+      genre: { $in: ['Action', 'RPG'] }  // Género 'Action' o 'RPG'
+    }
+  },
+  {
+    $group: { 
+      _id: "$title",  // Agrupamos por el título del videojuego
+      avgRating: { $avg: "$rating" }  // Calculamos el promedio de calificación
+    }
+  },
+  //db.games
+  {
+    $group: {
+      games: { $push: { title: "$_id", avgRating: "$avgRating" } },  // Guardamos los títulos y promedios
+      totalCount: { $sum: 1 }  // Calculamos el total de videojuegos
+    }
+  }
+])
 
 //!8
+
 //1
 db.games.aggregate([
   {
@@ -315,6 +382,7 @@ db.games.aggregate([
     }
   }
 ])
+
 //2
 db.games.aggregate([
   {
@@ -327,6 +395,7 @@ db.games.aggregate([
     }
   }
 ])
+
 //3
 db.games.aggregate([
   {
@@ -344,86 +413,129 @@ db.games.aggregate([
     }
   }
 ])
+
 //4 Supón que cada videojuego se vende 1,000 veces. Calcula el ingreso total por plataforma.
 //añadir precios a los juegos add_price.py
-db.games.aggregate([
-  {
-    $addFields: {
-      revenue: { $multiply: [1000, "$price"] }
-    }
-  },
-  {
-    $group: {
-      _id: "$platform",
-      totalRevenue: { $sum: "$revenue" }
-    }
-  }
-])
-/*
 db.games.aggregate([
   {
     $unwind: "$platform"
   },
   {
-    $addFields: {
-      revenue: { $multiply: [1000, "$price"] }
+    $group: {
+      _id: "$platform",
+      totalRevenue: { $sum: {$multiply: [1000, "$price"]} }
     }
+  },
+  {
+    $sort: { totalRevenue: -1 }
+  }
+])
+
+//5
+db.games.aggregate([
+  {
+    $unwind: "$platform"
   },
   {
     $group: {
       _id: "$platform",
-      totalRevenue: { $sum: "$revenue" }
+      totalRevenue: { $sum: {$multiply: [1000, "$price"]} }
+    }
+  },
+  {
+    $sort: { totalRevenue: -1 }
+  }
+])
+
+//6 Calcula también el promedio de ingresos por plataforma.
+db.games.aggregate([
+  {
+    $unwind: "$platform"
+  },
+  {
+    $group: {
+      _id: "$platform",
+      totalRevenue: { $sum: {$multiply: [1000, "$price"]} },
+      avgRevenue: { $avg: {$multiply: [1000, "$price"]} }
+    }
+  },
+  {
+    $sort: { totalRevenue: -1 }
+  }
+])
+//todo users colection
+//7
+//add_purchased_games.py
+db.users.aggregate([
+  {
+    $lookup: {
+      from: "games", // Colección de juegos
+      localField: "purchased_games._id", // Referencias de los juegos comprados
+      foreignField: "_id", // Campo correspondiente en la colección de juegos
+      as: "game_details" // Nombre del campo donde se guardarán los detalles de los juegos
+    }
+  },
+  {
+    $unwind: "$game_details" // Descompone el array `game_details` para trabajar con cada juego
+  },
+  {
+    $match: {
+      "game_details.genre": "RPG" // Filtra juegos cuyo género es 'RPG'
+    }
+  },
+  {
+    $project: {
+      username: 1,
+      "game_details.title": 1
     }
   }
 ])
-*/
-
-//5
-db.games.aggregate([
-  // Step 1: Unwind platforms array
-  { $unwind: "$platform" },
-
-  // Step 2: Calculate revenue for each platform
+//8
+db.users.aggregate([
   {
-    $group: {
-      _id: "$platform", // Group by platform
-      totalRevenue: { $sum: { $multiply: ["$price", 1000] } } // Sum up revenues for each platform
+    $lookup: {
+      from: "games", // Colección de juegos
+      localField: "purchased_games._id", // Referencias de los juegos comprados
+      foreignField: "_id", // Campo correspondiente en la colección de juegos
+      as: "game_details" // Nombre del campo donde se guardarán los detalles de los juegos
     }
   },
-
-  // Step 3: Determine the maximum revenue
   {
-    $group: {
-      _id: null,
-      maxRevenue: { $max: "$totalRevenue" },
-      platforms: {
-        $push: {
-          platform: "$_id",
-          revenue: "$totalRevenue"
-        }
-      }
+    $unwind: "$game_details" // Descompone el array `game_details` para trabajar con cada juego
+  },
+  {
+    $match: {
+      "game_details.rating": { $gt: 9.0 } // Filtra juegos con calificación mayor a 9.0
     }
   },
-
-  // Step 4: Filter platforms with maximum revenue
   {
     $project: {
-      platformsWithMaxRevenue: {
-        $filter: {
-          input: "$platforms",
-          as: "platform",
-          cond: { $eq: ["$$platform.revenue", "$maxRevenue"] }
-        }
-      }
+      username: 1,
+      "game_details.title": 1,
+      "game_details.rating": 1
     }
   }
-]);
-
-//6//?
-
-//7
-//8
+])
 //9
+db.users.aggregate([
+  {
+    $lookup: {
+      from: "games", // Colección de juegos
+      localField: "purchased_games._id", // Referencias de los juegos comprados
+      foreignField: "_id", // Campo correspondiente en la colección de juegos
+      as: "game_details" // Nombre del campo donde se guardarán los detalles de los juegos
+    }
+  },
+  {
+    $unwind: "$game_details" // Descompone el array `game_details` para trabajar con cada juego
+  },
+  {
+    $project: {
+      username: 1,
+      "game_details.title": 1
+    }
+  }
+])
 
 //!9
 //1
@@ -459,26 +571,240 @@ db.games.find({ $text: { $search: "Overwatch" } }).sort({ releaseYear: -1 }).exp
     executionTimeMillisEstimate: 0,
  */
 
+
 //7
-db.games.find({ rating: { $gt: 9.0 } }).explain("executionStats")
+db.games.createIndex({ rating: 1 }, { partialFilterExpression: { rating: { $gt: 9.0 } } })
 //8
+db.games.find({ rating: { $gt: 9.0 } }).explain("executionStats")
+/*
+    executionTimeMillis: 2,
+    totalKeysExamined: 4,
+    totalDocsExamined: 4,
+    nReturned: 4,
+    executionTimeMillisEstimate: 0,
+*/
 //9
+// usamos hint para forzar el uso del indice parcial, si no lo usamos, se usará el indice de genre y ratings
+db.games.find({ genre: "Adventure" }).hint("rating_1").explain("executionStats")
 
 //!10
 //1
+db.users.updateOne(
+  { "_id": ObjectId("674dedec961b46259ed9a9f8") },
+  { 
+    $push: { 
+      "purchased_games": { "_id": ObjectId("67476f5a31510be117cf3e7a") }
+    }
+  }
+)
 //2
+db.users.find({
+  "purchased_games": { $ne: [] } // Filtra aquellos usuarios que tienen juegos en su historial de compras
+})
 //3
-//4
+db.users.updateOne(
+  { "_id": ObjectId("674dedec961b46259ed9a9f8") },
+  { 
+    $push: { 
+      "purchased_games": { "_id": ObjectId("67476f5a31510be117cf3e86") }
+    }
+  }
+)
+//4 Inserta más comentarios relacionados con los posts de los usuarios.
+db.comments.insertMany([
+  {
+    "username": "TechGuru99", 
+    "comment": "This is an impressive optimization!",
+    "post": ObjectId("674f2946e965c82c1f64d870")
+  },
+  {
+    "username": "SuperCoder123", 
+    "comment": "Can't wait to see this tech in action!",
+    "post": ObjectId("674f2946e965c82c1f64d873") // Referencia al post de TechGuru99
+  }
+])
+  
 //5
+db.comments.find({ username: "SuperCoder123" })
 //6
-//7
-//8
-//9
+db.comments.aggregate([
+  {
+    $group: {
+      _id: "$username",
+      totalComments: { $sum: 1 }
+    }
+  }
+])
+//7 Encuentra todas las posts con sus respectivos comentarios.
+db.posts.aggregate([
+  {
+    $lookup: {
+      from: "comments",
+      localField: "_id",
+      foreignField: "post",
+      as: "comments"
+    }
+  }
+])
+//8 Encuentra las publicaciones con más de dos comentarios.
+db.posts.aggregate([
+  {
+    $lookup: {
+      from: "comments",
+      localField: "_id",
+      foreignField: "post",
+      as: "comments"
+    }
+  },
+  {
+    $match: {
+      $expr: {
+        $gt: [{ $size: "$comments" }, 2]
+      }
+    }
+  }
+])
+//9 Ordena las publicaciones por el número de comentarios de forma descendente.
+// puesto que sort no puede tener $size, creamos un campo con el tamaño de los comentarios y lo ordenamos
+// db.posts.aggregate([
+//   {
+//     $lookup: {
+//       from: "comments",
+//       localField: "_id",
+//       foreignField: "post",
+//       as: "comments"
+//     }
+//   },
+//   {
+//     $sort: {
+//       $size: "$comments"
+//     }
+//   }
+// ])
+db.posts.aggregate([
+  {
+    $lookup: {
+      from: "comments", // Colección de comentarios
+      localField: "_id", // Campo en `posts` que se compara
+      foreignField: "post", // Campo en `comments` que se compara
+      as: "comments" // Array que contendrá todos los comentarios relacionados
+    }
+  },
+  {
+    $addFields: {
+      num_comments: { $size: "$comments" } // Cuenta el número de comentarios y lo agrega como nuevo campo
+    }
+  },
+  {
+    $sort: {
+      num_comments: -1 // Ordena por el número de comentarios de forma descendente
+    }
+  },
+  {
+    $project: {
+      title: 1,
+      num_comments: 1
+    }
+  }
+])
+
 
 //!11
 //1
+db.games.aggregate([
+  {
+    $unwind: "$genre" // Descompone el array `genre` para que podamos agrupar por cada género
+  },
+  {
+    $group: {
+      _id: "$genre", // Agrupar por género
+      games: {
+        $push: {
+          id: "$_id",
+          title: "$title",
+          genre: "$genre",
+          platform: "$platform",
+          releaseYear: "$releaseYear",
+          rating: "$rating",
+          price: "$price"
+        }
+      }
+    }
+  },
+  {
+    $merge: {
+      into: "genre_analysis", // Nombre de la nueva colección
+      whenMatched: "merge", // Si ya existe el documento, se fusiona
+      whenNotMatched: "insert" // Si no existe, se inserta un nuevo documento
+    }
+  }
+])
+
 //2
-//3
+db.games.aggregate([
+  {
+    $unwind: "$genre" // Descompone el array `genre` para que podamos agrupar por cada género
+  },
+  {
+    $group: {
+      _id: "$genre", // Agrupa por género
+      games: {
+        $push: {
+          id: "$_id", // Incluye el _id del juego
+          title: "$title", // Incluye el título del juego
+          genre: "$genre", // Incluye el género
+          platform: "$platform", // Incluye la plataforma del juego
+          releaseYear: "$releaseYear", // Incluye el año de lanzamiento (opcional)
+          rating: "$rating", // Incluye la calificación (opcional)
+          price: "$price" // Incluye el precio (opcional)
+        }
+      },
+      avg_platforms: { $avg: { $size: "$platform" } } // Calcula el promedio de plataformas por juego
+    }
+  },
+  {
+    $merge: {
+      into: "genre_analysis", // Nombre de la nueva colección
+      whenMatched: "merge", // Si ya existe el documento, se fusiona
+      whenNotMatched: "insert" // Si no existe, se inserta un nuevo documento
+    }
+  }
+])
+
+//3 //? sobre las consultas anteriores?
+// el genre es action
+db.games.aggregate([
+  {
+    $unwind: "$genre" // Descompone el array `genre` para poder agrupar por cada género
+  },
+  {
+    $group: {
+      _id: "$genre", // Agrupa por género
+      games: { $push: "$title" }, // Crea un array con los títulos de los videojuegos de cada género
+      count: { $sum: 1 } // Cuenta cuántos videojuegos hay en cada género
+    }
+  },
+  {
+    $match: {
+      count: { $gt: 5 } // Filtra los géneros que tienen más de 5 videojuegos
+    }
+  },
+  {
+    $project: {
+      _id: 1, // Género
+      games: 1, // Títulos de los juegos
+      count: 1 // Número de juegos en ese género
+    }
+  },
+  {
+    $merge: {
+      into: "genre_analysis", // Nombre de la nueva colección donde se guardarán los resultados
+      whenMatched: "merge", // Si ya existe un documento con el mismo género, se fusiona
+      whenNotMatched: "insert" // Si no existe, se inserta un nuevo documento
+    }
+  }
+])
+
 //4
 //5
 //6
@@ -490,5 +816,3 @@ db.games.find({ rating: { $gt: 9.0 } }).explain("executionStats")
 //4
 //5
 //6
-
-//! cambiar games por series
