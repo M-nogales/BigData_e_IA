@@ -329,14 +329,14 @@ Donde post_obj_id es el ObjectId del documento de publicación “Shares coding 
 
 ```
 
-1.    Encuentra todos los usuarios.
-2.    Encuentra todas las publicaciones.
-3.    Encuentra todas las publicaciones escritas por "SuperCoder123".
-4.    Encuentra todas las publicaciones escritas por "TechGuru99".
-5.    Encuentra todos los comentarios.
-6.    Encuentra todos los comentarios escritos por "SuperCoder123".
-7.    Encuentra todos los comentarios escritos por "TechGuru99".
-8.    Encuentra todos los comentarios pertenecientes a la publicación “Shares coding tutorials"
+1. Encuentra todos los usuarios.
+2. Encuentra todas las publicaciones.
+3. Encuentra todas las publicaciones escritas por "SuperCoder123".
+4. Encuentra todas las publicaciones escritas por "TechGuru99".
+5. Encuentra todos los comentarios.
+6. Encuentra todos los comentarios escritos por "SuperCoder123".
+7. Encuentra todos los comentarios escritos por "TechGuru99".
+8. Encuentra todos los comentarios pertenecientes a la publicación “Shares coding tutorials"
 
 # Problema 7: Consultas avanzadas
 
