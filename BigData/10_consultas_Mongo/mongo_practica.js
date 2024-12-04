@@ -242,7 +242,31 @@ db.games.updateMany(
 //7. Elimina todos los videojuegos lanzados antes de 2010.
 db.games.deleteMany({ releaseYear: { $lt: 2010 } });
 
-//8 //todo 8. Elimina el videojuego con el menor número de plataformas.
+//8. Elimina el videojuego con el menor número de plataformas.
+//Encontrar el videojuego en concreto
+db.games.aggregate([
+  {
+      $addFields: { platformCount: { $size: "$platform" } } // Calcula el tamaño del array platform
+  },
+  {
+      $sort: { platformCount: 1 }
+  },
+  {
+      $limit: 1
+  },
+  {
+      $merge: {
+          into: "games_delete", 
+          whenMatched: "merge",
+          whenNotMatched: "insert"
+      }
+  }
+]);
+
+// Después, elimina el videojuego identificado
+db.games.deleteOne(
+  { _id: { $in: db.games_delete.distinct("_id") } }
+);
 
 //! Problema 5
 
