@@ -890,7 +890,7 @@ db.games.aggregate([
     }
   }
 ])
-
+//!los siguientes ejercicios de este problema se han de realizar en el terminal de docker que ejecute mongo, los .json se en este
 //4. Exporta la colección `users` en formato JSON.
 // mongoexport -u=root -p=example --authenticationDatabase=admin --host=localhost --port=27017 --db=VideogamesDB --collection=users --out=users.json --jsonArray
 
