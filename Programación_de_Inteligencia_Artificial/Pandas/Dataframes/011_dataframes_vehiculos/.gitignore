@@ -1,0 +1,7 @@
+data/filtered_vehicles.csv
+data/sorted_by_price.csv
+data/sorted_by_year.csv
+data/stats.csv
+data/transformed_us_cars.csv
+data/vehicles_with_depreciation.csv
+data/us_cars.csv
