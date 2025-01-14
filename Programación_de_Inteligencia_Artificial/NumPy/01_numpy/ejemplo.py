@@ -1,7 +1,5 @@
 import numpy as np
 
-
-
 # Crear un vector con valores dentro del rango 10-49
 print("Crear un vector con valores dentro del rango 10-49")
 array = np.arange(10, 50)
@@ -80,6 +78,10 @@ print(array)
 
 # Crear array de tamaño 5x5 con los siguientes valores; [0,1,2,3,4]
 print("Crear array de tamaño 5x5 con los siguientes valores; [0,1,2,3,4]")
+array = np.array([0, 1, 2, 3, 4], ndmin=5, dtype=int)
+print("result según clase")
+print(array)
+print("result según investigación")
 array = np.tile([0, 1, 2, 3, 4], (5, 1))
 print(array)
 
