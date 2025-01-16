@@ -12,7 +12,7 @@ services:
     entrypoint: [ "/usr/bin/mongos", "--port", "27017", "--configdb", "rs-config-server/configserver1:27017", "--bind_ip_all" ]
 
   configserver1:
-    container_name: configserver1 
+    container_name: configserver1
     image: mongo
     volumes:
       - ./configserver-init.js:/scripts/configserver-init.js

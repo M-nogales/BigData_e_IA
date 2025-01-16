@@ -1,0 +1,2 @@
+https://medium.com/@ravikushwaha18.rk/setting-up-a-mongodb-replica-set-with-docker-compose-62ece5c295a1
+https://medium.com/workleap/the-only-local-mongodb-replica-set-with-docker-compose-guide-youll-ever-need-2f0b74dd8384
