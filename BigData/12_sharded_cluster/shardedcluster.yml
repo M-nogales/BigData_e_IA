@@ -24,7 +24,8 @@ services:
     links:
       - mongo-shard1a
       - mongo-shard2a
-
+      
+  #replSet.1
   mongo-shard1a:
     container_name: mongo-shard1a
     image: mongo
@@ -35,7 +36,7 @@ services:
     ports:
       - 27119:27017
     entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--shardsvr", "--bind_ip_all", "--replSet", "shard1" ]
-
+  #replSet.2
   mongo-shard1b:
     container_name: mongo-shard1b
     image: mongo
@@ -45,6 +46,7 @@ services:
       - 27120:27017
     entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--shardsvr", "--bind_ip_all", "--replSet", "shard1" ]
 
+  #replSet2.1
   mongo-shard2a:
     container_name: mongo-shard2a
     image: mongo
@@ -55,7 +57,7 @@ services:
     ports:
       - 27121:27017
     entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--shardsvr", "--bind_ip_all", "--replSet", "shard2" ]
-
+  #replSet2.2
   mongo-shard2b:
     container_name: mongo-shard2b
     image: mongo
