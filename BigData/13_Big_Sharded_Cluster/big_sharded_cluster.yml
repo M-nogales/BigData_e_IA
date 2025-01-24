@@ -13,7 +13,7 @@ services:
      - big_sharded_cluster
     ports:
      - 27117:27017
-    entrypoint: [ "usr/bin/mongos", "--port", "27017", "--configdb", "rs-config-server/configsvr1:27018,configsvr2:27018,configsvr3:27018", "--bind_ip_all"]
+    entrypoint: [ "/usr/bin/mongos", "--port", "27017", "--configdb", "rs-config-server/configsvr1:27020,configsvr2:27020,configsvr3:27020", "--bind_ip_all"]
 
   mongos2:
     container_name: mongos2
@@ -22,7 +22,7 @@ services:
       - big_sharded_cluster
     ports:
       - 27118:27017
-    entrypoint: [ "usr/bin/mongos", "--port", "27017", "--configdb", "rs-config-server/configsvr1:27018,configsvr2:27018,configsvr3:27018", "--bind_ip_all"]
+    entrypoint: [ "/usr/bin/mongos", "--port", "27017", "--configdb", "rs-config-server/configsvr1:27020,configsvr2:27020,configsvr3:27020", "--bind_ip_all"]
 
   mongos3:
     container_name: mongos3
@@ -31,7 +31,7 @@ services:
       - big_sharded_cluster
     ports:
       - 27119:27017
-    entrypoint: [ "usr/bin/mongos", "--port", "27017", "--configdb", "rs-config-server/configsvr1:27018,configsvr2:27018,configsvr3:27018", "--bind_ip_all"]
+    entrypoint: [ "/usr/bin/mongos", "--port", "27017", "--configdb", "rs-config-server/configsvr1:27020,configsvr2:27020,configsvr3:27020", "--bind_ip_all"]
 
   #config 1.1
   configsvr1:
@@ -44,7 +44,7 @@ services:
      - big_sharded_cluster
     ports:
       - 27121:27020
-    entrypoint: [ "usr/bin/mongod", "--port", "27020", "--configsvr", "--replSet", "rs-config-server", "--bind_ip_all"]
+    entrypoint: [ "/usr/bin/mongod", "--port", "27020", "--configsvr", "--replSet", "rs-config-server", "--bind_ip_all"]
  
   configsvr2:
     container_name: configsvr2
@@ -55,7 +55,7 @@ services:
      - big_sharded_cluster
     ports:
       - 27122:27020
-    entrypoint: [ "usr/bin/mongod", "--port", "27020", "--configsvr", "--replSet", "rs-config-server", "--bind_ip_all"]
+    entrypoint: [ "/usr/bin/mongod", "--port", "27020", "--configsvr", "--replSet", "rs-config-server", "--bind_ip_all"]
   
   configsvr3:
     container_name: configsvr3
@@ -66,7 +66,7 @@ services:
      - big_sharded_cluster
     ports:
       - 27123:27020
-    entrypoint: [ "usr/bin/mongod", "--port", "27020", "--configsvr", "--replSet", "rs-config-server", "--bind_ip_all"]
+    entrypoint: [ "/usr/bin/mongod", "--port", "27020", "--configsvr", "--replSet", "rs-config-server", "--bind_ip_all"]
 
   #shard1
     #shard called shard1 with 3 replicasets inside a,b,c
@@ -178,4 +178,5 @@ services:
 
 networks:
   big_sharded_cluster:
+    name: big_sharded_cluster
     driver: bridge
