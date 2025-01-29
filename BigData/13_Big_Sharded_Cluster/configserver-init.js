@@ -1,4 +1,3 @@
-// ./configserver-init.js
 rs.initiate({
     _id: "rs-config-server",
     configsvr: true,

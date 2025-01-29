@@ -1,4 +1,3 @@
-// ./shard-init/shard1-init.js
 rs.initiate({
     _id: "shard1",
     members: [
