@@ -13,7 +13,6 @@ El conjunto de datos contiene información recopilada de pacientes de diferentes
 ## Estructura del Conjunto de Datos
 
 
-
 | Variable                     | Descripción                                                    | Tipo de Dato  |
 |------------------------------|----------------------------------------------------------------|---------------|
 | edad                         | Edad del paciente (años)                                       | Numérico      |

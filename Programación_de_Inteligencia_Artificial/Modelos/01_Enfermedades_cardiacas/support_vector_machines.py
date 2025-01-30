@@ -2,12 +2,10 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
-##
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, f1_score, recall_score, roc_auc_score
 '''
 numpy: Manipulación numérica y generación de datos para visualización.
 matplotlib.pyplot: Visualización de datos, incluyendo la frontera de decisión.
@@ -17,88 +15,99 @@ StandardScaler: Normaliza los datos para mejorar la eficiencia del modelo SVM.
 SVC: Implementación de Support Vector Classification de Scikit-Learn.
 accuracy_score, confusion_matrix, classification_report: Métricas de evaluación del modelo.
 '''
-##
 
-# Cargar el conjunto de datos Iris
+# Load the dataset and check the first rows and some info
 health = pd.read_csv('./Dataset_Enfermedades.csv')
 health.info()
 print(health.head())
 
-X = health[['edad','sexo','presion_sistolica','presion_diastolica','colesterol','glucosa','indice_masa_corporal','actividad_fisica','fumar','historia_familiar','diabetes']]
+# Features is the input data, the columns that will be used to make predictions.
+# Target variable is the output data, the column that will be predicted.
+# Features:
+X = health[['actividad_fisica','fumar']]
+# Target variable:
 y = health['enfermedad_cardiaca']
 
-target_names=['Clase 0', 'Clase 1']
+target_names=['no desease', 'desease']
 
-##
-'''
-iris = datasets.load_iris(): Carga el conjunto de datos Iris.
-X = iris.data[:, :2]: Se toman solo las dos primeras características (longitud y ancho del sépalo) para facilitar la visualización en 2D.
-y = iris.target: Etiquetas de clase, que contienen tres categorías (Setosa, Versicolor, Virginica).
-'''
-##
-
-# Dividir en conjunto de entrenamiento y prueba
+# Split data into training and test sets
+# 20% of the data will be used for testing, 80% for training
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-##
-'''
-Divide los datos en:
-80% entrenamiento (X_train, y_train).
-20% prueba (X_test, y_test).
-random_state=42: Garantiza la reproducibilidad de la partición.'''
-##
 
-# Normalizar los datos
+
+# Data normalization
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
-##
-'''
-fit_transform: Calcula estadísticas de normalización y transforma los datos de entrenamiento.
-transform: Aplica la transformación aprendida a los datos de prueba.
 
-SVM es sensible a la escala de las características, por lo que la normalización ayuda a mejorar el rendimiento.
-'''
-##
-
-# Crear y entrenar el modelo SVM con kernel RBF
-model = SVC(kernel='rbf', C=1.0, gamma='scale')
+# train the SVM model
+model = SVC(kernel='rbf', C=1.0, probability=True, gamma='scale',class_weight='balanced')
 model.fit(X_train, y_train)
-##
+
 '''
 SVC: Se usa la implementación de clasificación de SVM.
 Parámetros:
 kernel='rbf': Se emplea un kernel radial base function (RBF), ideal para datos no linealmente separables.
 C=1.0: Parámetro de regularización, controla la penalización de errores (mayor valor = menor margen y mayor precisión en el entrenamiento).
 gamma='scale': Controla la influencia de un solo punto de entrenamiento (valor automático basado en las características).
+#! probability=True: Enable the probability estimates, needed for AUC-ROC calculation.
 '''
-##
 
-# Predicción sobre el conjunto de prueba
+
+# Predictions
 y_pred = model.predict(X_test)
-##
-''' Se realiza la predicción de las clases para los datos de prueba. '''
-##
+y_pred_prob = model.predict_proba(X_test)[:, 1]
 
 # Evaluación del modelo
-accuracy = accuracy_score(y_test, y_pred)
-print(f'Precisión del modelo: {accuracy:.2f}')
-##
-''' accuracy_score: Calcula la proporción de predicciones correctas sobre el total.'''
-##
-
-# Matriz de confusión y reporte de clasificación
-print("Matriz de confusión:")
+print("confussion matrix:")
 print(confusion_matrix(y_test, y_pred))
-print("Reporte de clasificación:")
-print(classification_report(y_test, y_pred, target_names=target_names))
-##
-'''La matriz de confusión muestra la relación entre predicciones correctas e incorrectas en cada clase.'''
-'''El reporte muestra métricas clave para cada clase.
-Precisión (Precision): Qué tan precisa es la predicción para cada clase.
-Recall (Sensibilidad): Qué proporción de instancias positivas se identificaron correctamente.
-F1-score: Promedio ponderado entre precisión y recall.
-Soporte: Número de muestras de cada clase.'''
-##
+
+accuracy = accuracy_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+auc_roc = roc_auc_score(y_test, y_pred_prob)
+
+# Results
+print(f"🔹 Accuracy: {accuracy:.2f}")
+print(f"🔹 Recall: {recall:.2f}")
+print(f"🔹 F1-Score: {f1:.2f}")
+print(f"🔹 AUC-ROC: {auc_roc:.2f}")
+
+# Report
+target_names = ['Prob no desease', 'Prob desease']
+print("\nClassification Report:\n", classification_report(y_test, y_pred, target_names=target_names))
+
+'''
+Definición de los límites: Se define un espacio de valores entre los mínimos y máximos de las dos características seleccionadas.
+Malla de predicciones:Se predicen los valores en cada punto de la malla y se reconfiguran para su representación gráfica.
+Visualización:
+contourf: Muestra las regiones de decisión con colores diferenciados.
+scatter: Representa las muestras reales con diferentes colores.
+'''
+
+# Metrics comparation
+def metrics_result_comparation(accuracy, recall, f1, auc_roc, model):
+    metrics = ['Accuracy', 'Recall', 'F1-Score', 'AUC-ROC']
+    values = [accuracy, recall, f1, auc_roc]
+    
+    # Create a bar chart
+    plt.figure(figsize=(8, 6))
+    plt.bar(metrics, values, color=['blue', 'green', 'orange', 'red'])
+    
+    # Add value labels on top of bars
+    for i, v in enumerate(values):
+        plt.text(i, v + 0.02, f"{v:.2f}", ha='center', fontsize=12, fontweight='bold')
+    
+    # Labels and title
+    plt.ylim(0, 1.1)
+    plt.ylabel('Score')
+    plt.title('Model Performance Metrics - '+ model)
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    
+    # Show the plot
+    plt.show()
+
+metrics_result_comparation(accuracy, recall, f1, auc_roc, model = 'SVM')
 
 # Visualización de la frontera de decisión
 def plot_decision_boundary(X, y, model):
@@ -114,11 +123,3 @@ def plot_decision_boundary(X, y, model):
     plt.show()
 
 plot_decision_boundary(X_test, y_test, model)
-
-'''
-Definición de los límites: Se define un espacio de valores entre los mínimos y máximos de las dos características seleccionadas.
-Malla de predicciones:Se predicen los valores en cada punto de la malla y se reconfiguran para su representación gráfica.
-Visualización:
-contourf: Muestra las regiones de decisión con colores diferenciados.
-scatter: Representa las muestras reales con diferentes colores.
-'''
