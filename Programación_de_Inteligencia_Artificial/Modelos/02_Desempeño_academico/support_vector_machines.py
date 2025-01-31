@@ -16,18 +16,18 @@ accuracy_score, confusion_matrix, classification_report: Métricas de evaluació
 '''
 
 # Load the dataset and check the first rows and some info
-health = pd.read_csv('./Dataset_Enfermedades.csv')
+health = pd.read_csv('./Dataset_Academico.csv')
 health.info()
 print(health.head())
 
+mapping = {'Bajo': 1, 'Medio': 2, 'Alto': 3}
+health['rendimiento_academico'] = health['rendimiento_academico'].map(mapping)
 # Features is the input data, the columns that will be used to make predictions.
 # Target variable is the output data, the column that will be predicted.
 # Features:
-X = health[['edad','sexo','presion_sistolica','presion_diastolica','colesterol','glucosa','indice_masa_corporal','actividad_fisica','fumar','historia_familiar','diabetes']]
+X = health[['edad','genero','horas_estudio','asistencia','nivel_socioeconomico','acceso_internet','actividades_extracurriculares','estado_emocional','nota_promedio_anterior','apoyo_familiar']]
 # Target variable:
-y = health['enfermedad_cardiaca']
-
-target_names=['no desease', 'desease']
+y = health['rendimiento_academico']
 
 # Split data into training and test sets
 # 20% of the data will be used for testing, 80% for training
@@ -55,16 +55,21 @@ gamma='scale': Controla la influencia de un solo punto de entrenamiento (valor a
 
 # Predictions
 y_pred = model.predict(X_test)
-y_pred_prob = model.predict_proba(X_test)[:, 1]
+y_pred_prob = model.predict_proba(X_test)
+'''
+print(y_pred_prob) =
+[0.         0.90883978 0.09116022]
+[low, medium, high]
+'''
 
 # Evaluación del modelo
 print("confussion matrix:")
 print(confusion_matrix(y_test, y_pred))
 
 accuracy = accuracy_score(y_test, y_pred)
-recall = recall_score(y_test, y_pred)
-f1 = f1_score(y_test, y_pred)
-auc_roc = roc_auc_score(y_test, y_pred_prob)
+recall = recall_score(y_test, y_pred, average='macro')
+f1 = f1_score(y_test, y_pred, average='macro')
+auc_roc = roc_auc_score(y_test, y_pred_prob, multi_class='ovr')
 
 # Results
 print(f"🔹 Accuracy: {accuracy:.2f}")
@@ -73,7 +78,7 @@ print(f"🔹 F1-Score: {f1:.2f}")
 print(f"🔹 AUC-ROC: {auc_roc:.2f}")
 
 # Report
-target_names = ['Prob no desease', 'Prob desease']
+target_names = ['low', 'medium', 'high']
 print("\nClassification Report:\n", classification_report(y_test, y_pred, target_names=target_names))
 
 '''
