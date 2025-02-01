@@ -1,5 +1,4 @@
 version: 0.0.1
-#check extra volumes, --port except mongos servers,order flags shards, volumes hor refresh?
 
 services:
 
