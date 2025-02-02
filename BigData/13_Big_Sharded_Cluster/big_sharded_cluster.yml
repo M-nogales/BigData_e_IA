@@ -1,11 +1,9 @@
-version: 0.0.1
-
 services:
 
   #mongos1.1
   mongos1:
     container_name: mongos1
-    image: mongo #default latest
+    image: mongo
     volumes:
      - ./router-init/mongos-init.js:/scripts/router-init.js
     networks:
