@@ -24,7 +24,7 @@ print(health.head())
 # Target variable is the output data, the column that will be predicted.
 # Features:
 X = health[['edad','sexo','presion_sistolica','presion_diastolica','colesterol','glucosa','indice_masa_corporal','actividad_fisica','fumar','historia_familiar','diabetes']]
-# Target variable:
+# Target:
 y = health['enfermedad_cardiaca']
 
 target_names=['no desease', 'desease']

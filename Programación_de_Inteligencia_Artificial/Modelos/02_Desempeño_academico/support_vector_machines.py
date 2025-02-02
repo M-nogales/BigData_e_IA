@@ -26,7 +26,7 @@ health['rendimiento_academico'] = health['rendimiento_academico'].map(mapping)
 # Target variable is the output data, the column that will be predicted.
 # Features:
 X = health[['edad','genero','horas_estudio','asistencia','nivel_socioeconomico','acceso_internet','actividades_extracurriculares','estado_emocional','nota_promedio_anterior','apoyo_familiar']]
-# Target variable:
+# Target:
 y = health['rendimiento_academico']
 
 # Split data into training and test sets

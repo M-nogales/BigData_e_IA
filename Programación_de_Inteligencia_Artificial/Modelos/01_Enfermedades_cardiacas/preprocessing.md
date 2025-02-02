@@ -104,14 +104,14 @@ print(scaled_data)
 
 Here’s the visualization of both distributions:
 
-![Normal Distribution](normal_distribution.png)
+![Normal Distribution](imgs/normal_distribution.png)
 
 1. **Left Plot (Normal Distribution)**:  
    - This is a **bell-shaped curve** where most values are around the mean (~50).  
    - The values **symmetrically** decrease as they move away from the center.  
    - Example: Heights, IQ scores, or standardized test scores.
 
-![Non normal Distribution](non_normal_distribution.png)
+![Non normal Distribution](imgs/non_normal_distribution.png)
 
 
 2. **Right Plot (Non-Normal Distribution - Right-Skewed)**:  

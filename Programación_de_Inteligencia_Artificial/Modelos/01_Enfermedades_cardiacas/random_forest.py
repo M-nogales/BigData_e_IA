@@ -71,7 +71,7 @@ def metrics_result_comparation(accuracy, recall, f1, auc_roc, model):
     # Show the plot
     plt.show()
 
-metrics_result_comparation(accuracy, recall, f1, auc_roc, model = 'Logistic Regression')
+metrics_result_comparation(accuracy, recall, f1, auc_roc, model = 'Random Forest')
 
 # Importancia de las características
 feature_names=['edad','sexo','presion_sistolica','presion_diastolica','colesterol','glucosa','indice_masa_corporal','actividad_fisica','fumar','historia_familiar','diabetes']
