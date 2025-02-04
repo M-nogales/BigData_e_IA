@@ -1,20 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, f1_score, recall_score, roc_auc_score
-'''
-numpy: Manipulación numérica y generación de datos para visualización.
-matplotlib.pyplot: Visualización de datos, incluyendo la frontera de decisión.
-datasets: Permite cargar conjuntos de datos como Iris.
-train_test_split: Para dividir datos en entrenamiento y prueba.
-StandardScaler: Normaliza los datos para mejorar la eficiencia del modelo SVM.
-SVC: Implementación de Support Vector Classification de Scikit-Learn.
-accuracy_score, confusion_matrix, classification_report: Métricas de evaluación del modelo.
-'''
 
-# Load the dataset and check the first rows and some info
+
 academy = pd.read_csv('./Dataset_Academico.csv')
 academy.info()
 print(academy.head())
@@ -32,36 +23,19 @@ y = academy['rendimiento_academico']
 # 20% of the data will be used for testing, 80% for training
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-
 # Data normalization
-scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
+scaler = MinMaxScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
 
-# Train the SVM model
-model = SVC(kernel='rbf', C=1.0, probability=True, gamma='scale', class_weight='balanced')
-model.fit(X_train, y_train)
-
-'''
-SVC: Se usa la implementación de clasificación de SVM.
-Parámetros:
-kernel='rbf': Se emplea un kernel radial base function (RBF), ideal para datos no linealmente separables.
-C=1.0: Parámetro de regularización, controla la penalización de errores (mayor valor = menor margen y mayor precisión en el entrenamiento).
-gamma='scale': Controla la influencia de un solo punto de entrenamiento (valor automático basado en las características).
-#! probability=True: Enable the probability estimates, needed for AUC-ROC calculation.
-'''
-
+# Train the KNN model with 5 neighbors
+knn = KNeighborsClassifier(n_neighbors=5, metric='euclidean')
+knn.fit(X_train, y_train)
 
 # Predictions
-y_pred = model.predict(X_test)
-y_pred_prob = model.predict_proba(X_test)
-'''
-print(y_pred_prob) =
-[0.         0.90883978 0.09116022]
-[low, medium, high]
-'''
+y_pred = knn.predict(X_test)
+y_pred_prob = knn.predict_proba(X_test)
 
-# Evaluación del modelo
 print("confussion matrix:")
 print(confusion_matrix(y_test, y_pred))
 
@@ -80,15 +54,6 @@ print(f"🔹 AUC-ROC: {auc_roc:.2f}")
 target_names = ['low', 'medium', 'high']
 print("\nClassification Report:\n", classification_report(y_test, y_pred, target_names=target_names))
 
-'''
-Definición de los límites: Se define un espacio de valores entre los mínimos y máximos de las dos características seleccionadas.
-Malla de predicciones:Se predicen los valores en cada punto de la malla y se reconfiguran para su representación gráfica.
-Visualización:
-contourf: Muestra las regiones de decisión con colores diferenciados.
-scatter: Representa las muestras reales con diferentes colores.
-'''
-
-# Metrics comparation
 def metrics_result_comparation(accuracy, recall, f1, auc_roc, model):
     metrics = ['Accuracy', 'Recall', 'F1-Score', 'AUC-ROC']
     values = [accuracy, recall, f1, auc_roc]
@@ -110,4 +75,4 @@ def metrics_result_comparation(accuracy, recall, f1, auc_roc, model):
     # Show the plot
     plt.show()
 
-metrics_result_comparation(accuracy, recall, f1, auc_roc, model = 'SVM')
+metrics_result_comparation(accuracy, recall, f1, auc_roc, model = 'knn')

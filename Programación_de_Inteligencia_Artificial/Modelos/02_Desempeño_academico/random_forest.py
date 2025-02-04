@@ -1,14 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier, plot_tree
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, f1_score, recall_score, roc_auc_score
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, f1_score, recall_score, roc_auc_score
 
-'''
-DecisionTreeClassifier: classification model based on decision trees.
-plot_tree: graphic visualization of the decision tree created.'''
 
-# Load the dataset and check the first rows and some info
 academy = pd.read_csv('./Dataset_Academico.csv')
 academy.info()
 print(academy.head())
@@ -26,34 +22,20 @@ y = academy['rendimiento_academico']
 # 20% of the data will be used for testing, 80% for training
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Create the Decision Tree model
-tree_clf = DecisionTreeClassifier(criterion='gini', max_depth=4, random_state=42, class_weight='balanced')
-#Fun fact, idk why but using max_depth=5 or bigger, the model is "perfect"
-# example using all the parameters
-# tree_clf = DecisionTreeClassifier(
-#     criterion='entropy', #gini, entropy
-#     max_depth=6,  # Limit the depth of the tree
-#     min_samples_split=10,  # Minimum samples required to split a node
-#     min_samples_leaf=5,  # Minimum samples required to be at a leaf node
-#     class_weight='balanced',  # Handle class imbalance
-#     max_features='sqrt',  # Consider only a subset of features at each split
-#     random_state=42,  # For reproducibility
-#     min_impurity_decrease=0.01,  # Minimum impurity decrease for a split
-#     ccp_alpha=0.01  # Prune tree if needed
-# )
 
-tree_clf.fit(X_train, y_train)
+# Create the Random Forest model with 100 trees
+rf_model = RandomForestClassifier(n_estimators=100, max_depth=4, random_state=42, class_weight='balanced')
+rf_model.fit(X_train, y_train)
+# Variability of results, max_depth=4 is almost perfect, 5 is perfect using class_weight='balanced'
+''' RandomForestClassifier: Crea un modelo de bosque aleatorio con los siguientes parámetros:
+n_estimators=100: Se utilizan 100 árboles en el bosque para mejorar la precisión.
+max_depth=5: Se establece una profundidad máxima de 5 para evitar sobreajuste.
+random_state=42: Asegura la reproducibilidad del modelo.
+fit(X_train, y_train): Entrena el modelo con los datos de entrenamiento.'''
 
 # Predictions
-y_pred = tree_clf.predict(X_test)
-y_pred_prob = tree_clf.predict_proba(X_test)
-print(y_pred_prob)
-'''predict(X_test): Se predicen las etiquetas para los datos de prueba
-[:, 1] without this in multiclass 
-print(y_pred_prob) =
-[0.         0.90883978 0.09116022]
-[low, medium, high]
-'''
+y_pred = rf_model.predict(X_test)
+y_pred_prob = rf_model.predict_proba(X_test)
 
 # Model evaluation
 print("confussion matrix:")
@@ -73,7 +55,6 @@ print(f"🔹 AUC-ROC: {auc_roc:.2f}")
 # Report
 target_names = ['low', 'medium', 'high']
 print("\nClassification Report:\n", classification_report(y_test, y_pred, target_names=target_names))
-# zero_division=1 :replace undefined precision with 1.0
 
 # Metrics comparation
 def metrics_result_comparation(accuracy, recall, f1, auc_roc, model):
@@ -91,25 +72,24 @@ def metrics_result_comparation(accuracy, recall, f1, auc_roc, model):
     # Labels and title
     plt.ylim(0, 1.1)
     plt.ylabel('Score')
-    plt.title('Model Performance Metrics - ' + model)
+    plt.title('Model Performance Metrics - '+ model)
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     
     # Show the plot
     plt.show()
 
-metrics_result_comparation(accuracy, recall, f1, auc_roc, model = 'Decision Tree')
+metrics_result_comparation(accuracy, recall, f1, auc_roc, model = 'Random Forest')
 
-# Decision tree visualization
-plt.figure(figsize=(12, 8))
+# Importancia de las características
 feature_names=['edad','genero','horas_estudio','asistencia','nivel_socioeconomico','acceso_internet','actividades_extracurriculares','estado_emocional','nota_promedio_anterior','apoyo_familiar']
-plot_tree(tree_clf, feature_names=feature_names, class_names=target_names, filled=True)
-plt.title("Árbol de Decisión - Clasificación")
+feature_importances = rf_model.feature_importances_
+plt.barh(feature_names, feature_importances)
+plt.xlabel("Importancia")
+plt.ylabel("Características")
+plt.title("Importancia de las características en Random Forest")
 plt.show()
-
 '''
-plt.figure(figsize=(12, 8)): Define el tamaño de la figura para mejorar la visualización.
-plot_tree: Grafica el árbol de decisión entrenado, mostrando:
-feature_names: Nombres de las características de entrada.
-class_names: Nombres de las clases de salida (no desease, desease).
-filled=True: Colorea los nodos según la clase predominante.
-'''
+rf_model.feature_importances_: Muestra la importancia de cada característica en la predicción del modelo.
+plt.barh(): Crea un gráfico de barras horizontal que muestra qué características tienen mayor impacto en la clasificación.
+iris.feature_names: Etiquetas de las características (sepal length, sepal width, petal length, petal width).
+Se muestran las características ordenadas según su contribución al modelo.'''

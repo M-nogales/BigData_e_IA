@@ -5,3 +5,5 @@ add average (macro or weighted)
 recall = recall_score(y_test, y_pred, average='macro')
 f1 = f1_score(y_test, y_pred, average='macro')
 auc_roc = roc_auc_score(y_test, y_pred_prob, multi_class='ovr')
+
+min-max scaler vs standard scaler in KNN

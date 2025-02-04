@@ -12,11 +12,11 @@ Este estudio permitirá identificar patrones que influyen en el rendimiento estu
 
 ## Estructura del Conjunto de Datos
 
-| Variable                     | Descripción                                                    | Tipo de Dato  |
-|------------------------------|----------------------------------------------------------------|---------------|
-| edad                         | Edad del estudiante (años)                                    | Numérico      |
-| genero                       | Género del estudiante (0=Mujer, 1=Hombre)                     | Categórico    |
-| horas_estudio                | Promedio de horas de estudio diarias                          | Numérico      |
+| Variable                     | Descripción                                                  | Tipo de Dato  |
+|------------------------------|--------------------------------------------------------------|---------------|
+| edad                         | Edad del estudiante (años)                                   | Numérico      |
+| genero                       | Género del estudiante (0=Mujer, 1=Hombre)                    | Categórico    |
+| horas_estudio                | Promedio de horas de estudio diarias                         | Numérico      |
 | asistencia                   | Porcentaje de asistencia a clases (%)                        | Numérico      |
 | nivel_socieconomico          | Nivel socioeconómico (1=Bajo, 2=Medio, 3=Alto)               | Categórico    |
 | acceso_internet              | Acceso a internet en casa (1=Sí, 0=No)                       | Categórico    |
