@@ -12,22 +12,6 @@ print('df.head(): ', df.head())
 print('df.describe(): ', df.describe())
 print('df.info(): ', df.info())
 
-df['Mileage'] = df['Mileage'].fillna(df['Mileage'].median())
-
-df = pd.get_dummies(df, columns=['FuelType', 'Transmission'], drop_first=True)
-
-# Visualize the distribution of the target variable (Price)
-plt.boxplot(df['Price'])
-plt.title('Boxplot of Price')
-plt.show()
-
-# Remove outliers (example: removing data points beyond 1.5 * IQR)
-Q1 = df['Price'].quantile(0.25)
-Q3 = df['Price'].quantile(0.75)
-IQR = Q3 - Q1
-df = df[(df['Price'] >= (Q1 - 1.5 * IQR)) & (df['Price'] <= (Q3 + 1.5 * IQR))]
-
-
 # Features
 X = df.drop(columns=['ID', 'Price'])
 # Target
