@@ -1,7 +1,40 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.base import r2_score
-from sklearn.metrics import mean_absolute_error, mean_squared_error
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error, mean_squared_error,r2_score
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import PolynomialFeatures
+
+
+df = pd.read_csv('Dataset_Vehiculos.csv')
+
+print('df.head(): ', df.head())
+
+print('df.describe(): ', df.describe())
+print('df.info(): ', df.info)
+
+# Features
+X = df.drop(columns=['ID', 'Price'])
+# Target
+y = df['Price']
+
+# Split data into training and test sets
+# 20% of the data will be used for testing, 80% for training
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Normalization
+lin_model = LinearRegression()
+lin_model.fit(X_train, y_train)
+y_pred = lin_model.predict(X_test)
+
+
+
+poly = PolynomialFeatures(degree=2)  # Cambiar el grado según necesidad
+X_poly = poly.fit_transform(X_train)
+
+# Ajustar el modelo de regresión polinómica
+poly_model = LinearRegression()
+poly_model.fit(X_poly, y_train)
 
 mse = mean_squared_error(y_test, y_pred)
 mae = mean_absolute_error(y_test, y_pred)
