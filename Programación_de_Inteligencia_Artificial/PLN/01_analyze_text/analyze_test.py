@@ -5,7 +5,6 @@ from nltk.probability import FreqDist
 from nltk.util import bigrams
 import matplotlib.pyplot as plt
 
-# 
 nltk.download('stopwords') # Stopwords (palabras vacías)
 
 with open('quijote.txt', 'r', encoding='utf-8') as file:
