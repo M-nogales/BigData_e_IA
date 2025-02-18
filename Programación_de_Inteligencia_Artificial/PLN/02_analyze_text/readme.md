@@ -61,7 +61,7 @@ entrada = "La inteligencia artificial está transformando el mundo porque"
 # ENTREGA
 Un fichero Python por cada uno de los ejercicios.
 
-## PIP
+## PIP instalation
 pip install textblob
 pip install nltk spacy googletrans==4.0.0-rc1 SpeechRecognition transformers torch
 

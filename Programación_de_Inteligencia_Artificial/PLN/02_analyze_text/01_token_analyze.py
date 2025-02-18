@@ -1,8 +1,7 @@
-# Librerías necesarias
 import nltk
 import spacy
 
-# Descargar recursos de NLTK (solo la primera vez)
+# Descargar recursos de NLTK
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger_eng')
 nltk.download('universal_tagset')

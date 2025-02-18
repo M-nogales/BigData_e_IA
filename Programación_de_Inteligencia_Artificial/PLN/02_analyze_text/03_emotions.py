@@ -1,7 +1,7 @@
 from textblob import TextBlob
 
 # Texto de prueba
-# No existe TextBlob en español, por lo que se debe usar un texto en inglés, frances o aleman
+# No existe TextBlob en español, en inglés, frances o aleman
 # textbolb-fr, textblob-de
 
 # texto = "Me encanta aprender sobre inteligencia artificial, es fascinante."
