@@ -7,7 +7,8 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 
 # load the data
 data = pd.read_csv('spam_detection_data.csv')
-
+spam_counts = data['Spam'].value_counts()
+print(spam_counts)
 X = data.drop('Spam', axis=1)
 y = data['Spam']
 
@@ -38,7 +39,7 @@ print(f"🔹 AUC-ROC: {auc_roc:.2f}")
 
 # Report
 target_names = ['Approved', 'Rejected']
-print("\nClassification Report:\n", classification_report(y_test, y_pred, target_names=target_names))
+print("\nClassification Report:\n", classification_report(y_test, y_pred, target_names=target_names, zero_division=1))
 
 
 # Metrics comparation

@@ -79,12 +79,3 @@ print(data['Spam'].value_counts())
 print("Unique values in y_pred:", np.unique(y_pred))
 print("Correlation with Target (Spam):")
 print(data.corr()['Spam'].sort_values(ascending=False))
-
-importances = model.feature_importances_
-feature_names = X.columns
-
-# Create a DataFrame for visualization
-importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': importances})
-importance_df = importance_df.sort_values(by='Importance', ascending=False)
-
-print(importance_df)
