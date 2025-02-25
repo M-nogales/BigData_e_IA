@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reconocimiento de Dígitos</title>
+  <style>
+    #canvas {
+      background-color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Reconocimiento de Dígitos Manuscritos</h1>
+  <canvas id="canvas" width="280" height="280"></canvas>
+  <br>
+  <button onclick="submitImage()">Enviar</button>
+  <button onclick="clearCanvas()">Limpiar</button>
+  <h2>Resultado: <span id="result"></span></h2>
+
+  <h2>Clasificador de Dígitos MNIST</h2>
+  <input type="file" id="imageUpload" accept="image/*">
+  <button onclick="classifyImage()">Clasificar Imagen</button>
+  <p id="result_file">Resultado: </p>
+
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const result = document.getElementById('result');
+    let drawing = false;
+
+    canvas.addEventListener('mousedown', () => {
+            drawing = true;
+            ctx.beginPath();
+        });
+    canvas.addEventListener('mouseup', () => drawing = false);
+    canvas.addEventListener('mousemove', (e) => {
+      if (drawing) {
+        ctx.lineWidth = 10;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = 'white';
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+      }
+    });
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+    }
+
+    function submitImage() {
+      const imageData = canvas.toDataURL('image/png');
+      const base64Image = imageData.split(',')[1];
+      fetch('http://127.0.0.1:5000/predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ image: base64Image }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          result.textContent = data.prediction;
+        })
+        .catch(error => console.error(error));
+      console.log("sended",  imageData);
+    }
+
+    async function classifyImage() {
+            const input = document.getElementById('imageUpload');
+            if (input.files.length === 0) {
+                alert("Por favor, sube una imagen.");
+                return;
+            }
+            const file = input.files[0];
+            const formData = new FormData();
+            formData.append("image", file);
+
+            const response = await fetch("http://127.0.0.1:5000/classify", {
+                method: "POST",
+                body: formData
+            });
+            const data = await response.json();
+            document.getElementById("result_file").innerText = `Resultado: ${data.label}`;
+        }
+  </script>
+</body>
+
+</html>
