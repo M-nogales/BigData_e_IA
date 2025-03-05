@@ -3,50 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reconocimiento de Matrículas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-        #result {
-            margin-top: 20px;
-        }
-    </style>
+    <title>Sube una imagen</title>
 </head>
 <body>
-    <h1>Reconocimiento de Matrículas</h1>
-    <form id="upload-form">
-        <input type="file" id="image-file" accept="image/jpeg, image/png" required>
+    <h1>Sube una imagen para detectar la matrícula</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*">
         <button type="submit">Subir imagen</button>
     </form>
-    <div id="result"></div>
-
-    <script>
-        document.getElementById('upload-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const fileInput = document.getElementById('image-file');
-            const formData = new FormData();
-            formData.append('file', fileInput.files[0]);
-
-            fetch('/upload', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                const resultDiv = document.getElementById('result');
-                if (data.license_plate) {
-                    resultDiv.innerHTML = `<h3>Matrícula Identificada: ${data.license_plate}</h3>`;
-                } else {
-                    resultDiv.innerHTML = `<h3 style="color: red;">${data.error}</h3>`;
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    </script>
 </body>
 </html>
