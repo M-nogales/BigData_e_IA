@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detector de Matrículas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <style>
+        .circle-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+        p, h1, label, .non-clickable {
+            user-select: none;
+            pointer-events: none;
+        }
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .file-input-wrapper input[type=file] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
+    <div class="circle-bg">
+        <div class="circle bg-blue-200/35" style="width: 750px; height: 800px; top: -10%;"></div>
+        <div class="circle bg-purple-200/40" style="width: 1000px; height: 900px; bottom: -20%; right: -10%;"></div>
+        <div class="circle bg-teal-200/30" style="width: 700px; height: 700px; top: 70%; left: -20%;"></div>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="w-full max-w-lg backdrop-blur-sm bg-white/80 rounded-xl shadow-xl p-8 space-y-8 transition-all duration-300 hover:shadow-2xl">
+        <div class="text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Detector de Matrículas</h1>
+            <p class="text-gray-600">Sube una imagen para detectar la matrícula automáticamente</p>
+        </div>
+        
+        <!-- Formulario -->
+        <form action="/upload" method="post" enctype="multipart/form-data" class="space-y-6">
+            <!-- Input para subir la imagen (rediseñado) -->
+            <div class="space-y-4">
+                <label for="license-image" class="block text-lg font-medium text-gray-700">Imagen de matrícula</label>
+                <div id="drop-zone" class="file-input-wrapper w-full h-40 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow-lg flex items-center justify-center cursor-pointer overflow-hidden transition-all duration-300 hover:from-blue-600 hover:to-purple-700">
+                    <input type="file" id="license-image" name="license-image" accept="image/*">
+                    <div class="text-center text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span id="file-name" class="text-lg font-semibold">Haz clic o arrastra tu imagen aquí</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Previsualización de imagen -->
+            <div class="space-y-2">
+                <label class="block text-lg font-medium text-gray-700">Matrícula detectada</label>
+                <div id="preview" class="h-40 bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center">
+                    <p class="text-gray-500 text-lg non-clickable">La imagen recortada aparecerá aquí</p>
+                </div>
+            </div>
+
+            <!-- Texto reconocido (ahora un div en lugar de input) -->
+            <div class="space-y-2">
+                <label class="block text-lg font-medium text-gray-700">Texto reconocido</label>
+                <div id="license-text" class="w-full p-4 bg-gray-50 border-2 border-gray-300 rounded-lg text-gray-700 min-h-[60px] flex items-center justify-center cursor-default">
+                    <span class="text-gray-500">El texto de la matrícula aparecerá aquí</span>
+                </div>
+            </div>
+            
+            <!-- Botón de envío -->
+            <button type="submit" 
+                class="w-full py-4 px-6 bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white text-lg font-bold rounded-lg shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" id="submit-btn">
+                <span id="submit-text">Procesar imagen</span>
+                <div id="loader" class="hidden ml-4 inline-block">
+                    <div class="loader"></div>
+                </div>
+            </button>
+
+            <!-- Mensaje de error (oculto por defecto) -->
+            <div id="error-message" class="hidden text-center mt-4 text-red-500">
+                Solo se permiten imágenes en formatos JPEG y PNG. Por favor, sube un archivo válido.
+            </div>
+        </form>
+
+        <!-- Nota informativa -->
+        <div class="text-sm text-gray-500 text-center mt-6 non-clickable">
+            Las imágenes deben ser claras y con buena iluminación para obtener mejores resultados
+        </div>
+    </div>
+
+</body>
+</html>

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import imutils
 
 #1. Read the image and greyscale
-img = cv2.imread('imgs_test/Cars16.png')
+img = cv2.imread('imgs_test/Car.jpeg')
 plt.imshow(img)
 plt.show()
 gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -24,6 +24,7 @@ keypoints = cv2.findContours(edged.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPL
 contours = imutils.grab_contours(keypoints)
 contours = sorted(contours, key=cv2.contourArea, reverse=True)[:10]
 
+location = None
 for contour in contours:
     approx = cv2.approxPolyDP(contour, 10, True)
     if len(approx) == 4:
