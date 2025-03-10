@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from flask import Flask, request, jsonify, render_template, send_file, Response
+from flask import Flask, request, jsonify, render_template
 import easyocr
 import imutils
 from io import BytesIO

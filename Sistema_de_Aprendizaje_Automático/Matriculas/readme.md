@@ -44,11 +44,6 @@ Desarrollar una aplicación web que permita a los usuarios cargar imágenes en f
 - **OpenCV**: Biblioteca para el procesamiento de imágenes.
 - **HTML y JavaScript**: Para el desarrollo del frontend.
 
-## Inspiration
-https://github.com/bryandejesusrt/Reconocimiento-de-placas-con-IA-Bytecoders
-https://github.com/JaviFS97/TFG/tree/master
-https://yashlahoti.medium.com/number-plate-recognition-in-python-using-tesseract-ocr-cc15853aca36
-https://medium.com/@sholademidaniel/how-i-used-opencv-yolov8-and-pytesseract-for-real-time-license-plate-number-detection-9a71baa17633
+## Ajustes
 
-# Datasets
-https://www.kaggle.com/datasets/andrewmvd/car-plate-detection
+En mi caso he usado **easyocr** en vez de **Tesseract** por posibles problemas de permisos en la instalación de **Tesseract**
