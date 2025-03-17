@@ -1,54 +1,91 @@
-# Conda
+# Conda Installation for RAPIDS  
 
-RAPIDS can be used with any conda distribution.
+RAPIDS can be used with any Conda distribution. This guide covers installation using **Miniforge**.  
 
-Below is an installation guide using miniforge.
+## 1. Download and Install Miniforge  
 
-## 1. Download and Run Install Script
-
-Copy the command below to download and run the miniforge install script:
+Run the following command to **download and execute** the Miniforge installation script:  
 
 ```bash
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-bash Miniforge3-$(uname)-$(uname -m).sh"
+bash Miniforge3-$(uname)-$(uname -m).sh
 ```
 
-## 2. Customize Conda and Run the Install
+Follow the prompts to complete the installation. We **recommend enabling `conda-init`** when prompted.  
 
-Use the terminal window to finish installation. Note, we recommend enabling `conda-init`.
+## 2. Verify Conda Installation  
 
-## 3. Start Conda
+Open a **new terminal window** to ensure Conda is initialized properly.  
 
-Open a new terminal window, which should now show Conda initialized.
-
-## 4. Check Conda Configuration
-
-Installing RAPIDS requires you to use `channel_priority: flexible`. You can check this and change it, if required, by doing:
+Check the Conda configuration for `channel_priority`:  
 
 ```bash
 conda config --show channel_priority
+```
+
+Ensure it's set to `flexible`:  
+
+```bash
 conda config --set channel_priority flexible
 ```
 
+## 3. Install RAPIDS  
+
+Create a Conda environment for RAPIDS:  
+
 ```bash
-conda create -n rapids-25.02 -c rapidsai -c conda-forge -c nvidia  \  rapids=25.02 python=3.10 'cuda-version>=12.0,<=12.8'
+conda create -n rapids-25.02 -c rapidsai -c conda-forge -c nvidia  \
+  rapids=25.02 python=3.10 'cuda-version>=12.0,<=12.8'
 ```
-important! say yes to everything
+
+⚠️ **Important:** Accept all prompts during installation (`y` to everything).  
+
+Once installed, activate the environment:  
 
 ```bash
 conda activate rapids-25.02
 ```
-once we do this we can test if it´s working on the terminal writing:
+
+## 4. Test the Installation  
+
+To verify RAPIDS is working, run the following in the terminal:  
 
 ```bash
 python
 import cudf
-print(cudf.Series([1,2,3]))
----------
-0       1
-1       2
-2       3
----------
+print(cudf.Series([1, 2, 3]))
 ```
-we can also do `code .` to open vscode and inside there execute any code we want.
-another option, and my preference is to use the wsl terminal inside vscode, go to our python file with the console, and do ``python main.py``
+
+Expected output:  
+
+```
+0    1
+1    2
+2    3
+dtype: int64
+```
+
+## 5. Running Code in VS Code  
+
+To open **VS Code** in the current directory:  
+
+```bash
+code .
+```
+
+### Preferred Setup: WSL Terminal in VS Code  
+
+1. Open **VS Code** and use the **WSL terminal**.  
+2. Navigate to your Python file directory:  
+
+   ```bash
+   cd /path/to/your/project
+   ```
+
+3. Run your script:  
+
+   ```bash
+   main.py
+   ```
+
+This ensures a smooth RAPIDS experience inside VS Code with WSL. 🚀

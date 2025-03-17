@@ -53,13 +53,9 @@
 
 - Crear gráficos de dispersión, mapas de calor, o gráficos de barras apiladas para visualizar la distribución de las ventas por producto y por país.
 
-## 10. Conclusiones y recomendaciones
 
-**Pregunta:** Basándose en el análisis, ¿qué recomendaciones harían para mejorar las ventas o los beneficios?
-
-- Sintetizar hallazgos y proponer recomendaciones basadas en los datos.
-
-# 1 Exploración inicial del dataset
+# Resultados
+## 1 Exploración inicial del dataset
 ```python
 # Load the Excel file
 file_path = "Financial_Sample.xlsx"  # Update with the correct file path
@@ -71,12 +67,12 @@ print(df.info())
 print(df.describe())
 ```
 
-# 2 Análisis descriptivo
+## 2 Análisis descriptivo
 ```python
 print(df.describe())
 ```
 
-# 3 Segmentación por Categorías
+## 3 Segmentación por Categorías
 ```python
 # Group by Segment and sum the Sales
 sales_by_segment = df.groupby('Segment')['Sales'].sum()
@@ -92,7 +88,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-# 4 Análisis por país
+## 4 Análisis por país
 ```python
 # Group by Country and sum the Sales
 sales_by_country = df.groupby('Country')['Sales'].sum()
@@ -108,7 +104,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-# 5 Análisis temporal
+## 5 Análisis temporal
 ```python
 # Monthly Profit Trends by Year
 plt.figure(figsize=(12, 6))
@@ -125,7 +121,7 @@ plt.grid(True)
 plt.show()
 ```
 
-# 6 Análisis de productos
+## 6 Análisis de productos
 ```python
 # Group by Product and sum the Sales
 sales_by_product = df.groupby('Product')['Sales'].sum()
@@ -141,7 +137,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-# 7 Análisis de descuentos
+## 7 Análisis de descuentos
 ```python
 # Group by Discount Band and sum the Sales
 sales_by_discount = df.groupby('Discount Band')['Sales'].sum()
@@ -156,9 +152,9 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 ```
-# 8 Análisis de correlación
+## 8 Análisis de correlación
 
-# 9 Visualización de datos
+## 9 Visualización de datos
 ```python
 # Group by Product and sum the Sales
 sales_by_product = df.groupby('Product')['Sales'].sum()
@@ -198,7 +194,4 @@ plt.show()
 
 ### Recomendaciones:
 - **Enfocar esfuerzos de marketing** en el segmento **Government**, ya que es el que genera mayores ventas.
-- Realizar **campañas específicas en Canadá** para aumentar las ventas en ese mercado.
-- **Aprovechar la temporada navideña** (diciembre y enero) para lanzar promociones especiales y maximizar las ventas.
-- **Revisar la estrategia de descuentos**, ya que los descuentos altos están asociados con menores beneficios. Considerar descuentos más moderados o promociones que no afecten tanto el margen de beneficio.
-- **Incrementar las ventas de unidades**, ya que esto tiene un impacto positivo directo en los beneficios.
+- Realizar **campañas específicas en México** para aumentar las ventas en ese mercado.
