@@ -156,3 +156,15 @@ python3 /opt/nvidia/holoscan/examples/hello_world/python/hello_world.py
 ![Hello World result](imgs/hello_world.png)
 
 For more examples, visit the [Holoscan GitHub repository](https://github.com/nvidia-holoscan/holoscan-sdk/tree/main/examples#readme).
+
+## **Step 10: Reinicio**
+
+Para poder volver a usar Nvidia clara tendremos que re definir la exportación `export NGC_CONTAINER_IMAGE_PATH="nvcr.io/nvidia/clara-holoscan/holoscan:v3.0.0-dgpu"`
+
+```Bash
+docker run -it --rm --net host \
+  --runtime=nvidia \
+  --ipc=host --cap-add=CAP_SYS_PTRACE --ulimit memlock=-1 --ulimit stack=67108864 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  ${NGC_CONTAINER_IMAGE_PATH}
+```
