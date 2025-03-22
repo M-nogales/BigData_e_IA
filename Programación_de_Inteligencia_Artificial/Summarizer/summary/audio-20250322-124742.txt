@@ -1,0 +1,10 @@
+If you would prefer not to install anything on your PC, check out the video right up above and that shows you how you can use Whisper AI entirely in the cloud.
+Also, at the very end, if you no longer have a need for Whisper AI for transcribing audio, I will also walk you through how you can uninstall all of this.
+To install it, type in pip install and here I'll type in a dash U. That way if for whatever reason you already have Whisper on your computer, that will upgrade it to the latest version.
+And right down below I can see all of the different text that makes up this file.
+Here you have some additional caption formats and here you also have a TXT file and here we just see the pure text without any timestamps at all.
+This works especially well if, let's say, you have a number of different files that you need to transcribe.
+Here if I minimize Command Prompt, here I can see that I have all of these files for each one of my audio files.
+And just like that, here I have a transcript in German of all of the audio in this file.
+And if you'd like to see a list of all of the different arguments that you could use with Whisper, simply type in Whisper dash dash and then help.
+On the following page, and you'll find a link in the description, you can see all of the different languages that Whisper AI supports.
