@@ -105,33 +105,105 @@ Número_Apartado_Nombre = ...
 
 
 ### 📌 Análisis General de Ventas (AV)
-1_AV_Total_Ventas = SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount])2_AV_Total_Transacciones = DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Transaction ID])
+
+1_AV_Total_Ventas = SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount])
+
+2_AV_Total_Transacciones = DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Transaction ID])
+
 3_AV_Promedio_Venta_Transaccion = DIVIDE([1_AV_Total_Ventas], [2_AV_Total_Transacciones]) 
+
 4_AV_Total_Clientes = DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Customer ID])
+
 5_AV_Total_Productos_Vendidos = SUM('retail_ecommerce_sales_stocking_dataset'[Quantity])
+
 6_AV_Ingreso_Promedio_Diario = 
 VAR DiasUnicos = DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Date])
 RETURN DIVIDE([1_AV_Total_Ventas], DiasUnicos)
+
 7_AV_Total_Ventas_Por_Categoria = 
 SUMX(
     VALUES('retail_ecommerce_sales_stocking_dataset'[Product Category]),
     CALCULATE([1_AV_Total_Ventas])
 )
-8_AV_Producto_Mas_Vendido = ...  
-9_AV_Valor_Promedio_Carrito = ...  
-10_AV_Dia_Mayor_Ventas = ...  
+
+8_AV_Producto_Mas_Vendido = 
+
+TOPN(
+    1, 
+    ALL('retail_ecommerce_sales_stocking_dataset'[Product]), 
+    SUM('Global Superstore'[Sales]), 
+    DESC
+)
+
+9_AV_Valor_Promedio_Carrito = DIVIDE([1_AV_Total_Ventas], [4_AV_Total_Clientes])
+
+10_AV_Dia_Mayor_Ventas = TOPN(
+        1, 
+        ALL('retail_ecommerce_sales_stocking_dataset'[Date]), 
+        CALCULATE(SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount])), 
+        DESC
+    )
 
 ### 📊 Análisis de Clientes y Comportamiento de Compra (AC)
-1_AC_Clientes_Recurrentes = ...  
-2_AC_Gasto_Promedio_Cliente = ...  
-3_AC_Cliente_Top_Gasto = ...  
-4_AC_Clientes_Una_Compra = ...  
-5_AC_Promedio_Productos_Cliente = ...  
-6_AC_Frecuencia_Compra_Promedio = ...  
-7_AC_Pais_Mas_Compras = ...  
-8_AC_Tasa_Conversion = ...  
-9_AC_Categoria_Mas_Clientes_Unicos = ...  
-10_AC_Carritos_Abandonados = ...  
+
+1_AC_Clientes_Recurrentes = 
+CALCULATE(
+    DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Customer ID]), 
+    FILTER(
+        VALUES('retail_ecommerce_sales_stocking_dataset'[Customer ID]), 
+        CALCULATE(COUNT('retail_ecommerce_sales_stocking_dataset'[Transaction ID])) > 1
+    )
+
+)
+
+2_AC_Gasto_Promedio_Cliente = DIVIDE([1_AV_Total_Ventas], [4_AV_Total_Clientes])
+
+3_AC_Cliente_Top_Gasto = TOPN(
+        1, 
+        ALL('retail_ecommerce_sales_stocking_dataset'[Customer ID]), 
+        CALCULATE(SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount])), 
+        DESC
+    )
+
+todos los clientes han comprado por lo que el resultado es (En blanco)
+4_AC_Clientes_Una_Compra = 
+CALCULATE(
+    DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Customer ID]), 
+    FILTER(
+        VALUES('retail_ecommerce_sales_stocking_dataset'[Customer ID]), 
+        CALCULATE(COUNT('retail_ecommerce_sales_stocking_dataset'[Transaction ID])) = 1
+    )
+)
+
+5_AC_Promedio_Productos_Cliente = 
+DIVIDE(
+    SUM('retail_ecommerce_sales_stocking_dataset'[Quantity]), 
+    DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Customer ID]), 
+    0
+)
+
+Faltan columnas dataset
+    6_AC_Frecuencia_Compra_Promedio = ...
+    7_AC_Pais_Mas_Compras = ...
+
+el resultado siempre será 1 devido al dataset dado
+-= 8_AC_Tasa_Conversion = 
+DIVIDE(
+    DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Customer ID]), 
+    DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Transaction ID]), 
+    0
+)
+
+9_AC_Categoria_Mas_Clientes_Unicos  = 
+    TOPN(
+        1, 
+        ALL('retail_ecommerce_sales_stocking_dataset'[Product Category]), 
+        CALCULATE(DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Customer ID])), 
+        DESC
+    )
+
+Faltan columnas dataset
+    10_AC_Carritos_Abandonados = ...
 
 ### 🏷 Análisis de Productos (AP)
 1_AP_Productos_No_Vendidos = ...  
@@ -139,11 +211,11 @@ SUMX(
 3_AP_Producto_Mayor_Margen = ...  
 4_AP_Promedio_Ventas_Producto = ...  
 5_AP_Productos_Comprados_Juntos = ...  
-6_AP_Producto_Mas_Devoluciones = ...  
+    6_AP_Producto_Mas_Devoluciones = ...  
 7_AP_Stock_Promedio = ...  
 8_AP_Producto_Mayor_Variacion_Precio = ...  
 9_AP_Productos_Por_Categoria = ...  
-10_AP_Productos_Mayores_Descuentos = ...  
+    10_AP_Productos_Mayores_Descuentos = ...  
 
 ### 📅 Análisis Temporal (AT)
 1_AT_Ventas_Por_Mes = ...  
