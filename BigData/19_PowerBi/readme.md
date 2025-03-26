@@ -206,28 +206,158 @@ Faltan columnas dataset
     10_AC_Carritos_Abandonados = ...
 
 ### 🏷 Análisis de Productos (AP)
-1_AP_Productos_No_Vendidos = ...  
-2_AP_Precio_Promedio_Productos = ...  
-3_AP_Producto_Mayor_Margen = ...  
-4_AP_Promedio_Ventas_Producto = ...  
-5_AP_Productos_Comprados_Juntos = ...  
-    6_AP_Producto_Mas_Devoluciones = ...  
-7_AP_Stock_Promedio = ...  
-8_AP_Producto_Mayor_Variacion_Precio = ...  
-9_AP_Productos_Por_Categoria = ...  
-    10_AP_Productos_Mayores_Descuentos = ...  
+1_AP_Productos_No_Vendidos = 
+CALCULATE(
+    DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Product]), 
+    FILTER(
+        VALUES('retail_ecommerce_sales_stocking_dataset'[Product]), 
+        CALCULATE(SUM('retail_ecommerce_sales_stocking_dataset'[stock])) = 0
+    )
+)
+
+2_AP_Precio_Promedio_Productos = 
+AVERAGE('retail_ecommerce_sales_stocking_dataset'[Price per Unit])
+
+*3_AP_Producto_Mayor_Margen = ...*
+3_AP_Producto_Mayor_Margen = 
+    TOPN(
+        1, 
+        ALL('retail_ecommerce_sales_stocking_dataset'[Product]), 
+        CALCULATE(AVERAGE('retail_ecommerce_sales_stocking_dataset'[Profit Margin])), // aka calc margin
+        DESC
+    )
+
+4_AP_Promedio_Ventas_Producto = 
+DIVIDE(
+    SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount]), 
+    DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Product]), 
+    0
+)
+
+*5_AP_Productos_Comprados_Juntos = ...*
+    *6_AP_Producto_Mas_Devoluciones = ...*
+7_AP_Stock_Promedio = 
+AVERAGE('retail_ecommerce_sales_stocking_dataset'[Stock])
+
+8_AP_Producto_Mayor_Variacion_Precio = 
+    TOPN(
+        1, 
+        ALL('retail_ecommerce_sales_stocking_dataset'[Product]), 
+        CALCULATE(MAX('retail_ecommerce_sales_stocking_dataset'[Price per Unit]) - MIN('retail_ecommerce_sales_stocking_dataset'[Price per Unit])), 
+        DESC
+    )
+
+9_AP_Productos_Por_Categoria = 
+COUNTROWS(
+    DISTINCT('retail_ecommerce_sales_stocking_dataset'[Product])
+)
+
+    *10_AP_Productos_Mayores_Descuentos = ...*
+10_AP_Productos_Mayores_Descuentos = 
+    TOPN(
+        1, 
+        ALL('retail_ecommerce_sales_stocking_dataset'[Product]), 
+        CALCULATE(MAX('retail_ecommerce_sales_stocking_dataset'[Discount Amount])), 
+        DESC
+    )
 
 ### 📅 Análisis Temporal (AT)
-1_AT_Ventas_Por_Mes = ...  
-2_AT_Dia_Semana_Mas_Ventas = ...  
-3_AT_Crecimiento_Ventas_Mensual = ...  
-4_AT_Hora_Pico_Transacciones = ...  
-5_AT_Temporada_Alta_Ventas = ...  
-6_AT_Ventas_Laborables_vs_Finde = ...  
-7_AT_Tasa_Crecimiento_Mensual = ...  
-8_AT_Impacto_Eventos_Ventas = ...  
-9_AT_Promedio_Compras_Dia_Semana = ...  
-10_AT_Tendencia_Estacional = ...  
+1_AT_Ventas_Por_Mes = 
+TOTALMTD(
+    SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount]),
+    'retail_ecommerce_sales_stocking_dataset'[date]
+)
+
+2_AT_Dia_Semana_Mas_Ventas = 
+VAR DMaxVentas = 
+MAXX(
+    VALUES('retail_ecommerce_sales_stocking_dataset'[dia]),
+     [1_AV_Total_Ventas]
+     )
+RETURN
+    CALCULATE(
+        FIRSTNONBLANK('retail_ecommerce_sales_stocking_dataset'[dia], 1),
+        FILTER(
+            VALUES('retail_ecommerce_sales_stocking_dataset'[dia]),
+            [1_AV_Total_Ventas] = DMaxVentas
+        )
+    )
+  
+3_AT_Crecimiento_Ventas_Mensual = 
+VAR VentasMesAnterior = 
+    CALCULATE(
+        TOTALMTD(SUM('retail_ecommerce_sales_stocking_dataset'[Quantity]), 
+        'retail_ecommerce_sales_stocking_dataset'[Date]),
+        DATEADD('retail_ecommerce_sales_stocking_dataset'[Date], -1, MONTH)
+    )
+VAR VentasMesActual = 
+    TOTALMTD(SUM('retail_ecommerce_sales_stocking_dataset'[Quantity]), 
+    'retail_ecommerce_sales_stocking_dataset'[Date])
+RETURN
+    DIVIDE(VentasMesActual - VentasMesAnterior, VentasMesAnterior, 0)
+
+*4_AT_Hora_Pico_Transacciones = ...*
+
+5_AT_Temporada_Alta_Ventas = 
+TOPN(
+        1,
+        ALL('retail_ecommerce_sales_stocking_dataset'[Date]),
+        CALCULATE(SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount])),
+        DESC
+    )
+
+6_AT_Ventas_Laborables_vs_Finde = 
+VAR weekday_sales = CALCULATE([1_AV_Total_Ventas], 'retail_ecommerce_sales_stocking_dataset'[dia] <= 5)
+VAR weekend_sales = CALCULATE([1_AV_Total_Ventas], 'retail_ecommerce_sales_stocking_dataset'[dia] > 5)
+RETURN
+    "Laborables: " & FORMAT(weekday_sales, "#,##0") & 
+    " | Fin semana: " & FORMAT(weekend_sales, "#,##0") &
+    " | Diferencia: " & FORMAT(weekday_sales - weekend_sales, "#,##0") &
+    " (" & IF(weekend_sales > 0, 
+              FORMAT((weekday_sales/weekend_sales)-1, "0%"), 
+              "N/A") & ")"
+
+7_AT_Tasa_Crecimiento_Mensual = 
+VAR VentasMesAnterior = 
+    CALCULATE(
+        TOTALMTD(SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount]), 'retail_ecommerce_sales_stocking_dataset'[Date]),
+        DATEADD('retail_ecommerce_sales_stocking_dataset'[Date], -1, MONTH)
+    )
+RETURN
+    DIVIDE([1_AT_Ventas_Por_Mes] - VentasMesAnterior, VentasMesAnterior, 0)
+ 
+8_AT_Impacto_Eventos_Ventas = [Media ventas Semana Santa] - [Media de ventas]
+
+9_AT_Promedio_Compras_Por_Dia_Semana = 
+AVERAGEX(
+    SUMMARIZE(
+        'retail_ecommerce_sales_stocking_dataset',
+        'retail_ecommerce_sales_stocking_dataset'[Date],
+        "CantidadDiaria", SUM('retail_ecommerce_sales_stocking_dataset'[Quantity])
+    ),
+    [CantidadDiaria]
+)
+
+*10_AT_Tendencia_Estacional = ...*
+
+Media de ventas = AVERAGE('retail_ecommerce_sales_stocking_dataset'[Quantity])
+
+Media ventas Semana Santa = 
+VAR Fecha_Inicio_SemanaSanta = DATE(2023, 4, 2)  // Ejemplo: Domingo de Ramos 2023
+VAR Fecha_Fin_SemanaSanta = DATE(2023, 4, 9)    // Ejemplo: Domingo de Resurrección 2023
+VAR VentasSemanaSanta = 
+    CALCULATE(
+        SUM('retail_ecommerce_sales_stocking_dataset'[Quantity]),
+        DATESBETWEEN(
+            'retail_ecommerce_sales_stocking_dataset'[Date],
+            Fecha_Inicio_SemanaSanta,
+            Fecha_Fin_SemanaSanta
+        )
+    )
+VAR DiasSemanaSanta = 
+    DATEDIFF(Fecha_Inicio_SemanaSanta, Fecha_Fin_SemanaSanta, DAY) + 1
+RETURN
+    DIVIDE(VentasSemanaSanta, DiasSemanaSanta)
 
 ### 📦 Análisis Logístico y de Inventario (ALI)
 1_ALI_Total_Stock = ...  
