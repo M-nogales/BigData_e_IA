@@ -106,26 +106,39 @@ Número_Apartado_Nombre = ...
 
 ### 📌 Análisis General de Ventas (AV)
 
+```
 1_AV_Total_Ventas = SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount])
+```
 
-2_AV_Total_Transacciones = DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Transaction ID])
+```2_AV_Total_Transacciones = DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Transaction ID])
+```
 
+```
 3_AV_Promedio_Venta_Transaccion = DIVIDE([1_AV_Total_Ventas], [2_AV_Total_Transacciones]) 
-
+```
+```
 4_AV_Total_Clientes = DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Customer ID])
+```
 
+```
 5_AV_Total_Productos_Vendidos = SUM('retail_ecommerce_sales_stocking_dataset'[Quantity])
+```
 
+```
 6_AV_Ingreso_Promedio_Diario = 
 VAR DiasUnicos = DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Date])
 RETURN DIVIDE([1_AV_Total_Ventas], DiasUnicos)
+```
 
+```
 7_AV_Total_Ventas_Por_Categoria = 
 SUMX(
     VALUES('retail_ecommerce_sales_stocking_dataset'[Product Category]),
     CALCULATE([1_AV_Total_Ventas])
 )
+```
 
+```
 8_AV_Producto_Mas_Vendido = 
 
 TOPN(
@@ -134,18 +147,24 @@ TOPN(
     SUM('Global Superstore'[Sales]), 
     DESC
 )
+```
 
+```
 9_AV_Valor_Promedio_Carrito = DIVIDE([1_AV_Total_Ventas], [4_AV_Total_Clientes])
+```
 
+```
 10_AV_Dia_Mayor_Ventas = TOPN(
         1, 
         ALL('retail_ecommerce_sales_stocking_dataset'[Date]), 
         CALCULATE(SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount])), 
         DESC
     )
+```
 
 ### 📊 Análisis de Clientes y Comportamiento de Compra (AC)
 
+```
 1_AC_Clientes_Recurrentes = 
 CALCULATE(
     DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Customer ID]), 
@@ -155,17 +174,21 @@ CALCULATE(
     )
 
 )
-
+```
+```
 2_AC_Gasto_Promedio_Cliente = DIVIDE([1_AV_Total_Ventas], [4_AV_Total_Clientes])
-
+```
+```
 3_AC_Cliente_Top_Gasto = TOPN(
         1, 
         ALL('retail_ecommerce_sales_stocking_dataset'[Customer ID]), 
         CALCULATE(SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount])), 
         DESC
     )
+```
 
-todos los clientes han comprado por lo que el resultado es (En blanco)
+```
+//todos los clientes han comprado por lo que el resultado es (En blanco)
 4_AC_Clientes_Una_Compra = 
 CALCULATE(
     DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Customer ID]), 
@@ -174,26 +197,28 @@ CALCULATE(
         CALCULATE(COUNT('retail_ecommerce_sales_stocking_dataset'[Transaction ID])) = 1
     )
 )
+```
 
+```
 5_AC_Promedio_Productos_Cliente = 
 DIVIDE(
     SUM('retail_ecommerce_sales_stocking_dataset'[Quantity]), 
     DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Customer ID]), 
     0
 )
+```
 
-Faltan columnas dataset
-    6_AC_Frecuencia_Compra_Promedio = ...
-    7_AC_Pais_Mas_Compras = ...
-
-el resultado siempre será 1 devido al dataset dado
+```
+// el resultado siempre será 1 devido al dataset dado
 -= 8_AC_Tasa_Conversion = 
 DIVIDE(
     DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Customer ID]), 
     DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Transaction ID]), 
     0
 )
+```
 
+```
 9_AC_Categoria_Mas_Clientes_Unicos  = 
     TOPN(
         1, 
@@ -201,11 +226,11 @@ DIVIDE(
         CALCULATE(DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Customer ID])), 
         DESC
     )
-
-Faltan columnas dataset
-    10_AC_Carritos_Abandonados = ...
+```
 
 ### 🏷 Análisis de Productos (AP)
+
+```
 1_AP_Productos_No_Vendidos = 
 CALCULATE(
     DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Product]), 
@@ -214,9 +239,12 @@ CALCULATE(
         CALCULATE(SUM('retail_ecommerce_sales_stocking_dataset'[stock])) = 0
     )
 )
+```
 
+```
 2_AP_Precio_Promedio_Productos = 
 AVERAGE('retail_ecommerce_sales_stocking_dataset'[Price per Unit])
+```
 
 *3_AP_Producto_Mayor_Margen = ...*
 3_AP_Producto_Mayor_Margen = 
@@ -227,18 +255,21 @@ AVERAGE('retail_ecommerce_sales_stocking_dataset'[Price per Unit])
         DESC
     )
 
+```
 4_AP_Promedio_Ventas_Producto = 
 DIVIDE(
     SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount]), 
     DISTINCTCOUNT('retail_ecommerce_sales_stocking_dataset'[Product]), 
     0
 )
+```
 
-*5_AP_Productos_Comprados_Juntos = ...*
-    *6_AP_Producto_Mas_Devoluciones = ...*
+```
 7_AP_Stock_Promedio = 
 AVERAGE('retail_ecommerce_sales_stocking_dataset'[Stock])
+```
 
+```
 8_AP_Producto_Mayor_Variacion_Precio = 
     TOPN(
         1, 
@@ -246,28 +277,25 @@ AVERAGE('retail_ecommerce_sales_stocking_dataset'[Stock])
         CALCULATE(MAX('retail_ecommerce_sales_stocking_dataset'[Price per Unit]) - MIN('retail_ecommerce_sales_stocking_dataset'[Price per Unit])), 
         DESC
     )
+```
 
+```
 9_AP_Productos_Por_Categoria = 
 COUNTROWS(
     DISTINCT('retail_ecommerce_sales_stocking_dataset'[Product])
 )
-
-    *10_AP_Productos_Mayores_Descuentos = ...*
-10_AP_Productos_Mayores_Descuentos = 
-    TOPN(
-        1, 
-        ALL('retail_ecommerce_sales_stocking_dataset'[Product]), 
-        CALCULATE(MAX('retail_ecommerce_sales_stocking_dataset'[Discount Amount])), 
-        DESC
-    )
+```
 
 ### 📅 Análisis Temporal (AT)
+```
 1_AT_Ventas_Por_Mes = 
 TOTALMTD(
     SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount]),
     'retail_ecommerce_sales_stocking_dataset'[date]
 )
+```
 
+```
 2_AT_Dia_Semana_Mas_Ventas = 
 VAR DMaxVentas = 
 MAXX(
@@ -282,7 +310,8 @@ RETURN
             [1_AV_Total_Ventas] = DMaxVentas
         )
     )
-  
+```
+```
 3_AT_Crecimiento_Ventas_Mensual = 
 VAR VentasMesAnterior = 
     CALCULATE(
@@ -295,9 +324,10 @@ VAR VentasMesActual =
     'retail_ecommerce_sales_stocking_dataset'[Date])
 RETURN
     DIVIDE(VentasMesActual - VentasMesAnterior, VentasMesAnterior, 0)
+```
 
-*4_AT_Hora_Pico_Transacciones = ...*
 
+```
 5_AT_Temporada_Alta_Ventas = 
 TOPN(
         1,
@@ -305,7 +335,9 @@ TOPN(
         CALCULATE(SUM('retail_ecommerce_sales_stocking_dataset'[Total Amount])),
         DESC
     )
+```
 
+```
 6_AT_Ventas_Laborables_vs_Finde = 
 VAR weekday_sales = CALCULATE([1_AV_Total_Ventas], 'retail_ecommerce_sales_stocking_dataset'[dia] <= 5)
 VAR weekend_sales = CALCULATE([1_AV_Total_Ventas], 'retail_ecommerce_sales_stocking_dataset'[dia] > 5)
@@ -316,7 +348,9 @@ RETURN
     " (" & IF(weekend_sales > 0, 
               FORMAT((weekday_sales/weekend_sales)-1, "0%"), 
               "N/A") & ")"
+```
 
+```
 7_AT_Tasa_Crecimiento_Mensual = 
 VAR VentasMesAnterior = 
     CALCULATE(
@@ -325,9 +359,13 @@ VAR VentasMesAnterior =
     )
 RETURN
     DIVIDE([1_AT_Ventas_Por_Mes] - VentasMesAnterior, VentasMesAnterior, 0)
- 
-8_AT_Impacto_Eventos_Ventas = [Media ventas Semana Santa] - [Media de ventas]
+```
 
+```
+8_AT_Impacto_Eventos_Ventas = [Media ventas Semana Santa] - [Media de ventas]
+```
+
+```
 9_AT_Promedio_Compras_Por_Dia_Semana = 
 AVERAGEX(
     SUMMARIZE(
@@ -337,9 +375,10 @@ AVERAGEX(
     ),
     [CantidadDiaria]
 )
+```
 
 *10_AT_Tendencia_Estacional = ...*
-
+```
 Media de ventas = AVERAGE('retail_ecommerce_sales_stocking_dataset'[Quantity])
 
 Media ventas Semana Santa = 
@@ -358,27 +397,75 @@ VAR DiasSemanaSanta =
     DATEDIFF(Fecha_Inicio_SemanaSanta, Fecha_Fin_SemanaSanta, DAY) + 1
 RETURN
     DIVIDE(VentasSemanaSanta, DiasSemanaSanta)
+```
 
 ### 📦 Análisis Logístico y de Inventario (ALI)
-1_ALI_Total_Stock = ...  
-2_ALI_Productos_Bajo_Stock = ...  
-3_ALI_Rotacion_Inventario = ...  
-4_ALI_Tiempo_Promedio_Reposicion = ...  
-5_ALI_Eficiencia_Cadena_Suministro = ...  
-6_ALI_Pedidos_Retrasados = ...  
-7_ALI_Productos_Agotados_30d = ...  
-8_ALI_Categorias_Problemas_Stock = ...  
-9_ALI_Stock_vs_Demanda_Historica = ...  
-10_ALI_Frecuencia_Reposicion = ...  
+```
+1_ALI_Total_Stock = SUM('retail_ecommerce_sales_stocking_dataset'[Stock])
+```
+
+```
+2_ALI_Productos_Bajo_Stock = 
+VAR RankedProducts = 
+    ADDCOLUMNS(
+        VALUES('retail_ecommerce_sales_stocking_dataset'[Product]),
+        "StockTotal", CALCULATE(SUM('retail_ecommerce_sales_stocking_dataset'[Stock])),
+        "Rank", RANKX(ALL('retail_ecommerce_sales_stocking_dataset'[Product]), CALCULATE(SUM('retail_ecommerce_sales_stocking_dataset'[Stock])),, ASC)
+    )
+
+VAR MinStockProducts = FILTER(RankedProducts, [Rank] = 1)
+
+RETURN
+    CONCATENATEX(MinStockProducts, 'retail_ecommerce_sales_stocking_dataset'[Product], ", ")
+ ```
+
+ ```
+8_ALI_Categorias_Problemas_Stock = 
+VAR RankedCategories = 
+    ADDCOLUMNS(
+        VALUES('retail_ecommerce_sales_stocking_dataset'[Product Category]),
+        "StockTotal", CALCULATE(SUM('retail_ecommerce_sales_stocking_dataset'[Stock])),
+        "Rank", RANKX(ALL('retail_ecommerce_sales_stocking_dataset'[Product Category]), CALCULATE(SUM('retail_ecommerce_sales_stocking_dataset'[Stock])),, ASC)
+    )
+
+VAR MinStockCategories = FILTER(RankedCategories, [Rank] = 1)
+
+RETURN
+    CONCATENATEX(MinStockCategories, 'retail_ecommerce_sales_stocking_dataset'[Product Category], ", ")
+```
 
 ### 🧠 Análisis Complejo y Predictivo (ACP)
-1_ACP_Tasa_Conversion_Mensual = ...  
-2_ACP_Prediccion_Ventas_Lineal = ...  
-3_ACP_Impacto_Descuentos_Conversion = ...  
-4_ACP_Segmentacion_Clientes_Leales = ...  
-5_ACP_Productos_Recompra = ...  
-6_ACP_Ventas_Acumuladas_Ajustadas = ...  
-7_ACP_Abandono_Carrito_Por_Categoria = ...  
-8_ACP_Impacto_Festivos_Ventas = ...  
-9_ACP_Clientes_Potencial_Crecimiento = ...  
-10_ACP_Prevision_Demanda_Productos = ...  
+```
+Pendiente = 
+VAR N = COUNTROWS('retail_ecommerce_sales_stocking_dataset')  -- Número de puntos
+VAR FechaMinima = MIN('retail_ecommerce_sales_stocking_dataset'[Date])  -- La fecha más antigua en los datos
+VAR SumaX = SUMX('retail_ecommerce_sales_stocking_dataset', DATEDIFF(FechaMinima, 'retail_ecommerce_sales_stocking_dataset'[Date], MONTH))  -- Suma de X (número de meses desde la fecha mínima)
+VAR SumaY = SUMX('retail_ecommerce_sales_stocking_dataset', 'retail_ecommerce_sales_stocking_dataset'[Total Amount])  -- Suma de Y (total de ventas)
+VAR SumaXY = SUMX('retail_ecommerce_sales_stocking_dataset', DATEDIFF(FechaMinima, 'retail_ecommerce_sales_stocking_dataset'[Date], MONTH) * 'retail_ecommerce_sales_stocking_dataset'[Total Amount])  -- Suma de X*Y
+VAR SumaX2 = SUMX('retail_ecommerce_sales_stocking_dataset', DATEDIFF(FechaMinima, 'retail_ecommerce_sales_stocking_dataset'[Date], MONTH) ^ 2)  -- Suma de X^2
+
+RETURN
+    (N * SumaXY - SumaX * SumaY) / (N * SumaX2 - SumaX ^ 2)
+```
+
+```
+Interseccion = 
+VAR N = COUNTROWS('retail_ecommerce_sales_stocking_dataset')  -- Número de puntos
+VAR FechaMinima = MIN('retail_ecommerce_sales_stocking_dataset'[Date])  -- La fecha más antigua en los datos
+VAR SumaX = SUMX('retail_ecommerce_sales_stocking_dataset', DATEDIFF(FechaMinima, 'retail_ecommerce_sales_stocking_dataset'[Date], MONTH))  -- Suma de X
+VAR SumaY = SUMX('retail_ecommerce_sales_stocking_dataset', 'retail_ecommerce_sales_stocking_dataset'[Total Amount])  -- Suma de Y (total de ventas)
+VAR Pendiente = [Pendiente]  -- Pendiente calculada previamente
+
+RETURN
+    (SumaY - Pendiente * SumaX) / N
+```
+
+```
+2_ACP_Prediccion_Ventas_Lineal = 
+VAR UltimoMes = DATEDIFF(MINX(ALL('retail_ecommerce_sales_stocking_dataset'), 'retail_ecommerce_sales_stocking_dataset'[Date]), MAX('retail_ecommerce_sales_stocking_dataset'[Date]), MONTH) + 1
+VAR Pendiente = [Pendiente]  -- Pendiente calculada previamente
+VAR Interseccion = [Interseccion]  -- Intersección calculada previamente
+
+RETURN
+    (UltimoMes * Pendiente) + Interseccion
+```
