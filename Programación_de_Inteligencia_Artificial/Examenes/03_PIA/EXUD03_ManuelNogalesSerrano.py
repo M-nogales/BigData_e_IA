@@ -61,7 +61,9 @@ def simulate_iot_device(device_id):
         'device_id': device_id,
         'timestamp': datetime.datetime.now().isoformat(),
         'temperature': round(random.uniform(15.0, 30.0), 2),
-        'humidity': round(random.uniform(30.0, 70.0), 2)
+        'humidity': round(random.uniform(30.0, 70.0), 2),
+        'light': round(random.uniform(100, 1000), 2),
+        'c02': round(random.uniform(300, 500), 2),
     }
     return data
 
