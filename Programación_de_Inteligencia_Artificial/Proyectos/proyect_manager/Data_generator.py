@@ -111,7 +111,7 @@ df_encoded = pd.get_dummies(df_completo["Category"], prefix="Category", drop_fir
 X = pd.concat([
     df_encoded,
     df_completo[[
-        # "Nivel de dificultad",                  # Si la tienes
+        # "Nivel de dificultad",
         "Rendimiento personal",
         "Soft skills",
         "Carga de trabajo",
@@ -135,6 +135,6 @@ mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 r2 = r2_score(y_test, y_pred)
 
-print(f"✅ MSE: {mse:.2f}")
-print(f"✅ RMSE: {rmse:.2f}")
-print(f"✅ R² Score: {r2:.2f}")
+print(f"MSE: {mse:.2f}")
+print(f"RMSE: {rmse:.2f}")
+print(f"R² Score: {r2:.2f}")

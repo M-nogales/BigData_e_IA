@@ -1,0 +1,16 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: always
+    ports:
+      - "9000:9000" # Puerto para acceder a la interfaz de Portainer
+    volumes:
+      - portainer_data:/data # Volumen persistente para los datos de Portainer
+      - /var/run/docker.sock:/var/run/docker.sock # Permite gestionar los contenedores Docker del host
+    environment:
+      TZ: "Europe/Madrid"
+      
+volumes:
+  portainer_data:
+    driver: local
