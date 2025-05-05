@@ -3,7 +3,7 @@ from openai import OpenAI
 
 client = OpenAI(
     # This is the default and can be omitted
-    api_key="Key",
+    api_key="secret api key",
 )
 
 response = client.responses.create(

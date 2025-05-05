@@ -1,6 +1,5 @@
 import pandas as pd
-import io
-import ast # To parse the string representation of dictionary
+import ast
 
 
 task_df = pd.read_csv("task_categories_copy.csv")
