@@ -1,0 +1,42 @@
+[
+    {
+        "Task Description": "Develop a data pipeline",
+        "Category": "data science",
+        "Skill": "apache kafka",
+        "Difficulty Level": 4.5,
+        "Estimated Time (hrs)": 15,
+        "Area": "data engineering"
+    },
+    {
+        "Task Description": "Set up CI/CD pipeline",
+        "Category": "devops",
+        "Skill": "jenkins",
+        "Difficulty Level": 3.8,
+        "Estimated Time (hrs)": 12,
+        "Area": "automation"
+    },
+    {
+        "Task Description": "Design responsive UI components",
+        "Category": "frontend",
+        "Skill": "react",
+        "Difficulty Level": 4.0,
+        "Estimated Time (hrs)": 10,
+        "Area": "user interface"
+    },
+    {
+        "Task Description": "Create database backup and restore strategy",
+        "Category": "database administration",
+        "Skill": "postgresql",
+        "Difficulty Level": 3.2,
+        "Estimated Time (hrs)": 8,
+        "Area": "maintenance"
+    },
+    {
+        "Task Description": "Deploy application to production",
+        "Category": "deployment",
+        "Skill": "docker",
+        "Difficulty Level": 3.7,
+        "Estimated Time (hrs)": 9,
+        "Area": "infrastructure"
+    }
+]

@@ -1,0 +1,43 @@
+[
+    {
+      "Task Description": "Implement user authentication",
+      "Category": "backend",
+      "Skill": "spring boot",
+      "Difficulty Level": 3.5,
+      "Estimated Time (hrs)": 8,
+      "Area": "security"
+    },
+    {
+      "Task Description": "Build a microservice",
+      "Category": "backend",
+      "Skill": "kotlin",
+      "Difficulty Level": 4.0,
+      "Estimated Time (hrs)": 12,
+      "Area": "architecture"
+    },
+    {
+      "Task Description": "Optimize server performance",
+      "Category": "backend",
+      "Skill": "asp.net",
+      "Difficulty Level": 4.2,
+      "Estimated Time (hrs)": 10,
+      "Area": "performance"
+    },
+    {
+      "Task Description": "Manage database operations",
+      "Category": "backend",
+      "Skill": "django",
+      "Difficulty Level": 3.0,
+      "Estimated Time (hrs)": 7,
+      "Area": "database"
+    },
+    {
+      "Task Description": "Implement user authentication",
+      "Category": "backend",
+      "Skill": "api",
+      "Difficulty Level": 3.5,
+      "Estimated Time (hrs)": 9,
+      "Area": "security"
+    }
+  ]
+  
