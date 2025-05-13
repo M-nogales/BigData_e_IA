@@ -37,7 +37,7 @@ categories = [
 ]
 
 prompt = f"""
-Generate 5 additional tasks following exactly the same structure and format of the JSON below, including keys and writing style:
+Generate 100 additional tasks following exactly the same structure and format of the JSON below, including keys and writing style:
 
 {task_json}
 
@@ -70,8 +70,22 @@ if raw_text.startswith("```json"):
 
 try:
     task_data = json.loads(raw_text)
+
+    # Load existing tasks if file exists
+    existing_tasks = []
+    if os.path.exists("generated_tasks.json"):
+        with open("generated_tasks.json", "r", encoding="utf-8") as f:
+            try:
+                existing_tasks = json.load(f)
+            except json.JSONDecodeError:
+                print("Warning: existing file is not valid JSON. Overwriting.")
+
+    # Combine existing and new tasks
+    combined_tasks = existing_tasks + task_data
+
+    # Save updated task list
     with open("generated_tasks.json", "w", encoding="utf-8") as f:
-        json.dump(task_data, f, indent=4, ensure_ascii=False)
-        print("Archivo guardado correctamente.")
+        json.dump(combined_tasks, f, indent=4, ensure_ascii=False)
+        print("Archivo actualizado correctamente.")
 except json.JSONDecodeError as e:
     print("Error decoding JSON:", e)

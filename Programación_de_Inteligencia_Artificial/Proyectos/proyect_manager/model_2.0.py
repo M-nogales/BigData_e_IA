@@ -5,9 +5,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, roc_auc_score
 from sklearn.preprocessing import StandardScaler
 import numpy as np
-import warnings
-
-warnings.filterwarnings('ignore', category=FutureWarning) # Ignorar avisos futuros de pandas/sklearn
 
 # --- Carga de Datos ---
 try:
