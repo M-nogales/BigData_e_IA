@@ -8,18 +8,18 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, roc_auc_score, classification_report, log_loss
-import numpy as np # For handling potential missing values during skill lookup
-import json # Import json library to load the JSON file
+import numpy as np
+import json
+import joblib # For saving the model
 
 def run_prediction_pipeline():
     """
     Runs the full pipeline: Load data, simulate assignments, create artificial
     target based on features, preprocess, train a model, and predict probabilities.
-    Modified to load task data from a JSON file.
     """
-    # --- Carga y Procesamiento Inicial ---
+    # --- load and inicial processing ---
     try:
-        # --- Cargar datos de tareas desde JSON ---
+        # --- Load json tasks (task_generator.py) ---
         json_file_path = "generated_tasks copy.json"
         try:
             with open(json_file_path, 'r', encoding='utf-8') as f:
@@ -36,20 +36,17 @@ def run_prediction_pipeline():
              print(f"Error loading JSON task data: {e}")
              return
 
-        # --- Cargar datos de RRHH ---
+        # --- load RRHH ---
         try:
             rrhh_df = pd.read_csv("datasets/RRHH.csv")
         except FileNotFoundError:
             print("Warning: 'datasets/RRHH.csv' not found. Trying 'RRHH.csv' in the current directory.")
-            try:
-                 rrhh_df = pd.read_csv("RRHH.csv")
-            except FileNotFoundError:
-                 print("Error: 'RRHH.csv' not found in the current directory either.")
-                 return
-
 
         print("--- Task Categories Info (from JSON) ---")
-        # task_df.info() # Comentado para brevedad
+        task_df.info() 
+
+        # --- Clear RRHH dataset ---
+
         # Ensure column names from JSON match expected names and handle potential variations
         # Based on provided JSON, column names are correct: "Task Description", "Category", "Skill"
         task_df.rename(columns={
@@ -65,13 +62,9 @@ def run_prediction_pipeline():
             task_df['Skill'] = task_df['Skill'].str.lower().str.strip()
         else:
             print("Warning: 'Skill' column not found in task data after loading JSON.")
-            # Handle missing 'Skill' column if necessary, maybe skip skill-based features
-
-        # print("\nUnique Skills Required (lowercase, stripped):")
-        # if 'Skill' in task_df.columns: print(task_df['Skill'].unique())
 
         print("\n\n--- RRHH Info ---")
-        # rrhh_df.info() # Comentado para brevedad
+        rrhh_df.info()
 
         def parse_tech_abilities(abilities_str):
             if pd.isna(abilities_str): return {}
@@ -83,7 +76,7 @@ def run_prediction_pipeline():
                         abilities_str = abilities_str[1:-1]
                     elif abilities_str.startswith('"') and abilities_str.endswith('"'):
                          abilities_str = abilities_str[1:-1]
-                    # Replace common string representations of None/NaN with actual None
+                    # Replace common string representations of None/NaN with actual None just in case
                     abilities_str = abilities_str.replace("None", "None").replace("nan", "None")
 
                 evaluated = ast.literal_eval(abilities_str)
@@ -105,17 +98,18 @@ def run_prediction_pipeline():
             print("\nWarning: 'Hire_Date' column not found in RRHH.csv")
 
     except FileNotFoundError as e:
-        print(f"Error crítico: Archivo no encontrado - {e}. Asegúrate de que los archivos de datos estén accesibles.")
+        print(f"Error: file do not found - {e}. Make sure the file is in the correct place.")
         return
     except Exception as e:
-        print(f"Error crítico durante la carga/procesamiento inicial: {e}")
+        print(f"Error: while loading/inicial processing: {e}")
         return
 
-    # --- !! SIMULACIÓN DE ASIGNACIONES (SIN TARGET INICIAL) !! ---
+    # --- rule controlled assignments ---
     num_employees = len(rrhh_df)
     num_task_types = len(task_df)
-
+    # ensure we have a reasonable number of assignments for training
     if num_employees > 0 and num_task_types > 0:
+        # simulate the lower number of employees * 5 or 100
         total_assignments = min(num_employees * 5, 100)
         valid_employee_ids = rrhh_df['Employee_ID'].unique()
         # Ensure task descriptions in task_df are strings and not empty before sampling
@@ -126,20 +120,20 @@ def run_prediction_pipeline():
 
 
         if len(valid_employee_ids) == 0 or len(valid_task_descriptions) == 0:
-             print("Error: No hay IDs de empleado válidos o descripciones de tarea válidas para simular asignaciones.")
+             print("Error: there's no valid employee Ids or tasks descriptions for simulations.")
              return
 
-        # Crear asignaciones SIN la columna Finished_On_Time todavía
+        # Create assignations WITHOUT the Finish_On_Time column 
         assignment_data = {
             'Assignment_ID': range(1, total_assignments + 1),
             'Employee_ID': np.random.choice(valid_employee_ids, total_assignments),
             'Task Description': np.random.choice(valid_task_descriptions, total_assignments)
         }
         assignments_df = pd.DataFrame(assignment_data)
-        print("\n\n--- Simulated Assignment Data (Initial - NO TARGET YET) ---")
+        print("\n\n--- Inicial Simulated Assignment Data ---")
         print(assignments_df.head())
 
-        # --- 1. Combinar DataFrames ---
+        # --- 1. Combine DataFrames ---
         merged_df = pd.merge(assignments_df, rrhh_df, on='Employee_ID', how='left')
 
         # Ensure 'Task Description' is string type and strip whitespace before merge
@@ -156,11 +150,11 @@ def run_prediction_pipeline():
         if len(merged_df) < initial_rows:
             print(f"\nWarning: Removed {initial_rows - len(merged_df)} assignments due to missing task details after merge.")
         if merged_df.empty:
-            print("Error crítico: No quedan datos después de combinar y limpiar. No se puede continuar.")
+            print("Error: There's no data to combine and clear, is not possible to continues.")
             return
 
-        # --- 2. Ingeniería de Características ---
-        # a) Antigüedad (Tenure)
+        # --- 2. New columns for training ---
+        # a) Tenure
         current_date = pd.to_datetime(datetime.now())
         if 'Hire_Date' in merged_df.columns and pd.api.types.is_datetime64_any_dtype(merged_df['Hire_Date']):
             # Calculate tenure only for valid dates
@@ -171,107 +165,83 @@ def run_prediction_pipeline():
                  merged_df['Tenure_Years'].fillna(merged_df['Tenure_Years'].median() if merged_df['Tenure_Years'].median() is not np.nan else 0.0, inplace=True)
 
         elif 'Years_At_Company' in merged_df.columns:
-             merged_df['Tenure_Years'] = merged_df['Years_At_Company'] # Usar directamente si existe
+             merged_df['Tenure_Years'] = merged_df['Years_At_Company']
         else:
-             merged_df['Tenure_Years'] = 0.0 # Default si no hay fecha ni años
+             merged_df['Tenure_Years'] = 0.0
              print("Warning: Could not calculate or find 'Tenure_Years'. Setting to 0.")
 
-
-        # b) Puntuación de Coincidencia de Habilidad (Skill Match)
-        # This function remains the same as it uses the merged 'Skill' and 'technical_abilities_dict'
+        # b) For the assignment, get the skill match score
         def get_skill_score(row):
             required_skill = row['Skill']
             abilities_dict = row['technical_abilities_dict']
             # Ensure required_skill is a string and abilities_dict is a dict for safe lookup
             if not isinstance(required_skill, str) or pd.isna(required_skill) or not isinstance(abilities_dict, dict):
                  return 0.0
-            return float(abilities_dict.get(required_skill.lower().strip(), 0.0)) # Ensure lookup key is also lower/stripped
+            return float(abilities_dict.get(required_skill.lower().strip(), 0.0))
 
 
         merged_df['Skill_Match_Score'] = merged_df.apply(get_skill_score, axis=1)
 
-        # c) Manejar Tareas con Múltiples Skills (if any assignment merged with multiple skill rows)
-        # This logic relies on 'Assignment_ID' and 'Skill_Match_Score' which are available
+        # c) Manage tasks with various Skills (if any assignment merged with multiple skill rows)
+        # This block prevents the same assignment from being assigned to more than one worker,
+        #  which would be redundant or conflicting in a random or merit-based assignment.
+        #  It also correctly handles cases where a task may have multiple potential matches, choosing only the best.
+
         if 'Assignment_ID' in merged_df.columns:
-             # print(f"\nDataFrame size before handling multi-skill tasks: {len(merged_df)}")
              merged_df = merged_df.sort_values('Skill_Match_Score', ascending=False)
              merged_df = merged_df.drop_duplicates(subset=['Assignment_ID'], keep='first')
-             # print(f"DataFrame size after handling multi-skill tasks: {len(merged_df)}")
 
-
-        # --- 3. IMPUTACIÓN PREVIA para las características usadas en la regla ---
-        # Imputar NaNs ANTES de crear la regla artificial
-        # Usaremos estas columnas en la regla, así que deben tener valores
-        # Added 'Tenure_Years' to the list as it's used in the rule logic's base calculation
-        cols_for_rule = ['Skill_Match_Score', 'Performance_Score', 'Years_At_Company', 'Overtime_Hours', 'Tenure_Years']
-        for col in cols_for_rule:
-            if col in merged_df.columns:
-                 if merged_df[col].isnull().any():
-                     # Use mean for potentially skewed distributions, or median as before
-                     median_val = merged_df[col].median()
-                     if pd.isna(median_val):
-                         # Fallback to 0 if median is NaN (e.g., column was all NaNs initially)
-                         merged_df[col].fillna(0.0, inplace=True)
-                         print(f"Imputed NaNs in '{col}' with 0.0 (median was NaN) before creating target.")
-                     else:
-                         merged_df[col].fillna(median_val, inplace=True)
-                         print(f"Imputed NaNs in '{col}' with median {median_val:.2f} before creating target.")
-            else:
-                 print(f"Warning: Column '{col}' needed for artificial target rule not found. Adding with default 0.0.")
-                 merged_df[col] = 0.0 # Add column with default if missing
-
-
-        # --- 4. CREACIÓN ARTIFICIAL DEL TARGET 'Finished_On_Time' ---
+        # --- 3. ARTIFICIAL CREATION OF THE TARGET 'Finished_On_Time' ---
         print("\n--- Creating Artificial Target 'Finished_On_Time' based on Features ---")
-        def crear_target_artificial(row):
+
+        def create_artificial_target(row):
             """
-            Crea un valor True/False para Finished_On_Time basado en características.
-            Esta lógica es *arbitraria* y solo para demostración.
-            Ajustada para usar 'Tenure_Years' which is calculated/imputed.
+            Create a True/False value for Finished_On_Time based on features.
             """
-            # Asegurarse que las columnas existen, si no, usar valor neutral (ya imputado/defaulted)
+            # Ensure the columns exist; otherwise, use neutral value (already imputed/defaulted)
             skill_match = row['Skill_Match_Score']
             perf_score = row['Performance_Score']
-            # Use Tenure_Years which is either from Hire_Date, Years_At_Company, or default
-            experience_years = row['Tenure_Years'] # Use Tenure_Years instead of Years_At_Company directly
+            # Use Tenure_Years, which comes from Hire_Date, Years_At_Company, or default
+            experience_years = row['Tenure_Years']  # Use Tenure_Years instead of Years_At_Company directly
             overtime = row['Overtime_Hours']
 
-            # Calcular una probabilidad base y ajustarla
-            # Normalizar/escalar los valores ayuda, pero para simplificar usamos rangos esperados
-            prob = 0.5  # Probabilidad base
+            # Calculate a base probability and adjust it
+            # Normalizing/scaling helps, but here we simplify with expected ranges
+            prob = 0.5  # Base probability
 
-            # Ajuste por Skill Match (más habilidad -> más probable terminar a tiempo)
-            # Asumiendo escala 0-10. Un valor de 5 es neutral.
-            prob += (skill_match - 5.0) * 0.04 # Ajuste moderado
+            # Adjustment for Skill Match (more skill -> more likely to finish on time)
+            # Assuming scale 0–10. A value of 5 is neutral.
+            prob += (skill_match - 5.0) * 0.04  # Moderate adjustment
 
-            # Ajuste por Performance Score (más performance -> más probable)
-            # Asumiendo escala 1-5. Un valor de 3 es neutral.
-            prob += (perf_score - 3.0) * 0.06 # Ajuste un poco mayor
+            # Adjustment for Performance Score (higher performance -> more likely)
+            # Assuming scale 1–5. A value of 3 is neutral.
+            prob += (perf_score - 3.0) * 0.06  # Slightly stronger adjustment
 
-            # Ajuste por Experiencia (más experiencia -> más probable)
-            # Usando Tenure_Years. Un valor de 3 años es neutral.
-            prob += (experience_years - 3.0) * 0.01 # Ajuste pequeño
+            # Adjustment for Experience (more experience -> more likely)
+            # Using Tenure_Years. A value of 3 years is neutral.
+            prob += (experience_years - 3.0) * 0.01  # Small adjustment
 
-            # Ajuste por Horas Extra (más horas extra -> menos probable terminar *esta* a tiempo?)
-            # Podría indicar sobrecarga o dificultad. Un valor de 8 es neutral.
-            prob -= (overtime - 8.0) * 0.01 # Ajuste pequeño negativo
+            # Adjustment for Overtime Hours (more overtime -> less likely to finish *this* task on time?)
+            # Might indicate overload or difficulty. A value of 8 is neutral.
+            prob -= (overtime - 8.0) * 0.01  # Small negative adjustment
 
-            # Asegurar que la probabilidad esté entre límites razonables (ej. 0.05 y 0.95)
+            # Ensure the probability stays within reasonable limits (e.g., 0.05 to 0.95)
             prob = np.clip(prob, 0.05, 0.95)
 
-            # Decidir True/False basado en esta probabilidad
+            # Decide True/False based on this probability
             return np.random.rand() < prob
 
-        # Aplicar la función para crear la columna objetivo
-        merged_df['Finished_On_Time'] = merged_df.apply(crear_target_artificial, axis=1)
+        # Apply the function to create the target column
+        merged_df['Finished_On_Time'] = merged_df.apply(create_artificial_target, axis=1)
 
         print("Artificial target created. Distribution:")
         print(merged_df['Finished_On_Time'].value_counts(normalize=True))
-        print("\n--- Merged DataFrame After Feature Engineering & Artificial Target (Sample) ---")
+
+        print("\n--- Merged DataFrame After Feature Engineering & Artificial Target ---")
         print(merged_df[['Assignment_ID', 'Skill_Match_Score','Performance_Score','Tenure_Years','Overtime_Hours','Finished_On_Time']].head())
 
 
-        # --- 5. Selección Final de Características y Objetivo + Imputación Final ---
+        # --- 4. Features selection and objective ---
         potential_features = [
              'Age', 'Years_At_Company', 'Performance_Score', 'Monthly_Salary',
              'Work_Hours_Per_Week', 'Projects_Handled', 'Overtime_Hours',
@@ -281,15 +251,15 @@ def run_prediction_pipeline():
         ]
         # Filter features to include only those present in the merged_df
         features = [f for f in potential_features if f in merged_df.columns]
-        target = 'Finished_On_Time' # Ya creado
+        target = 'Finished_On_Time' 
 
-        if target not in merged_df.columns: print(f"Error crítico: Variable objetivo '{target}' no encontrada."); return
-        if len(merged_df) == 0: print("Error crítico: No hay datos tras procesar."); return
+        if target not in merged_df.columns: print(f"Error: target '{target}' not found ."); return
+        if len(merged_df) == 0: print("Error: There's no data before processing."); return
 
         X = merged_df[features].copy()
         y = merged_df[target].astype(int)
 
-        # Imputación final para CUALQUIER NaN restante en X antes del pipeline
+        # Final clear of nan and null values in numerical and categorical features
         numerical_features = X.select_dtypes(include=np.number).columns.tolist()
         categorical_features = X.select_dtypes(include=['object', 'category']).columns.tolist()
 
@@ -298,15 +268,12 @@ def run_prediction_pipeline():
                  median_val = X[col].median()
                  if pd.isna(median_val):
                      X[col].fillna(0.0, inplace=True)
-                     # print(f"Imputed remaining NaNs in numerical '{col}' with 0.0 (median was NaN).") # Optional: for debugging
                  else:
                      X[col].fillna(median_val, inplace=True)
-                     # print(f"Imputed remaining NaNs in numerical '{col}' with median {median_val:.2f}.") # Optional: for debugging
 
         for col in categorical_features:
             if X[col].isnull().any():
                  X[col].fillna('Missing', inplace=True)
-                 # print(f"Imputed remaining NaNs in categorical '{col}' with 'Missing'.") # Optional: for debugging
 
 
         print("\n--- Features Selected for Model Training ---")
@@ -314,10 +281,10 @@ def run_prediction_pipeline():
         print("Categorical:", categorical_features)
 
         if len(X) < 20 or len(y.value_counts()) < 2:
-            print(f"\nError crítico: Datos insuficientes ({len(X)} filas) o solo una clase presente ({y.value_counts().to_dict()}) para entrenar.")
+            print(f"Error: Not enought data ({len(X)} filas) or only a singel value in the target for train ({y.value_counts().to_dict()}).")
             return
 
-        # --- 6. Preprocesamiento (Pipeline) ---
+        # --- 5. Preprocessing (Pipeline) ---
         # Check if there are numerical or categorical features to process
         transformers_list = []
         if numerical_features:
@@ -326,7 +293,7 @@ def run_prediction_pipeline():
             transformers_list.append(('cat', OneHotEncoder(handle_unknown='ignore', drop='first', sparse_output=False), categorical_features))
 
         if not transformers_list:
-             print("Error crítico: No hay características numéricas o categóricas válidas para el preprocesamiento.")
+             print("Error: Not enought numerical or categorical features for preprocessing.")
              return
 
         preprocessor = ColumnTransformer(
@@ -335,7 +302,8 @@ def run_prediction_pipeline():
         )
 
 
-        # --- 7. Dividir Datos y Crear Pipeline del Modelo ---
+        # --- 6. Split the data and create the model pipelines ---
+        # Stratification: ensuring that the class distribution of the target variable (y) is preserved when splitting the datase
         try:
              # Check if stratification is possible (at least two classes and minimum samples in each)
              if len(y.value_counts()) >= 2 and min(y.value_counts()) >= 2: # Ensure at least 2 samples per class for stratification
@@ -354,16 +322,22 @@ def run_prediction_pipeline():
             ('classifier', LogisticRegression(random_state=42, solver='liblinear', class_weight='balanced'))
         ])
 
-        # --- 8. Entrenar el Modelo ---
+        # --- 7. Entrenar el Modelo ---
         print("\n--- Training Model ---")
         try:
             model_pipeline.fit(X_train, y_train)
             print("Model training complete.")
         except Exception as e:
-            print(f"Error crítico durante el entrenamiento: {e}")
+            print(f"Error: during training {e}")
             return
+        # Guardar el modelo entrenado
+        try:
+            joblib.dump(model_pipeline, 'trained_model.pkl')
+            print("Model saved as 'trained_model.pkl'.")
+        except Exception as e:
+            print(f"Error saving model: {e}")
 
-        # --- 9. Evaluar el Modelo ---
+        # --- 8. Evaluar el Modelo ---
         print("\n--- Model Evaluation ---")
         try:
             if X_test.empty:
@@ -387,13 +361,13 @@ def run_prediction_pipeline():
                       print("No test samples to calculate metrics.")
 
         except Exception as e:
-            print(f"Error durante la evaluación: {e}")
+            print(f"Error during evaluation: {e}")
 
-        # --- 10. Predecir Probabilidades para Datos de Prueba ---
+        # --- 9. Predicting Probabilities for Test Data ---
         print("\n--- Predicting Probabilities for Test Data (Sample) ---")
         try:
             if not X_test.empty:
-                 y_test = y_test.loc[X_test.index] # Alinear índice
+                 y_test = y_test.loc[X_test.index]
                  results_df = pd.DataFrame({
                      'Actual_Finished_On_Time': y_test.values,
                      'Predicted_Finished_On_Time': y_pred,
@@ -414,13 +388,11 @@ def run_prediction_pipeline():
 
 
         except Exception as e:
-            print(f"Error durante la predicción de probabilidades: {e}")
+            print(f"Error during probabilities prediction: {e}")
 
     else:
-        print("\nError crítico: No se pudieron cargar datos de empleados o tareas para la simulación.")
+        print("\nError: It couldn't be load the employees or the task for the simulation.")
 
-    print("\n--- Pipeline Function Finished ---")
-
-# --- Ejecutar el Pipeline ---
+# --- execute pipeline ---
 if __name__ == "__main__":
     run_prediction_pipeline()

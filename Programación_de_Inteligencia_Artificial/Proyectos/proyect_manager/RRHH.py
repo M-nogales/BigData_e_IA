@@ -1,78 +1,75 @@
 import pandas as pd
-import ast
+import random
 
+# Cargar datasets
+rrhh = pd.read_csv('datasets/Extended_Employee_Performance_and_Productivity_Data.csv')
+tareas = pd.read_csv('tareas.csv')
 
-task_df = pd.read_csv("task_categories_copy.csv")
-rrhh_df = pd.read_csv("datasets/RRHH.csv")
+# Lista de skills únicas
+skills = tareas['Skill'].unique()
 
-# --- Initial Exploration ---
+# Crear habilidades técnicas por empleado
+employee_skills = {}
 
-print("--- Task Categories Info ---")
-task_df.info()
-print("\n--- Task Categories Head ---")
-print(task_df.head())
-# Add display for unique values or duplicates if needed
-print("\nUnique Skills Required:")
-print(task_df['Skill'].unique())
-print("\nTask Description Duplicates:")
-# Check for duplicate task descriptions which might need clarification
-print(task_df[task_df.duplicated('Task Description', keep=False)])
+for emp_id in rrhh['Employee_ID']:
+    num_skills = random.randint(1, len(skills))  # Número aleatorio de skills por empleado
+    selected_skills = random.sample(list(skills), num_skills)
+    skill_scores = {skill: round(random.uniform(0.5, 10.0), 2) for skill in selected_skills}
+    employee_skills[emp_id] = skill_scores
 
+# Mostrar resultado
+print(employee_skills)
 
-print("\n\n--- RRHH Info ---")
-rrhh_df.info()
-print("\n--- RRHH Head ---")
-# Display more rows to see variations
-print(rrhh_df.head())
+# Cargar datasets
+rrhh = pd.read_csv('datasets/Extended_Employee_Performance_and_Productivity_Data.csv')
+tareas = pd.read_csv('tareas.csv')
 
+# Lista de skills únicas
+skills = tareas['Skill'].unique()
 
-# --- Preprocessing: Parse 'technical_abilities' ---
+# Crear habilidades técnicas por empleado
+employee_skills = {}
 
-# Function to safely parse the string representation of a dictionary
-def parse_tech_abilities(abilities_str):
-    """Safely parses a string literal representing a dictionary."""
-    if pd.isna(abilities_str): # Handle potential NaN values
-        return {}
-    try:
-        # Using ast.literal_eval is safer than eval() for untrusted input
-        evaluated = ast.literal_eval(abilities_str)
-        if isinstance(evaluated, dict):
-            # Standardize keys to lowercase for consistent matching
-            return {str(k).lower(): v for k, v in evaluated.items()}
-        else:
-            # Handle cases where the string might not evaluate to a dict
-            print(f"Warning: Parsed data is not a dictionary for input: {abilities_str[:100]}...") # Log problematic data
-            return {}
-    except (ValueError, SyntaxError, TypeError) as e:
-        # Return an empty dict if parsing fails
-        print(f"Warning: Could not parse technical_abilities string: {abilities_str[:100]}... Error: {e}") # Log problematic data
-        return {}
+for emp_id in rrhh['Employee_ID']:
+    num_skills = random.randint(1, len(skills))  # Número aleatorio de skills por empleado
+    selected_skills = random.sample(list(skills), num_skills)
+    skill_scores = {skill: round(random.uniform(0.5, 10.0), 2) for skill in selected_skills}
+    employee_skills[emp_id] = skill_scores
 
-# Apply the function to the 'technical_abilities' column
-# Make a copy to avoid SettingWithCopyWarning if modifying later
-rrhh_df['technical_abilities_dict'] = rrhh_df['technical_abilities'].apply(parse_tech_abilities)
+# Añadir columna al DataFrame
+rrhh['technical_abilities'] = rrhh['Employee_ID'].map(employee_skills)
 
-# Check the results of parsing for the first few employees
-print("\n\n--- Parsed Technical Abilities (First 5 Employees) ---")
-for i in range(min(5, len(rrhh_df))):
-    print(f"\nEmployee {rrhh_df.loc[i, 'Employee_ID']}:")
-    # Print only first few items if the dict is large
-    abilities = rrhh_df.loc[i, 'technical_abilities_dict']
-    print(dict(list(abilities.items())[:10]), "...") # Show first 10 skills
+# Guardar en nuevo archivo
+rrhh.to_csv('datasets/RRHH.csv', index=False)
 
-# Display basic descriptive statistics for numerical columns in RRHH
-print("\n\n--- RRHH Numerical Describe ---")
-# Use .round(2) for cleaner output
-print(rrhh_df.describe().round(2))
+print("Archivo 'datasets/RRHH.csv' guardado con la nueva columna 'technical_abilities'.")
 
-# Display value counts for some categorical columns in RRHH
-print("\n\n--- RRHH Categorical Value Counts ---")
-print("\nDepartments:\n", rrhh_df['Department'].value_counts())
-print("\nJob Titles:\n", rrhh_df['Job_Title'].value_counts())
-print("\nEducation Levels:\n", rrhh_df['Education_Level'].value_counts())
+#--- TEST WITH JSON ---
 
-# Convert 'Hire_Date' to datetime objects if not already done by read_csv
-# It's good practice to explicitly convert date columns
-rrhh_df['Hire_Date'] = pd.to_datetime(rrhh_df['Hire_Date'])
-print("\n\n--- RRHH Info After Date Conversion ---")
-rrhh_df.info() # Verify Hire_Date is datetime
+import pandas as pd
+import random
+import json
+
+# Cargar datasets
+rrhh = pd.read_csv('datasets/Extended_Employee_Performance_and_Productivity_Data.csv')
+tareas = pd.read_json('generated_tasks copy.json')
+
+# Lista de skills únicas
+skills = tareas['Skill'].unique()
+
+# Crear habilidades técnicas por empleado
+employee_skills = {}
+
+for emp_id in rrhh['Employee_ID']:
+    num_skills = random.randint(1, len(skills))  # Número aleatorio de skills por empleado
+    selected_skills = random.sample(list(skills), num_skills)
+    skill_scores = {skill: round(random.uniform(0.5, 10.0), 2) for skill in selected_skills}
+    employee_skills[emp_id] = skill_scores
+
+# Añadir columna al DataFrame
+rrhh['technical_abilities'] = rrhh['Employee_ID'].map(employee_skills)
+
+# Guardar en nuevo archivo
+# rrhh.to_csv('datasets/RRHH.csv', index=False)
+
+print("Archivo 'datasets/RRHH.csv' guardado con la nueva columna 'technical_abilities'.")
