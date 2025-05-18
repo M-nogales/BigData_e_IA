@@ -79,7 +79,7 @@ def formulario():
         except Exception as e:
             prediction_result = f"Error al predecir: {e}"
 
-    return render_template("formulario.html", prediction_result=prediction_result)
+    return render_template("index.html", prediction_result=prediction_result)
 
 if __name__ == "__main__":
     app.run(debug=True)

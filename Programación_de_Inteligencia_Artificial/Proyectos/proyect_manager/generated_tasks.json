@@ -34,7 +34,7 @@
     {
         "Task Description": "Deploy application to production",
         "Category": "deployment",
-        "Skill": "docker",
+        "Skill": "postgresql",
         "Difficulty Level": 3.7,
         "Estimated Time (hrs)": 9,
         "Area": "infrastructure"
