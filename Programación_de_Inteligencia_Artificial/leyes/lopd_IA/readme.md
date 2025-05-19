@@ -49,8 +49,8 @@ Atentamente,
 | Aplicación | Contacto para derechos ARCO                             | Enlace o Correo                                                |
 | ---------- | ------------------------------------------------------- | -------------------------------------------------------------- |
 | ChatGPT    | [privacy@openai.com](mailto:privacy@openai.com)         | [https://openai.com/privacy](https://openai.com/privacy)       |
-| Copilot    | Microsoft DSR Portal                                    | [https://privacy.microsoft.com](https://privacy.microsoft.com) |
-| Gemini     | Google Cuenta de Privacidad                             | [https://myactivity.google.com](https://myactivity.google.com) |
+| Copilot    | Microsoft DSR Portal                                    | [https://www.microsoft.com/es-mx/privacy/privacystatement](https://www.microsoft.com/es-mx/privacy/privacystatement) |
+| Gemini     | Google Cuenta de Privacidad                             | [https://support.google.com/gemini/answer/13594961?hl=es#your_data](https://support.google.com/gemini/answer/13594961?hl=es#your_data) |
 | Claude     | [support@anthropic.com](mailto:support@anthropic.com)   | No claro, solo email                                           |
 | Midjourney | [support@midjourney.com](mailto:support@midjourney.com) | No hay formulario oficial                                      |
 
@@ -58,19 +58,11 @@ Atentamente,
 
 ## 🧪 **4. Verificación de Aplicación Real**
 
-Se deberá:
-
-* Acceder a los ajustes de privacidad o enlaces legales en cada plataforma.
-* Tomar **capturas de pantalla** del proceso de gestión de privacidad.
-* Comprobar si efectivamente hay respuesta ante solicitudes.
-
-**Ejemplo (ChatGPT):**
-
-* Enlace: [https://openai.com/privacy](https://openai.com/privacy)
-* Captura: Página de políticas.
-* Texto: "OpenAI recoge datos de uso, y permite desactivar el historial de chat, pero no ofrece aún una opción específica para usuarios europeos conforme al RGPD."
-
-(Puedo ayudarte a crear estas imágenes si lo deseas).
+[privacidad ChatGpt](imgs/privacidad%20chatgpt.png)
+[privacidad Copilot](imgs/privacidad%20copilot.png)
+[privacidad Gemini](imgs/privacidad%20gemini.png)
+[privacidad Anthropic](imgs/privacidad%20Anthropic.png)
+[privacidad Midjourney](imgs/privacidad%20midjourney.png)
 
 ---
 

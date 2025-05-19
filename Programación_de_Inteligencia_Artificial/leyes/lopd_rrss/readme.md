@@ -68,13 +68,28 @@ Atentamente,
 
 ---
 
-### 🔍 **4. Revisión Práctica de Aplicación**
+### 🔍 **4. Encontrar diversas opciones de privacidad**
 
-Incluir capturas de pantalla que evidencien:
+todas contienen una forma simple de editar el perfil
 
-* Dónde se encuentran los enlaces a las políticas.
-* Si permiten modificar o eliminar datos desde la configuración.
-* Confirmación de recepción de solicitudes (si se ha probado).
+![editar perfil linkedin](imgs/edit%20linkedin.png)
+![editar perfil Tik Tok](imgs/edit%20tik%20tok.png)
+![editar perfil Twitter](imgs/EDIT%20TWITTER%20PROFILE.png)
+![editar perfil Instagram](imgs/editar%20perfil%20instagram.png)
+![editar perfil Reddit](imgs/reddit%20profile.png)
+
+donde están los ajustes de privacidad
+
+![privacidad linkedin](imgs/linkedin%20privacidad.png)
+![privacidad Tik Tok](imgs/privacidad%20tik%20tok.png)
+![privacidad twitter](imgs/privacidad%20twitter.png)
+![privacidad Instagram](imgs/privacidad%20instagram.png)
+![privacidad Instagram2](imgs/privacidad%202%20instagram.png)
+![privacidad Reddit](imgs/privacidad%20reddit.png)
+
+como nota, en tiktok si intentas registrarte siendo menor (nacido ej en 2025) no solo te muestra el error si no que además no te deja intentar registrarte hasta 
+
+![error registro tik tok](imgs/error%20registro.png)
 
 ---
 
