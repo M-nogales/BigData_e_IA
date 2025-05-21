@@ -1,7 +1,3 @@
-Claro, aquí tienes una explicación breve y clara del proyecto que puedes usar en tu README o introducción:
-
----
-
 # Monitorización de Aplicaciones con Prometheus y Grafana
 
 Este proyecto tiene como objetivo principal implementar un sistema de monitorización para aplicaciones web usando **Prometheus** y **Grafana**, integrados mediante Docker y Docker Compose.
