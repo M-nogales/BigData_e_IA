@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predictor de Asignación de Empleados</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Predictor de Asignación</h1>
+      <p class="text-gray-600">Sistema de predicción para asignación de empleados a tareas</p>
+    </div>
+
+    <!-- Form Container -->
+    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+      <form method="post" class="space-y-8">
+        
+        <!-- Datos del Empleado -->
+        <div>
+          <h2 class="text-2xl font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">
+            👤 Datos del Empleado
+          </h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Información Personal -->
+            <div class="space-y-4">
+              <h3 class="text-lg font-medium text-gray-700 mb-3">Información Personal</h3>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Edad</label>
+                <input name="Age" type="number" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Género</label>
+                <select name="Gender" 
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white">
+                  <option value="">Seleccionar género</option>
+                  <option value="male">Masculino</option>
+                  <option value="female">Femenino</option>
+                  <option value="other">Otro</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Nivel Educativo</label>
+                <select name="Education_Level" 
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white">
+                  <option value="">Seleccionar nivel educativo</option>
+                  <option value="high school">Bachillerato</option>
+                  <option value="master">Maestría</option>
+                  <option value="phd">Doctorado</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Información Laboral -->
+            <div class="space-y-4">
+              <h3 class="text-lg font-medium text-gray-700 mb-3">Información Laboral</h3>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Años en la Empresa</label>
+                <input name="Years_At_Company" type="number" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de Ingreso</label>
+                <input name="Hire_Date" type="date" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Departamento</label>
+                <select name="Department" 
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white">
+                  <option value="">Seleccionar departamento</option>
+                  <option value="engineering">Ingeniería</option>
+                  <option value="finance">Finanzas</option>
+                  <option value="hr">Recursos Humanos</option>
+                  <option value="it">Tecnología</option>
+                  <option value="legal">Legal</option>
+                  <option value="marketing">Marketing</option>
+                  <option value="operations">Operaciones</option>
+                  <option value="sales">Ventas</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Cargo</label>
+                <select name="Job_Title" 
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white">
+                  <option value="">Seleccionar cargo</option>
+                  <option value="consultant">Consultor</option>
+                  <option value="developer">Desarrollador</option>
+                  <option value="engineer">Ingeniero</option>
+                  <option value="manager">Gerente</option>
+                  <option value="specialist">Especialista</option>
+                  <option value="technician">Técnico</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Métricas de Rendimiento -->
+            <div class="space-y-4">
+              <h3 class="text-lg font-medium text-gray-700 mb-3">Rendimiento</h3>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Calificación de Desempeño</label>
+                <input name="Performance_Score" type="number" step="0.1" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Sueldo Mensual</label>
+                <input name="Monthly_Salary" type="number" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Satisfacción del Empleado</label>
+                <input name="Employee_Satisfaction_Score" type="number" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Número de Promociones</label>
+                <input name="Promotions" type="number" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+            </div>
+          </div>
+
+          <!-- Métricas de Trabajo -->
+          <div class="mt-8">
+            <h3 class="text-lg font-medium text-gray-700 mb-4">Métricas de Trabajo</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Horas por Semana</label>
+                <input name="Work_Hours_Per_Week" type="number" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Proyectos Manejados</label>
+                <input name="Projects_Handled" type="number" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Horas Extra</label>
+                <input name="Overtime_Hours" type="number" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Días de Enfermedad</label>
+                <input name="Sick_Days" type="number" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Frecuencia Trabajo Remoto</label>
+                <input name="Remote_Work_Frequency" type="number" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Tamaño del Equipo</label>
+                <input name="Team_Size" type="number" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Horas de Entrenamiento</label>
+                <input name="Training_Hours" type="number" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+            </div>
+          </div>
+
+          <!-- Habilidades Técnicas -->
+          <div class="mt-6">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Habilidades Técnicas</label>
+            <input name="technical_abilities" type="text" 
+                   placeholder='Ejemplo: {"Python": 4, "Java": 3}'
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <p class="text-xs text-gray-500 mt-1">Formato JSON con habilidades y niveles del 1-10</p>
+          </div>
+        </div>
+
+        <!-- Datos de la Tarea -->
+        <div>
+          <h2 class="text-2xl font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">
+            📋 Datos de la Tarea
+          </h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Descripción de la Tarea</label>
+              <input name="Task_Description" type="text" 
+                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Categoría</label>
+              <select name="Category" 
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white">
+                <option value="">Seleccionar categoría</option>
+                <option value="backend">Backend</option>
+                <option value="cloud">Cloud</option>
+                <option value="data science">Data Science</option>
+                <option value="database">Base de Datos</option>
+                <option value="database administration">Administración de BD</option>
+                <option value="devops">DevOps</option>
+                <option value="documentation">Documentación</option>
+                <option value="frontend">Frontend</option>
+                <option value="project management">Gestión de Proyectos</option>
+                <option value="testing">Testing</option>
+                <option value="ui/ux design">Diseño UI/UX</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Habilidad Requerida</label>
+              <input name="Skill" type="text" 
+                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-center pt-6">
+          <button type="submit" 
+                  class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            🔮 Predecir Asignación
+          </button>
+        </div>
+      </form>
+
+      <!-- Resultado de la Predicción -->
+      {% if prediction_result %}
+        <div class="mt-8 p-6 rounded-lg border-l-4 
+                    {% if prediction_result == '0' %}
+                      bg-red-50 border-red-400
+                    {% elif prediction_result == '1' %}
+                      bg-green-50 border-green-400
+                    {% else %}
+                      bg-blue-50 border-blue-400
+                    {% endif %}">
+          <h3 class="text-lg font-semibold mb-2
+                     {% if prediction_result == '0' %}
+                       text-red-800
+                     {% elif prediction_result == '1' %}
+                       text-green-800
+                     {% else %}
+                       text-blue-800
+                     {% endif %}">
+            📊 Resultado de la Predicción
+          </h3>
+          <div class="flex items-center space-x-2">
+            {% if prediction_result == '0' %}
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                ❌ No Asignado
+              </span>
+              <p class="text-red-700">El empleado no es adecuado para esta tarea</p>
+            {% elif prediction_result == '1' %}
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                ✅ Asignado
+              </span>
+              <p class="text-green-700">El empleado es adecuado para esta tarea</p>
+            {% else %}
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                📈 Resultado: {{ prediction_result }}
+              </span>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center mt-8 text-gray-500 text-sm">
+      <p>Sistema de Predicción de Asignación de Empleados v1.0</p>
+    </div>
+  </div>
+</body>
+</html>

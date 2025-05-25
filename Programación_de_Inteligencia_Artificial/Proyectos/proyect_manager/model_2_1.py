@@ -19,7 +19,7 @@ def run_prediction_pipeline():
     # --- load and inicial processing ---
     try:
         # --- Load json tasks (task_generator.py) ---
-        json_file_path = "generated_tasks copy.json"
+        json_file_path = "generated_tasks.json"
         try:
             with open(json_file_path, 'r', encoding='utf-8') as f:
                  task_data = json.load(f)
@@ -96,6 +96,15 @@ def run_prediction_pipeline():
         else:
             print("\nWarning: 'Hire_Date' column not found in RRHH.csv")
 
+        if 'Gender' in rrhh_df.columns:
+            rrhh_df['Gender'] = rrhh_df['Gender'].str.lower().str.strip()
+        if 'Department' in rrhh_df.columns:
+            rrhh_df['Department'] = rrhh_df['Department'].str.lower().str.strip()
+        if 'Job_Title' in rrhh_df.columns:
+            rrhh_df['Job_Title'] = rrhh_df['Job_Title'].str.lower().str.strip()
+        if 'Education_Level' in rrhh_df.columns:
+            rrhh_df['Education_Level'] = rrhh_df['Education_Level'].str.lower().str.strip()
+        
     except FileNotFoundError as e:
         print(f"Error: file do not found - {e}. Make sure the file is in the correct place.")
         return
@@ -321,7 +330,7 @@ def run_prediction_pipeline():
             ('classifier', LogisticRegression(random_state=42, solver='liblinear', class_weight='balanced'))
         ])
 
-        # --- 7. Entrenar el Modelo ---
+        # --- 7. Train the model ---
         print("\n--- Training Model ---")
         try:
             model_pipeline.fit(X_train, y_train)
@@ -329,14 +338,13 @@ def run_prediction_pipeline():
         except Exception as e:
             print(f"Error: during training {e}")
             return
-        # Guardar el modelo entrenado
         try:
-            joblib.dump(model_pipeline, 'trained_model.pkl')
+            joblib.dump(model_pipeline, 'trained_model.pkl') 
             print("Model saved as 'trained_model.pkl'.")
         except Exception as e:
             print(f"Error saving model: {e}")
 
-        # --- 8. Evaluar el Modelo ---
+        # --- 8. Model Evaluation ---
         print("\n--- Model Evaluation ---")
         try:
             if X_test.empty:

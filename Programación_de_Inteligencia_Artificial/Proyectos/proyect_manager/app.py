@@ -6,39 +6,40 @@ import numpy as np
 from datetime import datetime
 
 app = Flask(__name__)
-modelo = joblib.load("trained_model.pkl")
+model = joblib.load("trained_model.pkl")
 
 @app.route("/", methods=["GET", "POST"])
 def formulario():
     prediction_result = None
 
     if request.method == "POST":
-        datos_formulario = request.form.to_dict()
+        form_data = request.form.to_dict()
 
-        # --- Parsear habilidades técnicas ---
-        habilidades_raw = datos_formulario.get("technical_abilities", "{}")
+        # --- Parse technical abilities ---
+        raw_skills = form_data.get("technical_abilities", "{}")
         try:
-            habilidades_dict = json.loads(habilidades_raw)
+            skills_dict = json.loads(raw_skills)
         except json.JSONDecodeError:
-            habilidades_dict = {}
+            skills_dict = {}
 
-        # Expandir las habilidades como columnas
-        for k, v in habilidades_dict.items():
-            datos_formulario[f"skill_{k.lower().strip()}"] = v
+        # Expand skills as columns
+        for k, v in skills_dict.items():
+            form_data[f"skill_{k.lower().strip()}"] = v
 
-        # Guardar el dict original también
-        datos_formulario["technical_abilities_dict"] = habilidades_dict
+        # Keep original dict as well
+        form_data["technical_abilities_dict"] = skills_dict
+        
 
-        # --- Procesar tipos numéricos y fechas ---
+        # --- Process numeric types and dates ---
         processed = {}
-        for key, value in datos_formulario.items():
+        for key, value in form_data.items():
             if key == "Hire_Date":
                 try:
                     processed[key] = pd.to_datetime(value)
                 except Exception:
                     processed[key] = pd.NaT
             elif isinstance(value, dict):
-                processed[key] = value  # dejar como dict
+                processed[key] = value  # keep as dict
             else:
                 try:
                     processed[key] = float(value)
@@ -48,7 +49,7 @@ def formulario():
 
         df = pd.DataFrame([processed])
 
-        # --- Calcular Tenure_Years ---
+        # --- Calculate Tenure_Years ---
         current_date = pd.to_datetime(datetime.now())
         if "Hire_Date" in df.columns and pd.api.types.is_datetime64_any_dtype(df["Hire_Date"]):
             valid_mask = df["Hire_Date"].notna()
@@ -60,7 +61,7 @@ def formulario():
         else:
             df["Tenure_Years"] = 0.0
 
-        # --- Calcular Skill_Match_Score ---
+        # --- Calculate  Skill_Match_Score ---
         def get_skill_score(row):
             required = row.get("Skill", "")
             skills = row.get("technical_abilities_dict", {})
@@ -70,14 +71,20 @@ def formulario():
 
         df["Skill_Match_Score"] = df.apply(get_skill_score, axis=1)
 
-        # Eliminar columnas no esperadas por el modelo si hace falta
-        df.drop(columns=["Hire_Date", "technical_abilities_dict"], errors="ignore", inplace=True)
+        # --- Drop columns not needed by the model ---
+        df.drop(columns=["Hire_Date", "technical_abilities_dict", "Skill"], errors="ignore", inplace=True)
 
+        # Drop columns starting with "skill_", except "Skill_Match_Score"
+        skill_cols = [col for col in df.columns if col.startswith("skill_") and col != "Skill_Match_Score"]
+        df.drop(columns=skill_cols, errors="ignore", inplace=True)
+        
         try:
-            pred = modelo.predict(df)[0]
-            prediction_result = f"Resultado de predicción: {pred}"
+            # print(df.columns.tolist())  # Debug: Check dataframe columns send to model
+            # print(df)
+            pred = model.predict(df)[0]
+            prediction_result = f"Prediction result:: {pred}"
         except Exception as e:
-            prediction_result = f"Error al predecir: {e}"
+            prediction_result = f"Prediction error: {e}"
 
     return render_template("index.html", prediction_result=prediction_result)
 
