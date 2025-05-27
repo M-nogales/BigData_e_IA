@@ -1,7 +1,3 @@
-Aquí tienes un **informe en formato markdown** que analiza diversos casos de sistemas de IA, clasificándolos por su nivel de riesgo según el Reglamento (UE) 2024/1689, especialmente los artículos 5 a 7.
-
----
-
 # Informe: Clasificación de Sistemas de IA según el Reglamento (UE) 2024/1689
 
 ## Introducción

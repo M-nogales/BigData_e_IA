@@ -1,29 +1,3 @@
-Características del recurso humano:
-todos float excepto experiencia
-
-Experiencia:
-
-Rendimiento personal (0-10): 
-
-Habilidades técnicas (lenguaje-(0-10)): [Python,4]
-
-soft skills:
-
-carga de trabajo (0-10)
-
-Cargo o nivel en la empresa
-
-Características de la tarea:
-Tipo de tarea (categoría)
-
-Nivel de dificultad
-
-Herramientas requeridas
-
-Tiempo estimado
-
-Área o departamento
----
 # Proyecto: Predicción de Éxito de Tareas Asignadas a Recursos Humanos
 Este proyecto tiene como objetivo predecir el éxito de las tareas asignadas a los recursos humanos de una empresa, utilizando un modelo de machine learning. El modelo se entrena con datos históricos de empleados y sus tareas, y se evalúa su rendimiento en función de diversas métricas. Los resultados pueden no ajustarse a la realidad debido a la naturaleza sintética de los datos generados.
 
